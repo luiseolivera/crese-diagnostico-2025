@@ -1,0 +1,412 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import { api } from '../api';
+
+const ESCALA = [
+  { valor: 100, label: '100%', desc: 'Excelente' },
+  { valor: 75, label: '75%', desc: 'Bueno' },
+  { valor: 50, label: '50%', desc: 'Parcial' },
+  { valor: 25, label: '25%', desc: 'Incipiente' },
+  { valor: 0, label: '0%', desc: 'No existe' },
+];
+
+function ScaleSelector({ value, onChange, criterio, norma }) {
+  const cDef = norma.criterios.find(c => c.id === criterio);
+  const [showHelp, setShowHelp] = useState(false);
+  return (
+    <div>
+      <div className="flex gap-2 mb-2">
+        {ESCALA.map(opt => (
+          <button
+            key={opt.valor}
+            onClick={() => onChange(opt.valor)}
+            className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-all ${
+              value === opt.valor
+                ? opt.valor >= 80 ? 'bg-green-500 text-white border-green-500'
+                : opt.valor >= 50 ? 'bg-blue-500 text-white border-blue-500'
+                : opt.valor >= 25 ? 'bg-orange-500 text-white border-orange-500'
+                : 'bg-red-500 text-white border-red-500'
+                : 'bg-white text-gray-500 border-gray-200 hover:border-gray-300'
+            }`}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+      {value !== null && value !== undefined && cDef?.escala && (
+        <p className="text-xs text-gray-500 mt-1 italic">
+          {cDef.escala.find(e => e.valor === value)?.descripcion}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function MatrizParticipacion({ value, onChange }) {
+  const filas = ['Propuesta', 'Diseño', 'Ejecución', 'Revisión'];
+  const cols = ['Dir. General', 'Resp. Programa', 'Comité Interno', 'Personal', 'Otros GI'];
+
+  const toggle = (f, c) => {
+    const key = `${f}_${c}`;
+    onChange({ ...value, [key]: !value[key] });
+  };
+
+  const cumple = Object.values(value || {}).filter(Boolean).length;
+  const pct = Math.round((cumple / 20) * 100);
+
+  return (
+    <div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs border-collapse">
+          <thead>
+            <tr>
+              <th className="text-left p-2 text-gray-400 font-medium w-24"></th>
+              {cols.map(c => (
+                <th key={c} className="p-2 text-center text-gray-500 font-medium border-b border-gray-100">{c}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {filas.map(f => (
+              <tr key={f} className="border-b border-gray-50">
+                <td className="p-2 text-gray-600 font-medium">{f}</td>
+                {cols.map(c => {
+                  const key = `${f}_${c}`;
+                  const checked = value?.[key] || false;
+                  return (
+                    <td key={c} className="p-2 text-center">
+                      <button
+                        onClick={() => toggle(f, c)}
+                        className={`w-8 h-8 rounded-lg border-2 transition-all flex items-center justify-center mx-auto ${
+                          checked
+                            ? 'bg-blue-500 border-blue-500 text-white'
+                            : 'bg-white border-gray-200 text-gray-200 hover:border-blue-300'
+                        }`}
+                      >
+                        {checked ? '✓' : ''}
+                      </button>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="mt-3 flex items-center gap-3">
+        <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+          <div
+            className={`h-full rounded-full ${pct >= 80 ? 'bg-green-500' : pct >= 50 ? 'bg-blue-500' : 'bg-orange-400'}`}
+            style={{ width: `${pct}%` }}
+          />
+        </div>
+        <span className="text-sm font-semibold text-gray-600">{cumple}/20 = {pct}%</span>
+      </div>
+    </div>
+  );
+}
+
+export default function EvaluacionRequisito({ diagId, requisito, norma, navigate }) {
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+
+  const [minimosCumplidos, setMinimosCumplidos] = useState({});
+  const [bloqueado, setBloqueado] = useState(false);
+  const [scores, setScores] = useState({ 1: null, 2: null, 3: null, 4: null, 5: null });
+  const [notas, setNotas] = useState({ 1: '', 2: '', 3: '', 4: '', 5: '' });
+  const [matriz, setMatriz] = useState({});
+  const [activeTab, setActiveTab] = useState('minimos');
+
+  useEffect(() => {
+    setLoading(true);
+    api.evaluaciones.list(diagId).then(evs => {
+      const ev = evs.find(e => e.requisito_id === requisito.id);
+      if (ev) {
+        setMinimosCumplidos(ev.minimos_detalle || {});
+        setBloqueado(!!ev.bloqueado);
+        setScores({
+          1: ev.puntuacion_criterio_1,
+          2: ev.puntuacion_criterio_2,
+          3: ev.puntuacion_criterio_3,
+          4: ev.puntuacion_criterio_4,
+          5: ev.puntuacion_criterio_5,
+        });
+        setNotas({
+          1: ev.notas_criterio_1 || '',
+          2: ev.notas_criterio_2 || '',
+          3: ev.notas_criterio_3 || '',
+          4: ev.notas_criterio_4 || '',
+          5: ev.notas_criterio_5 || '',
+        });
+        setMatriz(ev.matriz_participacion || {});
+      }
+      setLoading(false);
+      // Set default tab
+      if (requisito.minimos_auditables?.length > 0) setActiveTab('minimos');
+      else setActiveTab('existencia');
+    });
+  }, [diagId, requisito.id]);
+
+  const minimosFallados = requisito.minimos_auditables
+    ? requisito.minimos_auditables.filter((_, i) => minimosCumplidos[i] === false).length
+    : 0;
+  const allMinimosAnswered = requisito.minimos_auditables?.every((_, i) => minimosCumplidos[i] !== undefined) ?? true;
+  const isBlocked = requisito.minimos_auditables?.length > 0 && minimosFallados > 0;
+
+  const computeParticipacionScore = () => {
+    const cumple = Object.values(matriz).filter(Boolean).length;
+    return Math.round((cumple / 20) * 100);
+  };
+
+  const getScore3 = () => {
+    if (!requisito.criterios_evaluables.includes(3)) return null;
+    return computeParticipacionScore();
+  };
+
+  const save = async (completado = false) => {
+    setSaving(true);
+    const score3 = getScore3();
+    await api.evaluaciones.save(diagId, requisito.id, {
+      minimos_cumplidos: !isBlocked,
+      minimos_detalle: minimosCumplidos,
+      bloqueado: isBlocked,
+      puntuacion_criterio_1: scores[1],
+      puntuacion_criterio_2: scores[2],
+      puntuacion_criterio_3: score3,
+      puntuacion_criterio_4: scores[4],
+      puntuacion_criterio_5: scores[5],
+      notas_criterio_1: notas[1],
+      notas_criterio_2: notas[2],
+      notas_criterio_3: notas[3],
+      notas_criterio_4: notas[4],
+      notas_criterio_5: notas[5],
+      matriz_participacion: matriz,
+      completado,
+    });
+    setSaving(false);
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+    if (completado) navigate('diagnostico', { id: diagId });
+  };
+
+  const criterioLabels = {
+    1: 'Existencia y Funcionamiento',
+    2: 'Difusión y Conocimiento',
+    3: 'Participación Directa',
+    4: 'Innovación o Mejora',
+    5: 'Vinculación con Dirección Estratégica',
+  };
+
+  const tabs = [
+    requisito.minimos_auditables?.length > 0 && { id: 'minimos', label: 'Mínimos Auditables' },
+    ...requisito.criterios_evaluables.map(c => ({ id: `criterio_${c}`, label: c === 3 ? 'Participación' : criterioLabels[c].split(' ')[0] })),
+  ].filter(Boolean);
+
+  if (loading) return (
+    <div className="flex items-center justify-center h-64">
+      <div className="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+
+  return (
+    <div className="max-w-3xl mx-auto px-6 py-8">
+      <button className="text-sm text-gray-400 hover:text-gray-600 mb-4 flex items-center gap-1"
+        onClick={() => navigate('diagnostico', { id: diagId })}>
+        ← Volver al diagnóstico
+      </button>
+
+      {/* Header */}
+      <div className="mb-6">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-xs font-semibold text-blue-600">Requisito {requisito.numero}</span>
+          {requisito.solo_existencia && (
+            <span className="text-xs px-2 py-0.5 bg-amber-50 text-amber-600 rounded-full border border-amber-100">
+              Solo Existencia y Funcionamiento
+            </span>
+          )}
+        </div>
+        <h1 className="text-lg font-semibold text-gray-900 leading-snug">{requisito.nombre}</h1>
+        <p className="text-sm text-gray-500 mt-2 leading-relaxed">{requisito.descripcion}</p>
+      </div>
+
+      {/* Contextual help */}
+      {requisito.ayuda_contextual && (
+        <div className="mb-5 p-4 bg-blue-50 border border-blue-100 rounded-lg">
+          <p className="text-xs font-semibold text-blue-700 mb-1">💡 Contexto</p>
+          <p className="text-xs text-blue-700 leading-relaxed">{requisito.ayuda_contextual}</p>
+        </div>
+      )}
+
+      {/* Blocked warning */}
+      {isBlocked && (
+        <div className="mb-5 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-sm font-semibold text-red-700 mb-1">⛔ Requisito Bloqueado</p>
+          <p className="text-xs text-red-600">
+            Uno o más mínimos auditables no se cumplen. Este requisito será marcado automáticamente como <strong>No Cumple</strong> y no es posible evaluar los criterios de evaluación.
+          </p>
+        </div>
+      )}
+
+      {/* Tabs */}
+      <div className="flex gap-1 mb-4 bg-gray-100 p-1 rounded-lg overflow-x-auto">
+        {tabs.map(tab => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`px-3 py-1.5 rounded-md text-xs font-medium whitespace-nowrap transition-colors ${
+              activeTab === tab.id ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            {tab.label}
+            {tab.id === 'minimos' && minimosFallados > 0 && (
+              <span className="ml-1 w-4 h-4 inline-flex items-center justify-center bg-red-500 text-white text-xs rounded-full">{minimosFallados}</span>
+            )}
+          </button>
+        ))}
+      </div>
+
+      <div className="card p-6">
+        {/* Mínimos auditables tab */}
+        {activeTab === 'minimos' && requisito.minimos_auditables?.length > 0 && (
+          <div>
+            <h3 className="text-sm font-semibold text-gray-800 mb-1">Mínimos Auditables</h3>
+            <p className="text-xs text-gray-500 mb-4">
+              Evalúa cada mínimo auditable. Si alguno no se cumple, el requisito quedará bloqueado y no se podrán evaluar los criterios de evaluación.
+            </p>
+            <div className="space-y-4">
+              {requisito.minimos_auditables.map((ma, i) => (
+                <div key={i} className={`p-4 rounded-lg border transition-colors ${
+                  minimosCumplidos[i] === true ? 'border-green-200 bg-green-50'
+                  : minimosCumplidos[i] === false ? 'border-red-200 bg-red-50'
+                  : 'border-gray-100 bg-gray-50'
+                }`}>
+                  <p className="text-sm text-gray-700 leading-relaxed mb-3">{ma}</p>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setMinimosCumplidos(m => ({ ...m, [i]: true }))}
+                      className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all border ${
+                        minimosCumplidos[i] === true
+                          ? 'bg-green-500 text-white border-green-500'
+                          : 'bg-white text-gray-500 border-gray-200 hover:border-green-400 hover:text-green-600'
+                      }`}
+                    >
+                      ✓ Cumple
+                    </button>
+                    <button
+                      onClick={() => setMinimosCumplidos(m => ({ ...m, [i]: false }))}
+                      className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all border ${
+                        minimosCumplidos[i] === false
+                          ? 'bg-red-500 text-white border-red-500'
+                          : 'bg-white text-gray-500 border-gray-200 hover:border-red-400 hover:text-red-600'
+                      }`}
+                    >
+                      ✕ No Cumple
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {allMinimosAnswered && !isBlocked && (
+              <div className="mt-4 p-3 bg-green-50 border border-green-100 rounded-lg">
+                <p className="text-xs text-green-700 font-medium">✓ Todos los mínimos auditables se cumplen. Puedes continuar con los criterios de evaluación.</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Criteria tabs (1, 2, 4, 5) */}
+        {['1','2','4','5'].map(cStr => {
+          const c = parseInt(cStr);
+          if (activeTab !== `criterio_${c}`) return null;
+          if (!requisito.criterios_evaluables.includes(c)) return null;
+          const cDef = norma.criterios.find(x => x.id === c);
+          const isExistencia = c === 1;
+          return (
+            <div key={c}>
+              <h3 className="text-sm font-semibold text-gray-800 mb-1">{criterioLabels[c]}</h3>
+              <p className="text-xs text-gray-500 mb-4 leading-relaxed">{cDef?.descripcion}</p>
+
+              {isExistencia && requisito.preguntas_existencia && (
+                <div className="mb-5 p-4 bg-gray-50 rounded-lg border border-gray-100">
+                  <p className="text-xs font-semibold text-gray-600 mb-2">Preguntas orientadoras:</p>
+                  <ul className="space-y-2">
+                    {requisito.preguntas_existencia.map((q, i) => (
+                      <li key={i} className="text-xs text-gray-600 flex gap-2">
+                        <span className="text-gray-400 shrink-0">{i+1}.</span>
+                        <span>{q}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {isBlocked ? (
+                <p className="text-sm text-red-400 italic">No disponible — requisito bloqueado por mínimos auditables.</p>
+              ) : (
+                <>
+                  <ScaleSelector
+                    value={scores[c]}
+                    onChange={v => setScores(s => ({ ...s, [c]: v }))}
+                    criterio={c}
+                    norma={norma}
+                  />
+                  <div className="mt-4">
+                    <label className="label">Notas u observaciones (opcional)</label>
+                    <textarea
+                      className="input resize-none"
+                      rows={2}
+                      placeholder="Evidencias encontradas, áreas de mejora, comentarios..."
+                      value={notas[c]}
+                      onChange={e => setNotas(n => ({ ...n, [c]: e.target.value }))}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        })}
+
+        {/* Participation matrix tab */}
+        {activeTab === 'criterio_3' && requisito.criterios_evaluables.includes(3) && (
+          <div>
+            <h3 className="text-sm font-semibold text-gray-800 mb-1">Participación Directa</h3>
+            <p className="text-xs text-gray-500 mb-4 leading-relaxed">
+              Marca cada cuadrante donde existe participación real y documentada en los últimos dos años.
+              El índice se calcula como: cuadrantes cumplidos ÷ 20.
+            </p>
+            {isBlocked ? (
+              <p className="text-sm text-red-400 italic">No disponible — requisito bloqueado por mínimos auditables.</p>
+            ) : (
+              <MatrizParticipacion value={matriz} onChange={setMatriz} />
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Save buttons */}
+      <div className="flex items-center justify-between mt-6">
+        <div className="text-xs text-gray-400">
+          {saved && <span className="text-green-600">✓ Guardado</span>}
+        </div>
+        <div className="flex gap-2">
+          <button className="btn-secondary" onClick={() => save(false)} disabled={saving}>
+            {saving ? 'Guardando...' : 'Guardar borrador'}
+          </button>
+          <button
+            className="btn-primary"
+            onClick={() => save(true)}
+            disabled={saving || (requisito.minimos_auditables?.length > 0 && !allMinimosAnswered)}
+          >
+            {saving ? 'Guardando...' : isBlocked ? 'Registrar como No Cumple →' : 'Finalizar requisito →'}
+          </button>
+        </div>
+      </div>
+
+      {requisito.minimos_auditables?.length > 0 && !allMinimosAnswered && (
+        <p className="text-xs text-amber-600 text-right mt-2">
+          Responde todos los mínimos auditables para poder finalizar.
+        </p>
+      )}
+    </div>
+  );
+}
