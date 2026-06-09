@@ -74,9 +74,12 @@ export default function Home({ norma, navigate }) {
         </div>
         <div className="flex gap-2">
           <input ref={importRef} type="file" accept=".json" className="hidden" onChange={handleImport} />
-          <button className="btn-secondary" onClick={() => importRef.current.click()}>
-            <span>↑</span> Importar
-          </button>
+          <div className="flex flex-col items-end gap-0.5">
+            <button className="btn-secondary" onClick={() => importRef.current.click()}>
+              <span>↑</span> Importar
+            </button>
+            <p className="text-xs text-gray-400">Cargar un diagnóstico como archivo .json</p>
+          </div>
           <button className="btn-primary" onClick={() => setShowNew(true)}>
             <span>+</span> Nuevo diagnóstico / auditoría interna
           </button>
@@ -97,16 +100,19 @@ export default function Home({ norma, navigate }) {
               <input className="input" placeholder="Nombre del responsable" value={form.responsable}
                 onChange={e => setForm(f => ({ ...f, responsable: e.target.value }))} />
             </div>
-            <div className="grid grid-cols-2 gap-2">
-              <div>
-                <label className="label">Periodo inicio</label>
-                <input type="date" className="input" value={form.periodo_inicio}
-                  onChange={e => setForm(f => ({ ...f, periodo_inicio: e.target.value }))} />
-              </div>
-              <div>
-                <label className="label">Periodo fin</label>
-                <input type="date" className="input" value={form.periodo_fin}
-                  onChange={e => setForm(f => ({ ...f, periodo_fin: e.target.value }))} />
+            <div>
+              <label className="label">Periodo de evaluación</label>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="label text-gray-400 font-normal">Inicio</label>
+                  <input type="date" className="input" value={form.periodo_inicio}
+                    onChange={e => setForm(f => ({ ...f, periodo_inicio: e.target.value }))} />
+                </div>
+                <div>
+                  <label className="label text-gray-400 font-normal">Fin</label>
+                  <input type="date" className="input" value={form.periodo_fin}
+                    onChange={e => setForm(f => ({ ...f, periodo_fin: e.target.value }))} />
+                </div>
               </div>
             </div>
           </div>
