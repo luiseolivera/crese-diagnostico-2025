@@ -1,7 +1,7 @@
 import React from 'react';
 
 const navItems = [
-  { id: 'home', icon: '🏠', label: 'Diagnósticos' },
+  { id: 'home', icon: '🏠', label: 'Diagnósticos / Auditorías' },
 ];
 
 export default function Sidebar({ view, navigate }) {
@@ -12,7 +12,7 @@ export default function Sidebar({ view, navigate }) {
           <span className="text-xl">⭐</span>
           <div>
             <p className="text-xs font-bold text-blue-700 leading-tight">CRESE</p>
-            <p className="text-xs text-gray-400 leading-tight">Autodiagnóstico</p>
+            <p className="text-xs text-gray-400 leading-tight">Diagnóstico / Auditoría Interna</p>
           </div>
         </div>
       </div>

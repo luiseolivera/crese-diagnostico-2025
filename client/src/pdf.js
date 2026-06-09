@@ -32,7 +32,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(22);
   doc.setTextColor(255, 255, 255);
-  doc.text('Reporte de Autodiagnóstico', W / 2, 60, { align: 'center' });
+  doc.text('Reporte de Diagnóstico / Auditoría Interna', W / 2, 60, { align: 'center' });
 
   doc.setFontSize(13);
   doc.setFont('helvetica', 'normal');
