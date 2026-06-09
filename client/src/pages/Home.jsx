@@ -69,7 +69,7 @@ export default function Home({ norma, navigate }) {
     <div className="max-w-4xl mx-auto px-6 py-10">
       <div className="flex items-start justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Diagnósticos / Auditorías CRESE</h1>
+          <h1 className="text-2xl font-semibold text-gray-900">Diagnósticos / Auditorías Internas CRESE</h1>
           <p className="text-sm text-gray-500 mt-1">Diagnóstico / Auditoría Interna — Norma CRESE 2025</p>
         </div>
         <div className="flex gap-2">
@@ -78,14 +78,14 @@ export default function Home({ norma, navigate }) {
             <span>↑</span> Importar
           </button>
           <button className="btn-primary" onClick={() => setShowNew(true)}>
-            <span>+</span> Nuevo diagnóstico / auditoría
+            <span>+</span> Nuevo diagnóstico / auditoría interna
           </button>
         </div>
       </div>
 
       {showNew && (
         <div className="card p-6 mb-6 border-blue-100">
-          <h2 className="text-sm font-semibold text-gray-900 mb-4">Nuevo Diagnóstico / Auditoría</h2>
+          <h2 className="text-sm font-semibold text-gray-900 mb-4">Nuevo Diagnóstico / Auditoría Interna</h2>
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="label">Nombre de la empresa *</label>
@@ -122,9 +122,9 @@ export default function Home({ norma, navigate }) {
       {diagnosticos.length === 0 && !showNew && (
         <div className="card p-12 text-center">
           <div className="text-5xl mb-4">📋</div>
-          <h3 className="text-base font-medium text-gray-900 mb-2">Sin diagnósticos / auditorías</h3>
-          <p className="text-sm text-gray-500 mb-6">Crea tu primer diagnóstico / auditoría CRESE para comenzar la evaluación.</p>
-          <button className="btn-primary" onClick={() => setShowNew(true)}>+ Nuevo diagnóstico / auditoría</button>
+          <h3 className="text-base font-medium text-gray-900 mb-2">Sin diagnósticos / auditorías internas</h3>
+          <p className="text-sm text-gray-500 mb-6">Crea tu primer diagnóstico / auditoría interna CRESE para comenzar la evaluación.</p>
+          <button className="btn-primary" onClick={() => setShowNew(true)}>+ Nuevo diagnóstico / auditoría interna</button>
         </div>
       )}
 
