@@ -2,7 +2,6 @@ import React from 'react';
 
 const navItems = [
   { id: 'home', icon: '🏠', label: 'Diagnósticos' },
-  { id: 'config', icon: '⚙️', label: 'Configuración' },
 ];
 
 export default function Sidebar({ view, navigate }) {

@@ -9,9 +9,9 @@ function uid() {
 function defaultConfig() {
   return {
     nombre_organizacion: 'CRESE',
-    correo_contacto: '',
+    correo_contacto: 'info@crese.org',
     version_norma: '2025',
-    whatsapp_numero: '',
+    whatsapp_numero: '527222412988',
     whatsapp_mensaje: 'Hola. Estoy realizando el autodiagnóstico CRESE 2025 y necesito apoyo.',
     aviso_legal: 'Esta herramienta de autodiagnóstico no sustituye la auditoría externa de certificación CRESE. Su propósito es servir como evaluación previa de preparación.',
   };
