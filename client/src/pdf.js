@@ -212,35 +212,33 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
     doc.setTextColor(31, 41, 55);
-    const text = `  ✓  Req. ${req.numero} — ${req.nombre}`;
-    const truncated = text.length > 70 ? text.substring(0, 68) + '…' : text;
-    doc.text(truncated, M, y);
+    const nombre = req.nombre.length > 60 ? req.nombre.substring(0, 58) + '...' : req.nombre;
+    doc.text(`Req. ${req.numero} - ${nombre}`, M, y);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(22, 163, 74);
     doc.text(`${e.puntuacion_total.toFixed(0)}%`, W - M, y, { align: 'right' });
     y += 14;
   });
 
-  drawAnalysisSection('Áreas prioritarias de mejora (<60%)', [234, 88, 12], oportunidades, (e) => {
+  drawAnalysisSection('Areas prioritarias de mejora (<60%)', [234, 88, 12], oportunidades, (e) => {
     const req = norma.requisitos.find(r => r.id === e.requisito_id);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
     doc.setTextColor(31, 41, 55);
-    const text = `  ⚠  Req. ${req.numero} — ${req.nombre}`;
-    const truncated = text.length > 70 ? text.substring(0, 68) + '…' : text;
-    doc.text(truncated, M, y);
+    const nombre = req.nombre.length > 60 ? req.nombre.substring(0, 58) + '...' : req.nombre;
+    doc.text(`Req. ${req.numero} - ${nombre}`, M, y);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(234, 88, 12);
     doc.text(`${e.puntuacion_total.toFixed(0)}%`, W - M, y, { align: 'right' });
     y += 14;
   });
 
-  drawAnalysisSection('Requisitos bloqueados por mínimos auditables', [220, 38, 38], bloqueadosList, (e) => {
+  drawAnalysisSection('Requisitos bloqueados por minimos auditables', [220, 38, 38], bloqueadosList, (e) => {
     const req = norma.requisitos.find(r => r.id === e.requisito_id);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
     doc.setTextColor(31, 41, 55);
-    const text = `  ✗  Req. ${req.numero} — ${req.nombre}: No cumple mínimos auditables`;
+    const text = `Req. ${req.numero} - ${req.nombre}: No cumple minimos auditables`;
     const lines = doc.splitTextToSize(text, CW);
     doc.text(lines, M, y);
     y += lines.length * 13;
