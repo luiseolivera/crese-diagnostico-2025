@@ -171,12 +171,6 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     body: tableRows,
     theme: 'plain',
     styles: { cellPadding: { top: 4, bottom: 4, left: 4, right: 4 }, lineColor: [243, 244, 246], lineWidth: 0.3 },
-    didDrawPage: (data) => {
-      // page number footer
-      doc.setFontSize(8);
-      doc.setTextColor(156, 163, 175);
-      doc.text(`Página ${doc.internal.getCurrentPageInfo().pageNumber}`, W / 2, doc.internal.pageSize.getHeight() - 20, { align: 'center' });
-    },
   });
 
   // ── Análisis page ────────────────────────────────────────────────────
