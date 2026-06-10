@@ -108,7 +108,7 @@ function MatrizParticipacion({ value, onChange }) {
 const DOC_CAMPOS = [
   { key: 'objetivo',      label: 'Objetivo centrado en la persona' },
   { key: 'alcance',       label: 'Alcance' },
-  { key: 'procedimiento', label: 'Procedimiento' },
+  { key: 'procedimiento', label: 'Procedimiento que incluya difusión, revisión y responsables' },
   { key: 'metrica',       label: 'Métrica directamente relacionada con el objetivo' },
 ];
 
