@@ -105,66 +105,79 @@ function MatrizParticipacion({ value, onChange }) {
   );
 }
 
-const EXISTENCIA_ELEMENTOS = [
-  { key: 'funcionamiento', label: 'Funcionamiento efectivo', peso: 0.50 },
-  { key: 'objetivo',       label: 'Objetivo centrado en la persona', peso: 0.125 },
-  { key: 'metrica',        label: 'Métrica con relación directa al objetivo', peso: 0.125 },
-  { key: 'alcance',        label: 'Alcance definido', peso: 0.125 },
-  { key: 'procedimiento',  label: 'Procedimiento documentado', peso: 0.125 },
+const DOC_CAMPOS = [
+  { key: 'objetivo',      label: 'Objetivo centrado en la persona' },
+  { key: 'alcance',       label: 'Alcance' },
+  { key: 'procedimiento', label: 'Procedimiento' },
+  { key: 'metrica',       label: 'Métrica' },
 ];
 
-function calcExistenciaScore(sub) {
-  if (!sub) return null;
-  const allSet = EXISTENCIA_ELEMENTOS.every(e => sub[e.key] !== null && sub[e.key] !== undefined);
-  if (!allSet) return null;
-  return EXISTENCIA_ELEMENTOS.reduce((acc, e) => acc + (sub[e.key] * e.peso), 0);
-}
+function DocumentacionReq3({ value, onChange, norma }) {
+  const requisitos5a25 = norma.requisitos.filter(r => r.numero >= 5 && r.numero <= 25);
 
-function ExistenciaSubElementos({ value, onChange, disabled }) {
-  const score = calcExistenciaScore(value);
+  const allVals = requisitos5a25.flatMap(r =>
+    DOC_CAMPOS.map(c => (value[r.id] || {})[c.key])
+  ).filter(v => v != null);
+  const score = allVals.length > 0 ? allVals.reduce((a, b) => a + b, 0) / allVals.length : null;
   const scoreColor = score === null ? 'text-gray-400' : score >= 80 ? 'text-green-600' : score >= 60 ? 'text-orange-500' : 'text-red-500';
 
   return (
-    <div className="space-y-4">
-      {EXISTENCIA_ELEMENTOS.map(elem => (
-        <div key={elem.key} className="p-4 bg-gray-50 rounded-lg border border-gray-100">
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <p className="text-sm font-medium text-gray-800">{elem.label}</p>
-              <span className="text-xs text-blue-600 font-semibold">Ponderación: {Math.round(elem.peso * 100)}%</span>
+    <div>
+      <p className="text-xs text-gray-500 mb-5 leading-relaxed">
+        Para cada requisito del 5 al 25, evalúa si su documentación incluye los cuatro elementos requeridos.
+        La puntuación del Requisito 3 es el promedio de todos los campos.
+      </p>
+      <div className="space-y-5">
+        {requisitos5a25.map(req => {
+          const rd = value[req.id] || {};
+          const setField = (campo, val) => onChange({ ...value, [req.id]: { ...rd, [campo]: val } });
+          const reqVals = DOC_CAMPOS.map(c => rd[c.key]).filter(v => v != null);
+          const reqScore = reqVals.length > 0 ? reqVals.reduce((a, b) => a + b, 0) / reqVals.length : null;
+          return (
+            <div key={req.id} className="p-4 bg-gray-50 rounded-lg border border-gray-100">
+              <div className="flex items-center justify-between mb-3">
+                <p className="text-sm font-semibold text-gray-800">
+                  Req. {req.numero} — {req.nombre}
+                </p>
+                {reqScore !== null && (
+                  <span className={`text-sm font-bold ${reqScore >= 80 ? 'text-green-600' : reqScore >= 60 ? 'text-orange-500' : 'text-red-500'}`}>
+                    {reqScore.toFixed(0)}%
+                  </span>
+                )}
+              </div>
+              <div className="space-y-3">
+                {DOC_CAMPOS.map(c => (
+                  <div key={c.key}>
+                    <p className="text-xs text-gray-500 mb-1.5">{c.label}</p>
+                    <div className="flex gap-1.5">
+                      {ESCALA.map(opt => (
+                        <button
+                          key={opt.valor}
+                          onClick={() => setField(c.key, opt.valor)}
+                          className={`flex-1 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                            rd[c.key] === opt.valor
+                              ? opt.valor >= 75 ? 'bg-green-500 text-white border-green-500'
+                              : opt.valor >= 50 ? 'bg-blue-500 text-white border-blue-500'
+                              : opt.valor >= 25 ? 'bg-orange-500 text-white border-orange-500'
+                              : 'bg-red-500 text-white border-red-500'
+                              : 'bg-white text-gray-500 border-gray-200 hover:border-gray-300'
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            {value?.[elem.key] !== null && value?.[elem.key] !== undefined && (
-              <span className={`text-sm font-bold ${value[elem.key] >= 80 ? 'text-green-600' : value[elem.key] >= 50 ? 'text-orange-500' : 'text-red-500'}`}>
-                {value[elem.key]}%
-              </span>
-            )}
-          </div>
-          <div className="flex gap-2">
-            {ESCALA.map(opt => (
-              <button
-                key={opt.valor}
-                disabled={disabled}
-                onClick={() => onChange({ ...value, [elem.key]: opt.valor })}
-                className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-all ${
-                  value?.[elem.key] === opt.valor
-                    ? opt.valor >= 75 ? 'bg-green-500 text-white border-green-500'
-                    : opt.valor >= 50 ? 'bg-blue-500 text-white border-blue-500'
-                    : opt.valor >= 25 ? 'bg-orange-500 text-white border-orange-500'
-                    : 'bg-red-500 text-white border-red-500'
-                    : 'bg-white text-gray-500 border-gray-200 hover:border-gray-300 disabled:opacity-40'
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      ))}
-
-      <div className={`p-4 rounded-lg border-2 flex items-center justify-between ${
+          );
+        })}
+      </div>
+      <div className={`mt-5 p-4 rounded-lg border-2 flex items-center justify-between ${
         score === null ? 'border-gray-100 bg-gray-50' : score >= 80 ? 'border-green-200 bg-green-50' : score >= 60 ? 'border-orange-200 bg-orange-50' : 'border-red-200 bg-red-50'
       }`}>
-        <p className="text-sm font-semibold text-gray-700">Puntuación total Existencia y Funcionamiento</p>
+        <p className="text-sm font-semibold text-gray-700">Puntuación total Requisito 3 — Documentación</p>
         <p className={`text-2xl font-bold ${scoreColor}`}>
           {score !== null ? `${score.toFixed(1)}%` : '—'}
         </p>
@@ -178,7 +191,7 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
-  const usaNuevaMetodologia = requisito.numero >= 5;
+  const esReq3 = requisito.numero === 3;
 
   const [minimosCumplidos, setMinimosCumplidos] = useState({});
   const [indicadoresCumplidos, setIndicadoresCumplidos] = useState({});
@@ -186,7 +199,7 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
   const [scores, setScores] = useState({ 1: null, 2: null, 3: null, 4: null, 5: null });
   const [notas, setNotas] = useState({ 1: '', 2: '', 3: '', 4: '', 5: '' });
   const [matriz, setMatriz] = useState({});
-  const [existenciaSub, setExistenciaSub] = useState({ objetivo: null, metrica: null, alcance: null, procedimiento: null, funcionamiento: null });
+  const [docDetalle, setDocDetalle] = useState({});
   const [activeTab, setActiveTab] = useState('minimos');
 
   useEffect(() => {
@@ -212,7 +225,7 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
           5: ev.notas_criterio_5 || '',
         });
         setMatriz(ev.matriz_participacion || {});
-        if (ev.existencia_subelementos) setExistenciaSub(ev.existencia_subelementos);
+        if (ev.documentacion_detalle) setDocDetalle(ev.documentacion_detalle);
       }
       setLoading(false);
       if (requisito.minimos_auditables?.length > 0) setActiveTab('minimos');
@@ -245,14 +258,13 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
   const save = async (completado = false) => {
     setSaving(true);
     const score3 = getScore3();
-    const score1 = usaNuevaMetodologia ? calcExistenciaScore(existenciaSub) : scores[1];
     await api.evaluaciones.save(diagId, requisito.id, {
       minimos_cumplidos: !isBlocked,
       minimos_detalle: minimosCumplidos,
       indicadores_obligatorios_detalle: indicadoresCumplidos,
       bloqueado: isBlocked,
-      existencia_subelementos: usaNuevaMetodologia ? existenciaSub : null,
-      puntuacion_criterio_1: score1,
+      documentacion_detalle: esReq3 ? docDetalle : null,
+      puntuacion_criterio_1: scores[1],
       puntuacion_criterio_2: scores[2],
       puntuacion_criterio_3: score3,
       puntuacion_criterio_4: scores[4],
@@ -281,7 +293,12 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
 
   const tabs = [
     requisito.minimos_auditables?.length > 0 && { id: 'minimos', label: 'Mínimos Auditables' },
-    ...requisito.criterios_evaluables.map(c => ({ id: `criterio_${c}`, label: c === 3 ? 'Participación' : criterioLabels[c].split(' ')[0] })),
+    ...requisito.criterios_evaluables.map(c => ({
+      id: `criterio_${c}`,
+      label: c === 3 ? 'Participación'
+           : (esReq3 && c === 1) ? 'Documentación'
+           : criterioLabels[c].split(' ')[0],
+    })),
   ].filter(Boolean);
 
   if (loading) return (
@@ -444,43 +461,43 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
           </div>
         )}
 
-        {/* Criterio 1 — Existencia y Funcionamiento */}
+        {/* Criterio 1 — Existencia y Funcionamiento (o Documentación para req 3) */}
         {activeTab === 'criterio_1' && requisito.criterios_evaluables.includes(1) && (
           <div>
-            <h3 className="text-sm font-semibold text-gray-800 mb-1">{criterioLabels[1]}</h3>
-            <p className="text-xs text-gray-500 mb-4 leading-relaxed">{norma.criterios.find(x => x.id === 1)?.descripcion}</p>
-
-            {requisito.preguntas_existencia && (
-              <div className="mb-5 p-4 bg-gray-50 rounded-lg border border-gray-100">
-                <p className="text-xs font-semibold text-gray-600 mb-2">Preguntas orientadoras:</p>
-                <ul className="space-y-2">
-                  {requisito.preguntas_existencia.map((q, i) => (
-                    <li key={i} className="text-xs text-gray-600 flex gap-2">
-                      <span className="text-gray-400 shrink-0">{i+1}.</span>
-                      <span>{q}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {isBlocked ? (
-              <p className="text-sm text-red-400 italic">No disponible — requisito bloqueado por mínimos auditables.</p>
-            ) : usaNuevaMetodologia ? (
-              <ExistenciaSubElementos
-                value={existenciaSub}
-                onChange={setExistenciaSub}
-                disabled={isBlocked}
-              />
+            {esReq3 ? (
+              <DocumentacionReq3 value={docDetalle} onChange={setDocDetalle} norma={norma} />
             ) : (
               <>
-                <ScaleSelector value={scores[1]} onChange={v => setScores(s => ({ ...s, 1: v }))} criterio={1} norma={norma} />
-                <div className="mt-4">
-                  <label className="label">Notas u observaciones (opcional)</label>
-                  <textarea className="input resize-none" rows={2}
-                    placeholder="Evidencias encontradas, áreas de mejora, comentarios..."
-                    value={notas[1]} onChange={e => setNotas(n => ({ ...n, 1: e.target.value }))} />
-                </div>
+                <h3 className="text-sm font-semibold text-gray-800 mb-1">{criterioLabels[1]}</h3>
+                <p className="text-xs text-gray-500 mb-4 leading-relaxed">{norma.criterios.find(x => x.id === 1)?.descripcion}</p>
+
+                {requisito.preguntas_existencia && (
+                  <div className="mb-5 p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <p className="text-xs font-semibold text-gray-600 mb-2">Preguntas orientadoras:</p>
+                    <ul className="space-y-2">
+                      {requisito.preguntas_existencia.map((q, i) => (
+                        <li key={i} className="text-xs text-gray-600 flex gap-2">
+                          <span className="text-gray-400 shrink-0">{i+1}.</span>
+                          <span>{q}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {isBlocked ? (
+                  <p className="text-sm text-red-400 italic">No disponible — requisito bloqueado por mínimos auditables.</p>
+                ) : (
+                  <>
+                    <ScaleSelector value={scores[1]} onChange={v => setScores(s => ({ ...s, 1: v }))} criterio={1} norma={norma} />
+                    <div className="mt-4">
+                      <label className="label">Notas u observaciones (opcional)</label>
+                      <textarea className="input resize-none" rows={2}
+                        placeholder="Evidencias encontradas, áreas de mejora, comentarios..."
+                        value={notas[1]} onChange={e => setNotas(n => ({ ...n, 1: e.target.value }))} />
+                    </div>
+                  </>
+                )}
               </>
             )}
           </div>

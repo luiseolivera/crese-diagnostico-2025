@@ -185,6 +185,15 @@ export const api = {
       const reqDef = normaData.requisitos.find(r => r.id === reqIdNum);
       const criterios = reqDef.criterios_evaluables;
 
+      // Para req 3: computar puntuacion_criterio_1 desde la matriz de documentación
+      let scoreC1 = body.puntuacion_criterio_1 ?? null;
+      if (reqDef.numero === 3 && body.documentacion_detalle) {
+        const docVals = Object.values(body.documentacion_detalle)
+          .flatMap(rd => Object.values(rd))
+          .filter(v => v != null);
+        scoreC1 = docVals.length > 0 ? docVals.reduce((a, b) => a + b, 0) / docVals.length : null;
+      }
+
       let puntuacion_total = null;
       if (body.completado) {
         if (body.bloqueado) {
@@ -195,7 +204,7 @@ export const api = {
             ? Math.round((Object.values(body.matriz_participacion || {}).filter(Boolean).length / 20) * 100)
             : null;
           const scores = {
-            1: criterios.includes(1) ? (body.puntuacion_criterio_1 ?? null) : null,
+            1: criterios.includes(1) ? scoreC1 : null,
             2: criterios.includes(2) ? (body.puntuacion_criterio_2 ?? null) : null,
             3: scoreC3,
             4: criterios.includes(4) ? (body.puntuacion_criterio_4 ?? null) : null,
@@ -222,11 +231,11 @@ export const api = {
         indicadores_obligatorios_detalle: body.indicadores_obligatorios_detalle || {},
         bloqueado: !!body.bloqueado,
         existencia_subelementos: body.existencia_subelementos || null,
-        puntuacion_criterio_1: body.puntuacion_criterio_1 ?? null,
+        documentacion_detalle: body.documentacion_detalle || null,
+        puntuacion_criterio_1: scoreC1,
         puntuacion_criterio_2: body.puntuacion_criterio_2 ?? null,
         puntuacion_criterio_3: criterios.includes(3)
-          ? Math.round((Object.values(body.matriz_participacion || {}).filter(Boolean).length / 20) * 100)
-          : null,
+          ? Math.round((Object.values(body.matriz_participacion || {}).filter(Boolean).length / 20) * 100) : null,
         puntuacion_criterio_4: body.puntuacion_criterio_4 ?? null,
         puntuacion_criterio_5: body.puntuacion_criterio_5 ?? null,
         notas_criterio_1: body.notas_criterio_1 || '',
