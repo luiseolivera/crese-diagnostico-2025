@@ -74,13 +74,7 @@ export default function Home({ norma, navigate }) {
         </div>
         <div className="flex gap-2">
           <input ref={importRef} type="file" accept=".json" className="hidden" onChange={handleImport} />
-          <div className="flex flex-col items-end gap-0.5">
-            <button className="btn-secondary" onClick={() => importRef.current.click()}>
-              <span>↑</span> Importar
-            </button>
-            <p className="text-xs text-gray-400">Cargar un diagnóstico como archivo .json</p>
-          </div>
-          <button className="btn-primary" onClick={() => setShowNew(true)}>
+          <button className="btn-primary px-6 whitespace-nowrap" onClick={() => setShowNew(true)}>
             <span>+</span> Nuevo diagnóstico / auditoría interna
           </button>
         </div>
@@ -186,7 +180,7 @@ export default function Home({ norma, navigate }) {
       {diagnosticos.length > 0 && (
         <div className="mt-8 p-4 bg-amber-50 border border-amber-100 rounded-lg">
           <p className="text-xs text-amber-700">
-            <strong>Aviso:</strong> Esta herramienta de autodiagnóstico no sustituye la auditoría externa de certificación CRESE.
+            <strong>Aviso:</strong> Esta herramienta no sustituye la auditoría externa de certificación CRESE.
             Su propósito es servir como una evaluación previa de preparación.
           </p>
         </div>

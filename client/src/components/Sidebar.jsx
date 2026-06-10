@@ -1,4 +1,5 @@
 import React from 'react';
+import logoCrese from '../assets/logo-crese.png';
 
 const navItems = [
   { id: 'home', icon: '🏠', label: 'Diagnósticos / Auditorías Internas' },
@@ -7,14 +8,9 @@ const navItems = [
 export default function Sidebar({ view, navigate }) {
   return (
     <aside className="w-52 min-h-screen bg-white border-r border-gray-100 flex flex-col shrink-0">
-      <div className="px-4 py-5 border-b border-gray-100">
-        <div className="flex items-center gap-2">
-          <span className="text-xl">⭐</span>
-          <div>
-            <p className="text-xs font-bold text-blue-700 leading-tight">CRESE</p>
-            <p className="text-xs text-gray-400 leading-tight">Diagnóstico / Auditoría Interna</p>
-          </div>
-        </div>
+      <div className="px-4 py-4 border-b border-gray-100">
+        <img src={logoCrese} alt="Logo CRESE" className="w-full max-h-16 object-contain" />
+        <p className="text-xs text-gray-400 leading-tight mt-2 text-center">Diagnóstico / Auditoría Interna</p>
       </div>
 
       <nav className="flex-1 px-2 py-4 space-y-1">
