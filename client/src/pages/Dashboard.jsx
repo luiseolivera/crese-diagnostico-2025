@@ -47,7 +47,7 @@ function BarChart({ data }) {
     <div className="space-y-2">
       {data.map(item => (
         <div key={item.label} className="flex items-center gap-3">
-          <p className="text-xs text-gray-500 w-40 shrink-0 truncate" title={item.label}>{item.label}</p>
+          <p className="text-xs text-gray-500 w-56 shrink-0">{item.label}</p>
           <div className="flex-1 h-5 bg-gray-50 rounded-full overflow-hidden border border-gray-100">
             {item.score !== null && item.score !== undefined ? (
               <div
