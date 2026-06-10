@@ -179,15 +179,15 @@ export function generarPDF(diag, evaluaciones, norma, config) {
 
   // Header row
   const headerRow = [
-    { content: '#', styles: { halign: 'center', fontStyle: 'bold', fontSize: 7, textColor: [107,114,128] } },
-    { content: 'Requisito', styles: { fontStyle: 'bold', fontSize: 7, textColor: [107,114,128] } },
-    ...crHeaders.map(h => ({ content: h, styles: { halign: 'center', fontStyle: 'bold', fontSize: 7, textColor: [107,114,128] } })),
-    { content: 'Total', styles: { halign: 'center', fontStyle: 'bold', fontSize: 7, textColor: [107,114,128] } },
+    { content: '#', styles: { halign: 'center', fontStyle: 'bold', fontSize: 8, textColor: [107,114,128] } },
+    { content: 'Requisito', styles: { fontStyle: 'bold', fontSize: 8, textColor: [107,114,128] } },
+    ...crHeaders.map(h => ({ content: h, styles: { halign: 'center', fontStyle: 'bold', fontSize: 8, textColor: [107,114,128] } })),
+    { content: 'Total', styles: { halign: 'center', fontStyle: 'bold', fontSize: 8, textColor: [107,114,128] } },
   ];
 
   const tableRows = [headerRow];
   for (const tema of norma.temas) {
-    tableRows.push([{ content: `Tema ${tema.id}: ${tema.nombre}`, colSpan: 8, styles: { fillColor: [239, 246, 255], textColor: [30, 64, 175], fontStyle: 'bold', fontSize: 8 } }]);
+    tableRows.push([{ content: `Tema ${tema.id}: ${tema.nombre}`, colSpan: 8, styles: { fillColor: [239, 246, 255], textColor: [30, 64, 175], fontStyle: 'bold', fontSize: 9 } }]);
     for (const rId of tema.requisitos) {
       const req = norma.requisitos.find(r => r.id === rId);
       const ev = evalMap[rId];
@@ -200,21 +200,21 @@ export function generarPDF(diag, evaluaciones, norma, config) {
       const crCells = crKeys.map((key, i) => {
         const crNum = i + 1;
         if (!req.criterios_evaluables.includes(crNum)) {
-          return { content: '-', styles: { halign: 'center', fontSize: 7, textColor: [209, 213, 219] } };
+          return { content: '-', styles: { halign: 'center', fontSize: 8, textColor: [209, 213, 219] } };
         }
         if (!ev || !ev.completado || ev.bloqueado) {
-          return { content: '-', styles: { halign: 'center', fontSize: 7, textColor: [209, 213, 219] } };
+          return { content: '-', styles: { halign: 'center', fontSize: 8, textColor: [209, 213, 219] } };
         }
         const val = ev[key];
-        if (val == null) return { content: '-', styles: { halign: 'center', fontSize: 7, textColor: [209, 213, 219] } };
-        return { content: `${Math.round(val)}%`, styles: { halign: 'center', fontSize: 7, fontStyle: 'bold', textColor: sc(val) } };
+        if (val == null) return { content: '-', styles: { halign: 'center', fontSize: 8, textColor: [209, 213, 219] } };
+        return { content: `${Math.round(val)}%`, styles: { halign: 'center', fontSize: 8, fontStyle: 'bold', textColor: sc(val) } };
       });
 
       tableRows.push([
-        { content: req.numero, styles: { halign: 'center', textColor: [107, 114, 128], fontSize: 7 } },
-        { content: req.nombre, styles: { fontSize: 8 } },
+        { content: req.numero, styles: { halign: 'center', textColor: [107, 114, 128], fontSize: 8 } },
+        { content: req.nombre, styles: { fontSize: 9 } },
         ...crCells,
-        { content: statusText, styles: { halign: 'center', fontStyle: 'bold', textColor: statusColor, fontSize: 8 } },
+        { content: statusText, styles: { halign: 'center', fontStyle: 'bold', textColor: statusColor, fontSize: 9 } },
       ]);
     }
   }
