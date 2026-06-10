@@ -256,6 +256,20 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   const oportunidades = [...conPuntuacion].filter(e => e.puntuacion_total < 60)
     .sort((a, b) => a.puntuacion_total - b.puntuacion_total).slice(0, 5);
 
+  const getTema = (reqId) => norma.temas.find(t => t.requisitos.includes(reqId));
+
+  const drawThemeDivider = (temaId) => {
+    const tema = norma.temas.find(t => t.id === temaId);
+    if (!tema) return;
+    doc.setFillColor(239, 246, 255);
+    doc.rect(M, y - 2, CW, 13, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7.5);
+    doc.setTextColor(30, 64, 175);
+    doc.text(`Tema ${tema.id}: ${tema.nombre}`, M + 4, y + 7);
+    y += 17;
+  };
+
   const drawAnalysisSection = (title, color, items, renderRow) => {
     if (!items.length) return;
     doc.setFont('helvetica', 'bold');
@@ -263,12 +277,18 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     doc.setTextColor(...color);
     doc.text(title, M, y);
     y += 14;
+    let lastTemaId = null;
     for (const item of items) {
       if (y > 700) { doc.addPage(); y = 60; }
+      const temaId = getTema(item.requisito_id)?.id;
+      if (temaId !== lastTemaId) {
+        drawThemeDivider(temaId);
+        lastTemaId = temaId;
+      }
       renderRow(item);
       y += 4;
     }
-    y += 10;
+    y += 12;
   };
 
   drawAnalysisSection('Fortalezas principales', [22, 163, 74], fortalezas, (e) => {
@@ -277,7 +297,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     doc.setFontSize(9);
     doc.setTextColor(31, 41, 55);
     const nombre = req.nombre.length > 60 ? req.nombre.substring(0, 58) + '...' : req.nombre;
-    doc.text(`Req. ${req.numero} - ${nombre}`, M, y);
+    doc.text(`Req. ${req.numero} - ${nombre}`, M + 8, y);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(22, 163, 74);
     doc.text(`${e.puntuacion_total.toFixed(0)}%`, W - M, y, { align: 'right' });
@@ -290,7 +310,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     doc.setFontSize(9);
     doc.setTextColor(31, 41, 55);
     const nombre = req.nombre.length > 60 ? req.nombre.substring(0, 58) + '...' : req.nombre;
-    doc.text(`Req. ${req.numero} - ${nombre}`, M, y);
+    doc.text(`Req. ${req.numero} - ${nombre}`, M + 8, y);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(234, 88, 12);
     doc.text(`${e.puntuacion_total.toFixed(0)}%`, W - M, y, { align: 'right' });
@@ -303,8 +323,8 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     doc.setFontSize(9);
     doc.setTextColor(31, 41, 55);
     const text = `Req. ${req.numero} - ${req.nombre}: No cumple minimos auditables`;
-    const lines = doc.splitTextToSize(text, CW);
-    doc.text(lines, M, y);
+    const lines = doc.splitTextToSize(text, CW - 8);
+    doc.text(lines, M + 8, y);
     y += lines.length * 13;
   });
 
