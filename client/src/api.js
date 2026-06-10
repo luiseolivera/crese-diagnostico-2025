@@ -2,6 +2,23 @@ import normaData from './data/norma-crese.json';
 
 const STORAGE_KEY = 'crese-diagnostico-v1';
 
+// Ponderaciones por requisito (Norma CRESE 2025, pág. 45)
+const PONDERACION_REQ = {
+  1: 6.23, 2: 2.08, 3: 19.00, 4: 2.08, 5: 6.23,
+  6: 6.23, 7: 4.15, 8: 4.15,  9: 4.15, 10: 4.15,
+  11: 4.15, 12: 2.08, 13: 4.15, 14: 2.08, 15: 2.08,
+  16: 2.08, 17: 2.08, 18: 2.08, 19: 2.08, 20: 2.08,
+  21: 2.08, 22: 2.08, 23: 2.08, 24: 4.15, 25: 6.23,
+};
+
+// Pesos por criterio según requisito (Norma CRESE 2025, pág. 46)
+// Criterios: 1=EX, 2=DC, 3=PD, 4=IM, 5=VD
+function getPesosCriterios(reqNumero) {
+  if (reqNumero === 3) return { 1: 1.00, 2: 0, 3: 0, 4: 0, 5: 0 };
+  if (reqNumero <= 5)  return { 1: 0.45, 2: 0.10, 3: 0.15, 4: 0.15, 5: 0.15 };
+  return                      { 1: 0.50, 2: 0.10, 3: 0.15, 4: 0.15, 5: 0.10 };
+}
+
 function uid() {
   return crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36);
 }
@@ -35,11 +52,25 @@ function saveDB(db) {
 
 function recalcScores(db, diagId) {
   const diagEvs = db.evaluaciones.filter(e => e.diagnostico_id === diagId && e.completado);
-  const parcial = diagEvs.length
-    ? diagEvs.reduce((s, e) => s + (e.puntuacion_total || 0), 0) / diagEvs.length
+
+  // Puntaje parcial: promedio ponderado solo sobre los requisitos ya evaluados
+  const sumPond = diagEvs.reduce((s, e) => {
+    const req = normaData.requisitos.find(r => r.id === e.requisito_id);
+    return s + (PONDERACION_REQ[req?.numero] || 0);
+  }, 0);
+  const parcial = diagEvs.length && sumPond > 0
+    ? diagEvs.reduce((s, e) => {
+        const req = normaData.requisitos.find(r => r.id === e.requisito_id);
+        return s + (e.puntuacion_total || 0) * (PONDERACION_REQ[req?.numero] || 0);
+      }, 0) / sumPond
     : null;
+
+  // Puntaje proyectado: suma ponderada sobre los 100 pts totales (no evaluados = 0)
   const proyectado = diagEvs.length
-    ? diagEvs.reduce((s, e) => s + (e.puntuacion_total || 0), 0) / 25
+    ? diagEvs.reduce((s, e) => {
+        const req = normaData.requisitos.find(r => r.id === e.requisito_id);
+        return s + (e.puntuacion_total || 0) * (PONDERACION_REQ[req?.numero] || 0) / 100;
+      }, 0)
     : null;
   const diag = db.diagnosticos.find(d => d.id === diagId);
   if (diag) {
@@ -159,16 +190,25 @@ export const api = {
         if (body.bloqueado) {
           puntuacion_total = 0;
         } else {
-          const vals = [];
-          if (criterios.includes(1) && body.puntuacion_criterio_1 != null) vals.push(body.puntuacion_criterio_1);
-          if (criterios.includes(2) && body.puntuacion_criterio_2 != null) vals.push(body.puntuacion_criterio_2);
-          if (criterios.includes(3)) {
-            const cumple = Object.values(body.matriz_participacion || {}).filter(Boolean).length;
-            vals.push(Math.round((cumple / 20) * 100));
+          const pesos = getPesosCriterios(reqDef.numero);
+          const scoreC3 = criterios.includes(3)
+            ? Math.round((Object.values(body.matriz_participacion || {}).filter(Boolean).length / 20) * 100)
+            : null;
+          const scores = {
+            1: criterios.includes(1) ? (body.puntuacion_criterio_1 ?? null) : null,
+            2: criterios.includes(2) ? (body.puntuacion_criterio_2 ?? null) : null,
+            3: scoreC3,
+            4: criterios.includes(4) ? (body.puntuacion_criterio_4 ?? null) : null,
+            5: criterios.includes(5) ? (body.puntuacion_criterio_5 ?? null) : null,
+          };
+          let weightedSum = 0, totalWeight = 0;
+          for (const c of [1, 2, 3, 4, 5]) {
+            if (scores[c] != null && pesos[c] > 0) {
+              weightedSum += scores[c] * pesos[c];
+              totalWeight += pesos[c];
+            }
           }
-          if (criterios.includes(4) && body.puntuacion_criterio_4 != null) vals.push(body.puntuacion_criterio_4);
-          if (criterios.includes(5) && body.puntuacion_criterio_5 != null) vals.push(body.puntuacion_criterio_5);
-          if (vals.length > 0) puntuacion_total = vals.reduce((a, b) => a + b, 0) / vals.length;
+          if (totalWeight > 0) puntuacion_total = weightedSum / totalWeight;
         }
       }
 
@@ -184,7 +224,9 @@ export const api = {
         existencia_subelementos: body.existencia_subelementos || null,
         puntuacion_criterio_1: body.puntuacion_criterio_1 ?? null,
         puntuacion_criterio_2: body.puntuacion_criterio_2 ?? null,
-        puntuacion_criterio_3: body.puntuacion_criterio_3 ?? null,
+        puntuacion_criterio_3: criterios.includes(3)
+          ? Math.round((Object.values(body.matriz_participacion || {}).filter(Boolean).length / 20) * 100)
+          : null,
         puntuacion_criterio_4: body.puntuacion_criterio_4 ?? null,
         puntuacion_criterio_5: body.puntuacion_criterio_5 ?? null,
         notas_criterio_1: body.notas_criterio_1 || '',
