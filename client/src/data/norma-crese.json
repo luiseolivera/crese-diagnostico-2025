@@ -163,7 +163,7 @@
 
                                                   ],
                            "indicadores_obligatorios":  false,
-                           "ayuda_contextual":  "Este requisito evalúa únicamente Existencia y Funcionamiento, ya que es el sistema de gestión documental de la empresa. No requiere evaluación de Difusión, Participación, Innovación ni Vinculación estratégica.",
+                           "ayuda_contextual":  "La documentación de todos los requisitos de la Norma CRESE 2025, solamente se revisa en el requisito 3.",
                            "preguntas_existencia":  [
                                                         "¿La información documentada de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad está ordenada y agrupada?",
                                                         "¿La documentación está actualizada y cuenta con las evidencias necesarias que revelen la realidad de lo que se ha hecho?",
