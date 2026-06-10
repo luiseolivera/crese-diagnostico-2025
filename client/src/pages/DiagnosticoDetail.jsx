@@ -42,12 +42,12 @@ export default function DiagnosticoDetail({ id, norma, navigate }) {
   );
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-8">
+    <div className="max-w-5xl mx-auto px-4 md:px-6 py-6 md:py-8 mt-14 md:mt-0">
       <button className="text-sm text-gray-400 hover:text-gray-600 mb-4 flex items-center gap-1" onClick={() => navigate('home')}>
         ← Volver
       </button>
 
-      <div className="flex items-start justify-between mb-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-6">
         <div>
           <h1 className="text-xl font-semibold text-gray-900">{diag.nombre_empresa}</h1>
           <p className="text-sm text-gray-400 mt-0.5">
@@ -56,15 +56,15 @@ export default function DiagnosticoDetail({ id, norma, navigate }) {
           </p>
         </div>
         <div className="flex gap-2">
-          <button className="btn-secondary" onClick={() => navigate('dashboard', { id })}>
+          <button className="btn-secondary text-sm" onClick={() => navigate('dashboard', { id })}>
             📊 Dashboard
           </button>
-          <button className="btn-secondary" onClick={() => {
+          <button className="btn-secondary text-sm" onClick={() => {
             api.diagnosticos.get(id).then(d => {
               generarPDF(d, d.evaluaciones || [], norma, null);
             });
           }}>
-            📄 Reporte PDF
+            📄 PDF
           </button>
         </div>
       </div>

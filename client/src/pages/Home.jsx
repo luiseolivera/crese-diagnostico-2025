@@ -138,22 +138,22 @@ export default function Home({ norma, navigate }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
+    <div className="max-w-4xl mx-auto px-4 md:px-6 py-6 md:py-10 mt-14 md:mt-0">
       {showInstructivo && <Instructivo onClose={() => setShowInstructivo(false)} />}
-      <div className="flex items-start justify-between mb-8">
+      <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Diagnósticos / Auditorías Internas CRESE</h1>
+          <h1 className="text-xl md:text-2xl font-semibold text-gray-900">Diagnósticos / Auditorías Internas CRESE</h1>
           <p className="text-sm text-gray-500 mt-1">Diagnóstico / Auditoría Interna — Norma CRESE 2025</p>
           <button onClick={() => setShowInstructivo(true)} className="mt-2 text-xs text-blue-600 hover:text-blue-800 hover:underline">
             ℹ Ver instructivo de uso
           </button>
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex flex-col sm:flex-row gap-2">
           <input ref={importRef} type="file" accept=".json" className="hidden" onChange={handleImport} />
           <button className="btn-secondary whitespace-nowrap" onClick={() => importRef.current.click()}>
             ↑ Importar diagnóstico
           </button>
-          <button className="btn-primary px-6 whitespace-nowrap" onClick={() => setShowNew(true)}>
+          <button className="btn-primary whitespace-nowrap" onClick={() => setShowNew(true)}>
             <span>+</span> Nuevo diagnóstico / auditoría interna
           </button>
         </div>
@@ -162,7 +162,7 @@ export default function Home({ norma, navigate }) {
       {showNew && (
         <div className="card p-6 mb-6 border-blue-100">
           <h2 className="text-sm font-semibold text-gray-900 mb-4">Nuevo Diagnóstico / Auditoría Interna</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="label">Nombre de la empresa *</label>
               <input className="input" placeholder="Empresa S.A. de C.V." value={form.nombre_empresa}

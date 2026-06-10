@@ -209,7 +209,7 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
   );
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-8">
+    <div className="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-8 mt-14 md:mt-0">
       <button className="text-sm text-gray-400 hover:text-gray-600 mb-4 flex items-center gap-1"
         onClick={() => navigate('diagnostico', { id: diagId })}>
         ← Volver al diagnóstico

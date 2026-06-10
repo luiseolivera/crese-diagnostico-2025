@@ -122,7 +122,7 @@ export default function Dashboard({ id, norma, navigate, config }) {
   });
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-8">
+    <div className="max-w-5xl mx-auto px-4 md:px-6 py-6 md:py-8 mt-14 md:mt-0">
       <button className="text-sm text-gray-400 hover:text-gray-600 mb-4 flex items-center gap-1"
         onClick={() => navigate('diagnostico', { id })}>
         ← Volver
@@ -133,33 +133,33 @@ export default function Dashboard({ id, norma, navigate, config }) {
           <h1 className="text-xl font-semibold text-gray-900">Dashboard</h1>
           <p className="text-sm text-gray-400">{diag.nombre_empresa}</p>
         </div>
-        <button className="btn-secondary" onClick={() => generarPDF(diag, Object.values(evalMap), norma, config)}>
+        <button className="btn-secondary text-sm" onClick={() => generarPDF(diag, Object.values(evalMap), norma, config)}>
           📄 Descargar PDF
         </button>
       </div>
 
-      <div className="grid grid-cols-4 gap-4 mb-6">
-        <div className="card p-5 col-span-1 flex flex-col items-center justify-center">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
+        <div className="card p-4 col-span-2 md:col-span-1 flex flex-col items-center justify-center">
           <ScoreGauge score={diag.puntuacion_global || 0} />
         </div>
-        <div className="card p-5 flex flex-col items-center justify-center">
+        <div className="card p-4 flex flex-col items-center justify-center">
           <p className={`text-3xl font-bold mb-1 ${scoreTextColor(diag.puntuacion_proyectada)}`}>
             {diag.puntuacion_proyectada != null ? `${diag.puntuacion_proyectada.toFixed(1)}%` : '—'}
           </p>
           <p className="text-xs text-gray-500 text-center">Puntaje proyectado</p>
           <p className="text-xs text-gray-400 text-center">(sobre 25 requisitos)</p>
         </div>
-        <div className="card p-5 text-center">
+        <div className="card p-4 text-center">
           <p className="text-3xl font-bold text-blue-600 mb-1">{completadas.length}<span className="text-base text-gray-400 font-normal">/25</span></p>
           <p className="text-xs text-gray-500">Requisitos evaluados</p>
         </div>
-        <div className="card p-5 text-center">
+        <div className="card p-4 text-center">
           <p className="text-3xl font-bold text-red-500 mb-1">{bloqueados.length}</p>
           <p className="text-xs text-gray-500">Requisitos bloqueados</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6">
         <div className="card p-5">
           <h3 className="text-sm font-semibold text-gray-800 mb-4">Resultados por Tema</h3>
           <BarChart data={byTheme} />
@@ -170,7 +170,7 @@ export default function Dashboard({ id, norma, navigate, config }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6">
         <div className="card p-5">
           <h3 className="text-sm font-semibold text-green-700 mb-3">✓ Fortalezas (top 5)</h3>
           {fortalezas.length === 0 ? (

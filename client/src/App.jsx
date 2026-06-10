@@ -31,7 +31,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-50 flex">
       <Sidebar view={view} navigate={navigate} />
-      <main className="flex-1 min-w-0 overflow-auto">
+      <main className="flex-1 min-w-0 overflow-auto pb-16 md:pb-0">
         {view.page === 'home' && (
           <Home norma={norma} navigate={navigate} />
         )}
