@@ -816,7 +816,7 @@
                           "id":  1,
                           "clave":  "existencia",
                           "nombre":  "Existencia y Funcionamiento",
-                          "descripcion":  "Evalúa si existe y opera adecuadamente el elemento solicitado por el requisito. La mejor evidencia es la documentación formal y escrita. El funcionamiento se refiere a que la práctica se lleva a cabo, cumple con su objetivo y tiene un impacto real.",
+                          "descripcion":  "Evalúa si existe y opera adecuadamente el elemento solicitado por el requisito. El funcionamiento se refiere a que la práctica se lleva a cabo, cumple con su objetivo y tiene un impacto real.",
                           "escala":  [
                                          {
                                              "valor":  100,
