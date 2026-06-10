@@ -180,6 +180,7 @@ export const api = {
         minimos_cumplidos: body.minimos_cumplidos,
         minimos_detalle: body.minimos_detalle || {},
         bloqueado: !!body.bloqueado,
+        existencia_subelementos: body.existencia_subelementos || null,
         puntuacion_criterio_1: body.puntuacion_criterio_1 ?? null,
         puntuacion_criterio_2: body.puntuacion_criterio_2 ?? null,
         puntuacion_criterio_3: body.puntuacion_criterio_3 ?? null,
