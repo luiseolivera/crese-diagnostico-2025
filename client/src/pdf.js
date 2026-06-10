@@ -27,25 +27,25 @@ export function generarPDF(diag, evaluaciones, norma, config) {
 
   // ── Header band ─────────────────────────────────────────────────────
   doc.setFillColor(30, 64, 175);
-  doc.rect(0, 0, W, 160, 'F');
+  doc.rect(0, 0, W, 100, 'F');
 
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(22);
+  doc.setFontSize(20);
   doc.setTextColor(255, 255, 255);
-  doc.text('Reporte de Diagnóstico / Auditoría Interna CRESE', W / 2, 60, { align: 'center' });
+  doc.text('Reporte de Diagnóstico / Auditoría Interna CRESE', W / 2, 38, { align: 'center' });
 
-  doc.setFontSize(13);
+  doc.setFontSize(12);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(191, 219, 254);
-  doc.text('Norma CRESE 2025', W / 2, 85, { align: 'center' });
+  doc.text('Norma CRESE 2025', W / 2, 58, { align: 'center' });
 
   const fechaGen = new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
   doc.setFontSize(9);
   doc.setTextColor(147, 197, 253);
-  doc.text(`Generado el ${fechaGen}`, W / 2, 105, { align: 'center' });
+  doc.text(`Generado el ${fechaGen}`, W / 2, 76, { align: 'center' });
 
   // ── Empresa info ─────────────────────────────────────────────────────
-  let y = 185;
+  let y = 125;
 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
@@ -127,12 +127,12 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.setFontSize(10);
   doc.setTextColor(...sc(proyectado));
   doc.text(`Categoría estimada: ${categoria(proyectado)}`, W / 2, y, { align: 'center' });
-  y += 12;
+  y += 22;
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(156, 163, 175);
   doc.text('El puntaje proyectado considera los 25 requisitos; los no evaluados se computan como 0.', W / 2, y, { align: 'center' });
-  y += 20;
+  y += 24;
 
   // ── Requisitos table ─────────────────────────────────────────────────
   doc.setFont('helvetica', 'bold');
