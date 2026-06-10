@@ -1,703 +1,941 @@
-{
-  "version": "2025",
-  "nombre": "Norma CRESE 2025 - Sistema de Gestión de Calidad Humana, Responsabilidad Social y Sostenibilidad",
-  "temas": [
-    {
-      "id": 1,
-      "nombre": "Dirección y Comunicación",
-      "descripcion": "Implanta un Sistema de Gestión de Calidad Humana, Responsabilidad Social y Sostenibilidad con el trabajo en equipo de un Comité Interno.",
-      "requisitos": [1, 2, 3, 4, 5]
-    },
-    {
-      "id": 2,
-      "nombre": "Justicia Salarial y Cultura de la Legalidad",
-      "descripcion": "Promueve la justicia salarial y el cumplimiento de la legalidad como bases del bien común.",
-      "requisitos": [6, 7]
-    },
-    {
-      "id": 3,
-      "nombre": "Calidad de Vida y Desarrollo del Personal",
-      "descripcion": "Atiende aspectos que promueven el respeto a la dignidad humana y su desarrollo integral sostenible.",
-      "requisitos": [8, 9, 10, 11, 12, 13]
-    },
-    {
-      "id": 4,
-      "nombre": "Protección y Desarrollo de las Familias",
-      "descripcion": "Las familias del personal son un grupo de influencia que merece una categoría especial.",
-      "requisitos": [14, 15, 16]
-    },
-    {
-      "id": 5,
-      "nombre": "Solidaridad y Ayuda a la Comunidad",
-      "descripcion": "Promueve la solidaridad como beneficio para todas las personas y como un deber.",
-      "requisitos": [17, 18, 19, 20]
-    },
-    {
-      "id": 6,
-      "nombre": "Protección del Medio Ambiente",
-      "descripcion": "Aumenta la consideración por el cuidado del medio ambiente desde un enfoque humano integral.",
-      "requisitos": [21, 22, 23]
-    },
-    {
-      "id": 7,
-      "nombre": "Humanización y Trascendencia del Trabajo",
-      "descripcion": "Fortalece la dimensión subjetiva del trabajo promoviendo principios y valores éticos.",
-      "requisitos": [24, 25]
-    }
-  ],
-  "requisitos": [
-    {
-      "id": 1,
-      "numero": 1,
-      "tema_id": 1,
-      "nombre": "Comité Interno",
-      "titulo": "Que exista un Comité Interno para implantar la Norma y proponer mejoras en la Calidad Humana, Responsabilidad Social y Sostenibilidad.",
-      "descripcion": "El Comité Interno, además de implantar la Norma y conseguir el Certificado CRESE, debe ser una ayuda eficaz para que las prácticas requeridas en esta norma promuevan el respeto a la dignidad de la persona y su desarrollo integral, sostenible y solidario.",
-      "es_programa": false,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que los miembros del Comité Interno conozcan la Norma CRESE vigente.",
-        "Que los miembros del Comité Interno reciban capacitación en ecología integral.",
-        "Que el Comité Interno esté formado por al menos tres personas.",
-        "Que el Comité Interno sea multidisciplinario y representativo del personal de la empresa u organización.",
-        "Que el Comité Interno se haga responsable de atender, programar, implementar y dar seguimiento a las recomendaciones de las auditorías internas y externas de esta norma.",
-        "Que la dirección general (o equivalente) de la empresa u organización participe al menos dos veces por año en las reuniones del Comité Interno y/o que se integre al comité una persona de nivel directivo, responsable de la calidad humana, responsabilidad social y sostenibilidad de la empresa.",
-        "Que el Comité Interno elabore un plan anual con reuniones periódicas, que tenga como base un análisis de los temas relevantes para la empresa y sus grupos de influencia (Análisis de materialidad).",
-        "Que el Comité Interno se reúna al menos una vez cada dos años, para analizar en equipo la documentación y el funcionamiento de cada uno de los requisitos de esta Norma, principalmente para proponer mejoras."
-      ],
-      "indicadores_obligatorios": true,
-      "ayuda_contextual": "El Comité Interno es el motor del sistema CRESE en la empresa. Sus principales objetivos son: implantar el sistema, conseguir y renovar el Certificado CRESE, promover la difusión, la participación directa y la innovación o mejora de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
-      "preguntas_existencia": [
-        "¿El Comité Interno está formalmente constituido, con nombre de integrantes y roles definidos documentados?",
-        "¿El Comité Interno tiene un plan anual de reuniones basado en un análisis de materialidad documentado?",
-        "¿Existen actas o registros de las reuniones del Comité Interno durante los últimos dos años?",
-        "¿La dirección general participa en las reuniones del Comité al menos dos veces por año, con evidencia documental?",
-        "¿El Comité Interno da seguimiento formal y documentado a las recomendaciones de auditorías internas y externas?",
-        "¿Los integrantes del Comité han recibido capacitación documentada en la Norma CRESE y en ecología integral durante los últimos dos años?"
-      ]
-    },
-    {
-      "id": 2,
-      "numero": 2,
-      "tema_id": 1,
-      "nombre": "Política de Calidad Humana",
-      "titulo": "Que se cuente con una Política de Calidad Humana, Responsabilidad Social y Sostenibilidad y que se dé a conocer al personal de la empresa.",
-      "descripcion": "Esta Política es un documento donde queda plasmada la filosofía de la empresa u organización en lo referente a la Calidad Humana, Responsabilidad Social y Sostenibilidad. Es una especie de carta de presentación donde se exponen los puntos que se desean dar a conocer y cumplir en toda la cadena de valor.",
-      "es_programa": false,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que la Política incluya el respeto a la dignidad de la persona como un elemento principal.",
-        "Que exista algún mecanismo para denunciar y dar seguimiento a conflictos de trabajo, actos de violencia laboral, corrupción, extorsión, robo o abuso de confianza y todo lo que atente contra la dignidad de la persona dentro de la empresa u organización, por parte del personal u otros grupos de influencia."
-      ],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "La Política de Calidad Humana es el documento fundacional que expresa el compromiso de la empresa con la dignidad de las personas. Puede incorporar un código de ética o de conducta. La Norma ISO 9001:2015 numeral 5.2 puede servir de referencia.",
-      "preguntas_existencia": [
-        "¿Existe una Política de Calidad Humana, Responsabilidad Social y Sostenibilidad documentada y firmada por la dirección?",
-        "¿La Política menciona explícitamente el respeto a la dignidad de la persona como elemento principal?",
-        "¿Existe un mecanismo formal (canal de denuncia, buzon, linea etica, etc.) para reportar conflictos de trabajo, violencia laboral, corrupcion o actos que atenten contra la dignidad?",
-        "¿Está documentado el proceso de seguimiento a las denuncias recibidas por el mecanismo de denuncia?",
-        "¿La información documentada de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad está ordenada, agrupada y actualizada con sus evidencias?"
-      ]
-    },
-    {
-      "id": 3,
-      "numero": 3,
-      "tema_id": 1,
-      "nombre": "Manual o Carpeta de Documentación",
-      "titulo": "Que se cuente con la información documentada, ordenada y agrupada de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
-      "descripcion": "La empresa u organización debe mantener su información documentada, ordenada y agrupada para apoyar la continuidad y el buen funcionamiento de sus prácticas, verificar que se realizan según lo planeado y preservar el conocimiento y la historia con algún registro. Esta información debe estar actualizada y con las evidencias necesarias.",
-      "es_programa": false,
-      "solo_existencia": true,
-      "criterios_evaluables": [1],
-      "minimos_auditables": [],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "Este requisito evalúa únicamente Existencia y Funcionamiento, ya que es el sistema de gestión documental de la empresa. No requiere evaluación de Difusión, Participación, Innovación ni Vinculación estratégica.",
-      "preguntas_existencia": [
-        "¿Existe un manual, carpeta, sistema digital o repositorio centralizado donde se encuentran organizadas las evidencias de los 25 requisitos de la Norma CRESE?",
-        "¿La documentación está actualizada (con registros de los últimos dos años) y accesible para el Comité Interno y los auditores?",
-        "¿Los documentos incluyen registros históricos que permiten demostrar continuidad y evolución de las prácticas?",
-        "¿Existe un responsable asignado para mantener actualizada esta documentación?"
-      ]
-    },
-    {
-      "id": 4,
-      "numero": 4,
-      "tema_id": 1,
-      "nombre": "Informe Anual",
-      "titulo": "Que se elabore un Informe Anual de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
-      "descripcion": "Las empresas u organizaciones deben elaborar un Informe Anual de Calidad Humana, Responsabilidad Social y Sostenibilidad, el cual debe ser entregado a su personal y demás grupos de influencia. Este informe permite llevar un registro estructurado de las actividades realizadas y sirve como base para la mejora continua e innovación.",
-      "es_programa": false,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "El Informe Anual debe presentar las prácticas más relevantes del último año, incluir indicadores de desempeño de los dos años anteriores para mostrar evolución, y usar lenguaje claro. Su objetivo es inspirar, crear diálogo y solicitar retroalimentación.",
-      "preguntas_existencia": [
-        "¿Se ha elaborado al menos un Informe Anual de Calidad Humana, Responsabilidad Social y Sostenibilidad durante los últimos dos años?",
-        "¿El Informe presenta de manera realista las prácticas más relevantes, sin exagerar logros, e incluye áreas de oportunidad?",
-        "¿El Informe incluye indicadores de desempeño del año en curso y de los dos años anteriores para mostrar evolución?",
-        "¿El Informe fue entregado o puesto a disposición del personal y otros grupos de influencia?"
-      ]
-    },
-    {
-      "id": 5,
-      "numero": 5,
-      "tema_id": 1,
-      "nombre": "Auditorías Internas",
-      "titulo": "Que se cuente con un Programa anual de auditorías internas con el fin de garantizar el cumplimiento de la Norma y el impacto de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
-      "descripcion": "El resultado de las auditorías internas es clave para identificar el nivel de madurez del sistema y para verificar el impacto de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad de la empresa u organización.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que el equipo auditor interno conozca la Norma CRESE vigente y reciban capacitación en ecología integral.",
-        "Que se realice al menos una auditoría interna completa al año, con sus respectivas acciones correctivas debidamente cerradas para garantizar que el Sistema de Gestión está funcionando adecuadamente.",
-        "Que el personal auditor interno sea personal de la misma empresa u organización y que sea independiente del Comité Interno de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
-        "Que la base de la auditoría sea el manual o la carpeta que se menciona en el requisito 3 de esta Norma.",
-        "Que se asegure que los reportes de auditorías sean conocidos y suscritos por la dirección general o equivalente."
-      ],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "El Programa de Auditorías Internas debe incluir: objetivo centrado en la persona, métrica relacionada, alcance definido y procedimiento de operación. El auditor interno debe ser independiente del Comité CRESE.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de auditorías internas con objetivo documentado centrado en la persona (no solo en el cumplimiento de la norma)?",
-        "¿El programa define métricas que permiten medir el impacto de las prácticas en las personas?",
-        "¿Está definido el alcance del programa (a quiénes aplica: todo el personal, áreas específicas, grupos de influencia)?",
-        "¿Existe un procedimiento documentado que describe los pasos de la auditoría interna, responsables y periodicidad?",
-        "¿Se realizó al menos una auditoría interna completa en los últimos dos años con acciones correctivas documentadas y cerradas?",
-        "¿Los reportes de auditoría fueron suscritos por la dirección general?"
-      ]
-    },
-    {
-      "id": 6,
-      "numero": 6,
-      "tema_id": 2,
-      "nombre": "Justicia Salarial",
-      "titulo": "Que exista un programa de justicia salarial que cumpla con los principios de necesidad, contribución y orden económico.",
-      "descripcion": "Se espera que al momento de la contratación se pacte con cada persona un salario que alcance para su economía familiar, en una jornada completa de acuerdo con la Ley. No se trata de ser paternalistas, sino de aportar los elementos para construir una sociedad más justa donde cada persona pueda hacerse responsable de su desarrollo y del de su familia.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Tener conocimiento actualizado del salario que debería recibir, para vivir con dignidad, el personal de tiempo completo que menos ingreso recibe.",
-        "Contar con un análisis comparativo anual de la distancia que existe entre el 5% del personal de tiempo completo que más ingreso total recibe, contra el 5% del personal de tiempo completo que menos ingreso total recibe, y que esta distancia no sea mayor a 20 veces (a menos que se garantice que el personal de tiempo completo que menos ingreso recibe obtiene lo suficiente para vivir con dignidad).",
-        "Cuando aplique (solo para empresas mercantiles): que en el cálculo del 'Balance Trabajo-Capital' se cuente con un mínimo de 50% a favor del Trabajo, promediando los tres últimos años."
-      ],
-      "indicadores_obligatorios": true,
-      "ayuda_contextual": "Tres principios se combinan: Necesidad (salario suficiente para vivir), Contribución (equitativo según responsabilidad y resultados) y Orden (sostenible para la empresa). El Balance Trabajo-Capital mide la proporción del valor generado que regresa al personal.",
-      "preguntas_existencia": [
-        "¿Existe un programa documentado de justicia salarial con objetivo centrado en la persona?",
-        "¿El programa tiene una métrica definida relacionada con el objetivo (ej. análisis de brechas salariales)?",
-        "¿Está definido el alcance del programa (personal de planta, tiempo completo, etc.)?",
-        "¿Existe un procedimiento para revisar y actualizar anualmente la justicia salarial?",
-        "¿Se cuenta con el cálculo actualizado del salario digno para el personal que menos ingresa?",
-        "¿Se realizó el análisis comparativo de la brecha entre el 5% mayor y el 5% menor ingreso, y la razón no supera 20 veces?",
-        "¿Para empresas mercantiles: el Balance Trabajo-Capital es mayor o igual al 50% en promedio de los últimos tres años?"
-      ]
-    },
-    {
-      "id": 7,
-      "numero": 7,
-      "tema_id": 2,
-      "nombre": "Cultura de la Legalidad",
-      "titulo": "Que exista un Programa para promover la cultura de la legalidad en todos los ámbitos, con su personal y otros grupos de influencia.",
-      "descripcion": "En este requisito se busca hacer conciencia de lo importante que es cumplir con la legalidad en la empresa u organización y también como ciudadanos, con el fin de promover el respeto a la dignidad humana y la sostenibilidad, en el ambiente donde nos encontremos.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "El programa debe ir más allá del cumplimiento de la ley: debe construir conciencia ciudadana. Puede abarcar temas como cultura tributaria, derechos laborales, normas de tránsito, cuidado del medio ambiente, entre otros.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de cultura de la legalidad con objetivo documentado centrado en la persona?",
-        "¿El programa tiene una métrica que mide el impacto en el conocimiento y práctica de la legalidad por parte del personal?",
-        "¿Está definido el alcance del programa (personal, proveedores, familias, comunidad)?",
-        "¿Existe un procedimiento documentado con pasos, responsables y fechas para operar el programa?"
-      ]
-    },
-    {
-      "id": 8,
-      "numero": 8,
-      "tema_id": 3,
-      "nombre": "Salud Integral",
-      "titulo": "Que se cuente con un Programa para promover la salud integral (física, mental y social) de su personal y otros grupos de influencia.",
-      "descripcion": "Uno de los principales bienes de las personas que se deben promover es la salud. Sin salud el desarrollo humano integral, sostenible y solidario se obstaculiza. Se espera que las empresas manifiesten con claridad su compromiso de obtener, mantener y mejorar la salud del personal y sus grupos de influencia.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que se cuente con un diagnóstico integral o por área de trabajo de las condiciones de seguridad y salud del centro de trabajo.",
-        "Que se cuente con un plan de acción para la atención de emergencias y contingencias sanitarias que recomienden las autoridades competentes."
-      ],
-      "indicadores_obligatorios": true,
-      "ayuda_contextual": "El programa debe abordar la salud en sus tres dimensiones: física (condiciones físicas del trabajo, ergonomía), mental (NOM-035-STPS, salud emocional) y social (relaciones laborales, sentido de pertenencia). Incluir a familias es una buena práctica.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de salud integral con objetivo centrado en la persona (no solo en cumplir la NOM)?",
-        "¿El programa tiene una métrica que mide el impacto en la salud del personal (ej. ausentismo por enfermedad, accidentes, resultados de encuesta de salud)?",
-        "¿Está definido el alcance del programa (personal, familias, otros grupos de influencia)?",
-        "¿Existe un procedimiento documentado para operar el programa de salud integral?",
-        "¿Se cuenta con un diagnóstico actualizado de las condiciones de seguridad y salud en el centro de trabajo?",
-        "¿Existe un plan de acción documentado para atención de emergencias y contingencias sanitarias?"
-      ]
-    },
-    {
-      "id": 9,
-      "numero": 9,
-      "tema_id": 3,
-      "nombre": "Seguridad",
-      "titulo": "Que se cuente con un Programa para promover la seguridad del personal y otros grupos de influencia.",
-      "descripcion": "La seguridad y la salud son condiciones que se necesitan para poder conseguir el desarrollo humano integral, sostenible y solidario.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que se cuente con un diagnóstico integral o por área de trabajo de las condiciones de seguridad y salud del centro de trabajo.",
-        "Que se cuente con un plan de acción para la atención de emergencias y contingencias sanitarias que recomienden las autoridades competentes.",
-        "Establecer mecanismos de respuesta inmediata cuando se detecte un riesgo de seguridad inminente."
-      ],
-      "indicadores_obligatorios": true,
-      "ayuda_contextual": "El programa de seguridad debe ir más allá de cumplir la NOM-030: debe promover activamente una cultura de seguridad. Involucrar al personal en la identificación de riesgos es clave para la participación directa.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de seguridad con objetivo centrado en la persona?",
-        "¿El programa tiene una métrica relacionada con el objetivo (ej. índice de accidentabilidad, número de incidentes)?",
-        "¿Está definido el alcance del programa?",
-        "¿Existe un procedimiento documentado para identificar riesgos, reportar incidentes y responder a emergencias?",
-        "¿Se cuenta con un diagnóstico actualizado de condiciones de seguridad por área de trabajo?",
-        "¿Existen mecanismos documentados de respuesta inmediata ante riesgos inminentes?"
-      ]
-    },
-    {
-      "id": 10,
-      "numero": 10,
-      "tema_id": 3,
-      "nombre": "Orden y Limpieza",
-      "titulo": "Que se cuente con un Programa para promover el orden y limpieza de las instalaciones de la empresa u organización.",
-      "descripcion": "El objetivo de este requisito es desarrollar un ambiente de trabajo agradable y eficiente, en un clima de seguridad, orden y limpieza que permita el correcto desempeño de las operaciones diarias.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "Un entorno de trabajo desorganizado y sin limpieza genera más errores, pérdida de eficiencia y reduce la paz, alegría y motivación. El programa debe incluir sanitarios, comedores y otras instalaciones de uso intensivo.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de orden y limpieza con objetivo centrado en la persona (bienestar, dignidad)?",
-        "¿El programa tiene una métrica para medir el nivel de orden y limpieza (ej. evaluaciones periódicas, encuestas al personal)?",
-        "¿Está definido el alcance del programa (áreas administrativas, producción, sanitarios, comedores)?",
-        "¿Existe un procedimiento documentado con criterios de evaluación, responsables y periodicidad?"
-      ]
-    },
-    {
-      "id": 11,
-      "numero": 11,
-      "tema_id": 3,
-      "nombre": "Capacitación Laboral",
-      "titulo": "Que se cuente con un Programa de capacitación para el personal en áreas propias de su actividad en el trabajo.",
-      "descripcion": "Las empresas u organizaciones deben asegurarse de que su personal sea competente basándose en su educación, formación y experiencia y cuando sea necesario, se deben tomar acciones para que las personas adquieran las competencias que les hacen falta para mejorar su ingreso y desempeñar su puesto adecuadamente.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que se capacite en la Norma CRESE al personal de la empresa u organización que tenga colaboradores a su cargo.",
-        "Que se tenga un programa para detectar las necesidades de capacitación de todo el personal cada dos años."
-      ],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "La capacitación laboral debe ir más allá del cumplimiento legal: debe promover el desarrollo de competencias que mejoren el ingreso y la dignidad de las personas. El DNC (Detección de Necesidades de Capacitación) bienal es un mínimo.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de capacitación laboral con objetivo centrado en la persona y en su desarrollo?",
-        "¿El programa tiene una métrica que mide el impacto de la capacitación (ej. horas capacitadas, evaluaciones de aprendizaje, mejoras en desempeño)?",
-        "¿Está definido el alcance del programa (todo el personal, niveles específicos)?",
-        "¿Existe un procedimiento documentado que incluya la detección de necesidades, la programación, la ejecución y la evaluación de la capacitación?",
-        "¿Se realizó una Detección de Necesidades de Capacitación (DNC) en los últimos dos años para todo el personal?",
-        "¿El personal con gente a su cargo ha sido capacitado en la Norma CRESE?"
-      ]
-    },
-    {
-      "id": 12,
-      "numero": 12,
-      "tema_id": 3,
-      "nombre": "Preparación Académica",
-      "titulo": "Que se cuente con un Programa de preparación académica para el personal de la empresa u organización.",
-      "descripcion": "La preparación académica se refiere a la capacitación recibida que no tiene relación directa con el trabajo de la persona. La preparación académica amplía el conocimiento teórico-práctico y la visión panorámica que favorece el desarrollo humano integral, sostenible y solidario de las personas.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [],
-      "indicadores_obligatorios": true,
-      "ayuda_contextual": "A diferencia del requisito 11 (capacitación laboral), este requisito se enfoca en la formación que no está directamente vinculada al puesto de trabajo: cultura general, valores, idiomas, finanzas personales, salud, arte, etc. Capacitar en Ecología Humana es especialmente recomendado.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de preparación académica (no laboral) con objetivo centrado en el desarrollo integral de la persona?",
-        "¿El programa tiene una métrica relacionada con el acceso y aprovechamiento de la preparación académica?",
-        "¿Está definido el alcance del programa (todo el personal, grupos prioritarios)?",
-        "¿Existe un procedimiento documentado para operar el programa de preparación académica?"
-      ]
-    },
-    {
-      "id": 13,
-      "numero": 13,
-      "tema_id": 3,
-      "nombre": "Programa de Propuestas",
-      "titulo": "Que se cuente con un Programa para promover y dar seguimiento a las ideas, propuestas o compromisos concretos de todo el personal y otros grupos de influencia para fortalecer la ética y mejorar la productividad.",
-      "descripcion": "Promover la participación equivale a reconocer que la persona es capaz de tener buenas ideas y de ayudar a la empresa a mejorar. Sin embargo, no siempre es posible lograr, en primera instancia, la participación del personal.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que se cuente con un mecanismo (buzón de sugerencias, correo electrónico, etc.) para canalizar las ideas, propuestas o compromisos concretos de todo el personal."
-      ],
-      "indicadores_obligatorios": true,
-      "ayuda_contextual": "El programa debe contar con formatos para obtener iniciativas bien estructuradas que de manera recurrente logren mejoras en ética, calidad y productividad. Pueden generarse por equipos de trabajo o de manera individual.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal para recibir, gestionar y dar seguimiento a propuestas del personal, con objetivo centrado en la participación?",
-        "¿El programa tiene una métrica que mide el volumen y el impacto de las propuestas (ej. número de propuestas recibidas, implementadas, ahorro generado)?",
-        "¿Está definido el alcance del programa (todo el personal, proveedores, otros grupos)?",
-        "¿Existe un procedimiento documentado para recibir, evaluar, responder e implementar propuestas?",
-        "¿Existe un mecanismo activo (buzón, plataforma, formulario) para recibir propuestas de todo el personal?"
-      ]
-    },
-    {
-      "id": 14,
-      "numero": 14,
-      "tema_id": 4,
-      "nombre": "Integración y Desarrollo Familiar",
-      "titulo": "Que exista un Programa para promover la integración y el desarrollo integral de las familias del personal de la empresa u organización.",
-      "descripcion": "Debemos reconocer la gran variedad de situaciones familiares que se viven y que brindan estabilidad a las personas y a la sociedad, incluyendo al mundo del trabajo. Las empresas y organizaciones, como protagonistas de la sociedad, pueden colaborar en el fortalecimiento de las familias de su personal.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "Los programas para cumplir con este requisito deben ir más allá del pago de un salario y la provisión de bienes materiales. Pueden extenderse los programas de la empresa a las familias del personal: salud, capacitación, cultura, deporte.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal para promover la integración y el desarrollo integral de las familias del personal?",
-        "¿El programa tiene una métrica que mide el impacto en el bienestar familiar?",
-        "¿Está definido el alcance del programa (familias de todo el personal, familias en situación de vulnerabilidad)?",
-        "¿Existe un procedimiento documentado para operar el programa de desarrollo familiar?"
-      ]
-    },
-    {
-      "id": 15,
-      "numero": 15,
-      "tema_id": 4,
-      "nombre": "Armonización Trabajo-Familia",
-      "titulo": "Que exista un Programa para armonizar el tiempo dedicado al trabajo y familia, especialmente cuando se encuentran en situación de vulnerabilidad.",
-      "descripcion": "Se debe organizar y adaptar la actividad laboral, en la medida que sea posible, de manera que sean respetadas las necesidades familiares de las personas. Es en beneficio de todas las partes que las personas que trabajan puedan desarrollar plenamente sus funciones en el trabajo y en la familia.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "Las situaciones de vulnerabilidad familiar incluyen: enfermedades graves, cuidado de adultos mayores, hijos con discapacidad, pérdidas familiares, entre otras. El programa debe contemplar flexibilidad, permisos especiales y apoyos concretos.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal para armonizar el tiempo trabajo-familia con objetivo centrado en el bienestar de la persona y su familia?",
-        "¿El programa tiene una métrica que mide su impacto (ej. uso de permisos de flexibilidad, satisfacción del personal con el equilibrio)?",
-        "¿Está definido el alcance del programa (todo el personal, con énfasis en situaciones de vulnerabilidad)?",
-        "¿Existe un procedimiento documentado con los tipos de apoyos disponibles, criterios y proceso de solicitud?"
-      ]
-    },
-    {
-      "id": 16,
-      "numero": 16,
-      "tema_id": 4,
-      "nombre": "Apoyo a la Desvinculación Laboral",
-      "titulo": "Que exista un Programa para dar orientación y apoyo a las personas que sean separadas de su trabajo para que puedan encontrar otra fuente de ingresos.",
-      "descripcion": "Se espera que las empresas traten a las personas con el respeto que merece su dignidad, especialmente cuando son separadas de su trabajo y se ven privadas del sustento necesario para mantener a sus familias. Este requisito no aplica en casos de jubilaciones o renuncias voluntarias.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Una lista del personal separado de la empresa u organización en el último año o en el último periodo de certificación y explicación detallada del motivo y trato a su salida."
-      ],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "Este requisito aplica incluso para personas que fueron separadas por dolo, negligencia o mala fe. Las empresas deben explorar alternativas: canalizarlas a programas de formación en valores, capacitaciones o empleos dignos.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal para apoyar la reinserción laboral de personas separadas del trabajo?",
-        "¿El programa tiene una métrica que mide el apoyo brindado (ej. personas orientadas, empleos encontrados)?",
-        "¿Está definido el alcance del programa (separaciones involuntarias, tipos de apoyo ofrecidos)?",
-        "¿Existe un procedimiento documentado para el proceso de desvinculación con respeto a la dignidad de la persona?",
-        "¿Se cuenta con una lista documentada del personal separado en el último periodo, con motivos y descripción del trato recibido?"
-      ]
-    },
-    {
-      "id": 17,
-      "numero": 17,
-      "tema_id": 5,
-      "nombre": "Inclusión Efectiva",
-      "titulo": "Que exista en la empresa u organización un programa de inclusión efectiva para todas las personas especialmente aquellas que se encuentran en situación vulnerable.",
-      "descripcion": "La participación de las personas y grupos en situación de vulnerabilidad es esencial para construir una cultura de cuidado y promover el bien común. Es fundamental adaptar y diseñar puestos de trabajo, instalaciones, horarios y otros aspectos laborales para que se ajusten a las necesidades de cada persona.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que se cuente con lineamientos para prevenir la discriminación, fomentar la equidad y el respeto (NOM 035 STPS, 8.2-a-2, protocolo para prevenir, erradicar y atender la violencia, o equivalente).",
-        "Que se cumpla con un 5% de personal de los siguientes grupos de interés: personas mayores de 60 años, personas ex convictas y/o con alguna discapacidad y, en el momento de la contratación, a las personas mayores a 50 años y a las mujeres embarazadas."
-      ],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "La Inclusión Laboral Efectiva (ILE) tiene dos vertientes: el análisis de puestos que puedan ocuparse por personas en situación de vulnerabilidad y su desarrollo. Evita que las personas vulnerables sean usadas solo para cumplir un requisito.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de inclusión efectiva con objetivo centrado en la dignidad y desarrollo de las personas en situación de vulnerabilidad?",
-        "¿El programa tiene una métrica que mide el nivel de inclusión y desarrollo de personas vulnerables?",
-        "¿Está definido el alcance del programa (grupos vulnerables atendidos: adultos mayores, personas con discapacidad, etc.)?",
-        "¿Existe un procedimiento documentado que incluya análisis de puestos para personas en situación de vulnerabilidad?",
-        "¿Se cuenta con lineamientos documentados para prevenir la discriminación y atender la violencia (NOM-035 o equivalente)?",
-        "¿Al menos el 5% del personal pertenece a grupos vulnerables definidos en la Norma?"
-      ]
-    },
-    {
-      "id": 18,
-      "numero": 18,
-      "tema_id": 5,
-      "nombre": "Programa de Becarios",
-      "titulo": "Que exista un programa de contratación y desarrollo para becarios y becarias con el objetivo de brindarles la oportunidad de enriquecer su currículum con experiencia laboral.",
-      "descripcion": "Personas jóvenes sin experiencia, o las personas que no tienen experiencia laboral, son actualmente las más desempleadas. Este programa debe estar dirigido a personas jóvenes estudiantes, con un tiempo de contratación como becario o becaria limitado y un plan de desarrollo bien definido.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "Es esencial que los becarios o becarias no se dediquen a tareas básicas que solo ocupen su tiempo, sino que se les asignen actividades que les permitan adquirir habilidades útiles y relevantes para su crecimiento profesional.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de becarios con objetivo centrado en el desarrollo profesional del becario (no en la productividad de la empresa)?",
-        "¿El programa tiene una métrica que mide el aprendizaje y desarrollo de los becarios (ej. habilidades adquiridas, evaluaciones)?",
-        "¿Está definido el alcance del programa (instituciones educativas vinculadas, áreas de adscripción, duración)?",
-        "¿Existe un procedimiento documentado con plan de desarrollo individual para cada becario?"
-      ]
-    },
-    {
-      "id": 19,
-      "numero": 19,
-      "tema_id": 5,
-      "nombre": "Desarrollo de Proveedores",
-      "titulo": "Que exista un programa para desarrollar proveedores locales y proveedores con Calidad Humana y Responsabilidad Social.",
-      "descripcion": "A medida que aumentan las relaciones globales, lo local es cada vez más importante para la vida cotidiana de las personas. Si abandonamos el ámbito de lo local por la inserción global, estaríamos en riesgo de perder nuestro sentido de identidad y pertenencia.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que se promueva el respeto a los Derechos Humanos y Laborales del personal de sus proveedores de bienes y servicios."
-      ],
-      "indicadores_obligatorios": true,
-      "ayuda_contextual": "El programa debe incluir criterios de Calidad Humana y Responsabilidad Social en la selección y evaluación de proveedores, y debe fomentar el desarrollo de proveedores locales que compartan los valores de la Norma CRESE.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal para desarrollar proveedores locales y con Calidad Humana, con objetivo centrado en la persona?",
-        "¿El programa tiene una métrica que mide el impacto (ej. % de proveedores locales, proveedores evaluados en CRHSE)?",
-        "¿Está definido el alcance del programa (tipos de proveedores incluidos, criterios de selección)?",
-        "¿Existe un procedimiento documentado para evaluar y desarrollar proveedores bajo criterios de derechos humanos y responsabilidad social?",
-        "¿Se cuenta con lineamientos o cláusulas contractuales que promuevan el respeto a derechos humanos y laborales en la cadena de suministro?"
-      ]
-    },
-    {
-      "id": 20,
-      "numero": 20,
-      "tema_id": 5,
-      "nombre": "Ayuda a la Comunidad",
-      "titulo": "Que exista un Programa para que la empresa u organización y su personal ayude a mejorar la calidad de vida de las personas de los grupos o sectores más pobres, pequeños y/o débiles de las comunidades más cercanas.",
-      "descripcion": "La Norma CRESE 2025 promueve el principio de Solidaridad como un beneficio para todas las personas, pero también como un deber. Es necesario que el personal y, si es posible, otros grupos de influencia, participen activamente en tareas de ayuda a la comunidad.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que la empresa u organización identifique y evalúe sus impactos sociales negativos, actuales y potenciales."
-      ],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "El personal debe participar activamente en sus tiempos libres o tomando un poco del tiempo de la empresa, sin afectar su trabajo. Un diagnóstico de impacto social negativo es el punto de partida para definir las acciones de ayuda comunitaria.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de ayuda a la comunidad con objetivo centrado en las personas más vulnerables de la comunidad?",
-        "¿El programa tiene una métrica que mide el impacto en la calidad de vida de la comunidad beneficiada?",
-        "¿Está definido el alcance del programa (comunidades beneficiadas, grupos objetivo)?",
-        "¿Existe un procedimiento documentado que incluya diagnóstico de impacto, selección de beneficiarios y seguimiento?",
-        "¿Se cuenta con un análisis documentado de los impactos sociales negativos, actuales y potenciales, de la empresa en su comunidad?"
-      ]
-    },
-    {
-      "id": 21,
-      "numero": 21,
-      "tema_id": 6,
-      "nombre": "Cuidado del Suelo",
-      "titulo": "Que exista un Programa de concientización y práctica para cuidado del suelo por parte de la empresa u organización y su personal.",
-      "descripcion": "Es urgente aumentar la consideración por el cuidado del medio ambiente desde un enfoque más humano, que requiere una mirada integral e integradora que incluya el análisis de los contextos humanos, familiares, laborales, urbanos y de la relación de cada persona consigo misma.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que la empresa u organización identifique y evalúe sus impactos ambientales negativos, actuales y potenciales en el suelo."
-      ],
-      "indicadores_obligatorios": true,
-      "ayuda_contextual": "El programa puede sustituirse por un programa de concientización y práctica de la protección de la biodiversidad. El diagnóstico de impacto ambiental en el suelo es el punto de partida.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de cuidado del suelo con objetivo centrado en la persona y en el medio ambiente?",
-        "¿El programa tiene una métrica que mide el impacto en el cuidado del suelo (ej. toneladas de residuos gestionados, % de reducción)?",
-        "¿Está definido el alcance del programa (instalaciones de la empresa, comunidad, cadena de valor)?",
-        "¿Existe un procedimiento documentado para operar el programa de cuidado del suelo?",
-        "¿Se cuenta con un análisis documentado de los impactos ambientales negativos de la empresa en el suelo?"
-      ]
-    },
-    {
-      "id": 22,
-      "numero": 22,
-      "tema_id": 6,
-      "nombre": "Cuidado del Aire",
-      "titulo": "Que exista un Programa de concientización y práctica para cuidado del aire y atmósfera por parte de la empresa u organización y su personal.",
-      "descripcion": "Los deberes que tenemos con el ambiente están relacionados con los que tenemos con las personas. No se pueden exigir unos y quebrantar otros. La experiencia demuestra que toda actitud irrespetuosa con el medio ambiente conlleva daños a la convivencia humana, y viceversa.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que la empresa u organización identifique y evalúe sus impactos ambientales negativos, actuales y potenciales en el aire."
-      ],
-      "indicadores_obligatorios": true,
-      "ayuda_contextual": "El programa puede incluir acciones de reducción de emisiones, uso de energías limpias, gestión de gases refrigerantes, reducción de huella de carbono, entre otros. Puede sustituirse por un programa de biodiversidad.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de cuidado del aire y atmósfera con objetivo centrado en la persona y el medio ambiente?",
-        "¿El programa tiene una métrica que mide el impacto en la calidad del aire (ej. emisiones de CO2, consumo de energía)?",
-        "¿Está definido el alcance del programa?",
-        "¿Existe un procedimiento documentado para operar el programa?",
-        "¿Se cuenta con un análisis documentado de los impactos ambientales negativos de la empresa en el aire?"
-      ]
-    },
-    {
-      "id": 23,
-      "numero": 23,
-      "tema_id": 6,
-      "nombre": "Cuidado del Agua",
-      "titulo": "Que exista un Programa de concientización y práctica para cuidado del agua por parte de la empresa u organización y su personal.",
-      "descripcion": "Toda la realidad está interconectada; debemos escuchar al mismo tiempo el clamor de los necesitados y el de la naturaleza. De esta escucha atenta y constante puede surgir un cuidado eficaz de la tierra, nuestra casa común y de los pobres.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que la empresa u organización identifique y evalúe sus impactos ambientales negativos, actuales y potenciales en el agua."
-      ],
-      "indicadores_obligatorios": true,
-      "ayuda_contextual": "El programa puede incluir acciones de reducción del consumo, tratamiento de aguas residuales, reutilización, captación pluvial, entre otros. Puede sustituirse por un programa de biodiversidad.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal de cuidado del agua con objetivo centrado en la persona y el medio ambiente?",
-        "¿El programa tiene una métrica que mide el impacto en el consumo y calidad del agua?",
-        "¿Está definido el alcance del programa?",
-        "¿Existe un procedimiento documentado para operar el programa?",
-        "¿Se cuenta con un análisis documentado de los impactos ambientales negativos de la empresa en el agua?"
-      ]
-    },
-    {
-      "id": 24,
-      "numero": 24,
-      "tema_id": 7,
-      "nombre": "Valores y Principios",
-      "titulo": "Que exista un programa que sirva para promover el conocimiento, asimilación y práctica de los principios y valores que se hayan establecido por la empresa u organización.",
-      "descripcion": "La práctica de estos principios y valores debe impregnar todas las políticas y acciones de la empresa y puede constituir un pilar para tener un sentido de identidad, que mejore la unidad interna y la autoestima del personal.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que se cuente con una lista de valores con su definición.",
-        "Que se cuente con un mecanismo o procedimiento que permita detectar y corregir las fallas en la práctica de los principios y valores de la empresa u organización."
-      ],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "El programa de valores debe ir más allá de tenerlos publicados en las paredes: debe promover su conocimiento, comprensión, asimilación y práctica cotidiana. Un mecanismo para detectar y corregir fallas en la práctica es el mínimo auditable clave.",
-      "preguntas_existencia": [
-        "¿Existe un programa formal para promover la práctica de los valores con objetivo centrado en el desarrollo moral de las personas?",
-        "¿El programa tiene una métrica que mide el conocimiento y práctica de los valores (ej. encuestas, evaluaciones de cultura)?",
-        "¿Está definido el alcance del programa (todo el personal, proveedores, familias)?",
-        "¿Existe un procedimiento documentado para promover, evaluar y corregir la práctica de valores?",
-        "¿Existe una lista documentada de los valores de la empresa con su definición?",
-        "¿Existe un mecanismo o procedimiento documentado para detectar y corregir fallas en la práctica de los valores?"
-      ]
-    },
-    {
-      "id": 25,
-      "numero": 25,
-      "tema_id": 7,
-      "nombre": "Sentido Humano y Trascendente del Trabajo",
-      "titulo": "Que existan otros programas para fortalecer aún más el sentido humano y trascendente del trabajo.",
-      "descripcion": "Para asegurar que no se deja a un lado la cuestión antropológica, compleja y siempre incompleta debido al desarrollo que todas las personas buscan, se plantean programas que fortalecerán aún más la dimensión subjetiva del trabajo.",
-      "es_programa": true,
-      "solo_existencia": false,
-      "criterios_evaluables": [1, 2, 3, 4, 5],
-      "minimos_auditables": [
-        "Que se capacite al personal con gente a su cargo, para desarrollar un estilo de liderazgo con sentido humano, de preferencia que contemple los valores de la humildad, congruencia, participación y desarrollo.",
-        "Que se sensibilice a todo el personal en el tema del valor trascendente del trabajo."
-      ],
-      "indicadores_obligatorios": false,
-      "ayuda_contextual": "Ejemplos de programas: fomentar cultura de libertad responsable, promover lenguaje edificante, impulsar amor por la patria, fortalecer valores morales universales, ofrecer espacios para el desarrollo espiritual y religioso. El liderazgo con sentido humano es el mínimo clave.",
-      "preguntas_existencia": [
-        "¿Existe al menos un programa formal para fortalecer el sentido humano y trascendente del trabajo?",
-        "¿El programa tiene una métrica que mide su impacto en la dimensión subjetiva y espiritual del trabajo?",
-        "¿Está definido el alcance del programa?",
-        "¿Existe un procedimiento documentado para operar el programa?",
-        "¿El personal con gente a su cargo ha recibido capacitación en liderazgo con sentido humano (humildad, congruencia, participación, desarrollo)?",
-        "¿Se ha realizado alguna actividad de sensibilización sobre el valor trascendente del trabajo para todo el personal?"
-      ]
-    }
-  ],
-  "criterios": [
-    {
-      "id": 1,
-      "clave": "existencia",
-      "nombre": "Existencia y Funcionamiento",
-      "descripcion": "Evalúa si existe y opera adecuadamente el elemento solicitado por el requisito. La mejor evidencia es la documentación formal y escrita. El funcionamiento se refiere a que la práctica se lleva a cabo, cumple con su objetivo y tiene un impacto real.",
-      "escala": [
-        {"valor": 100, "descripcion": "Existe evidencia documentada completa, el elemento funciona plenamente y tiene impacto real demostrable en los últimos dos años."},
-        {"valor": 75, "descripcion": "Existe evidencia documentada suficiente y el elemento funciona con algunos aspectos por mejorar."},
-        {"valor": 50, "descripcion": "Existe evidencia parcial o el elemento funciona de manera incompleta o irregular."},
-        {"valor": 25, "descripcion": "Existe evidencia mínima o el elemento está en etapa inicial de implementación."},
-        {"valor": 0, "descripcion": "No existe evidencia o el elemento no ha sido implementado."}
-      ]
-    },
-    {
-      "id": 2,
-      "clave": "difusion",
-      "nombre": "Difusión y Conocimiento",
-      "descripcion": "Evalúa si las personas conocen, comprenden y utilizan el programa o práctica. La difusión no equivale al conocimiento: es necesario garantizar que el proceso de comunicación culmine en un entendimiento claro y efectivo.",
-      "escala": [
-        {"valor": 100, "descripcion": "Todo el personal del alcance definido conoce y comprende el programa. Existen evidencias de comprensión efectiva (evaluaciones, testimonios, uso activo)."},
-        {"valor": 75, "descripcion": "La mayoría del personal del alcance conoce el programa con evidencias de comunicación efectiva, con algunos gaps por atender."},
-        {"valor": 50, "descripcion": "El programa ha sido comunicado pero el conocimiento es parcial o superficial. La difusión llegó pero no se verificó la comprensión."},
-        {"valor": 25, "descripcion": "La difusión es incipiente o limitada a algunos grupos. La mayoría del personal desconoce el programa."},
-        {"valor": 0, "descripcion": "No existe difusión o el personal desconoce el programa o práctica."}
-      ]
-    },
-    {
-      "id": 3,
-      "clave": "participacion",
-      "nombre": "Participación Directa",
-      "descripcion": "Evalúa el grado de involucramiento de los distintos grupos de interés en las cuatro dimensiones: Propuesta, Diseño, Ejecución y Revisión; y en los cinco grupos: Dirección General, Responsable del Programa, Comité Interno, Personal y Otros Grupos de Interés.",
-      "usa_matriz": true
-    },
-    {
-      "id": 4,
-      "clave": "innovacion",
-      "nombre": "Innovación o Mejora",
-      "descripcion": "Evalúa si existen mejoras, actualizaciones o innovaciones realizadas durante el periodo evaluado en el indicador/métrica, en cualquiera de los cinco criterios, o en algún elemento del programa (objetivo, alcance, procedimiento).",
-      "escala": [
-        {"valor": 100, "descripcion": "Se realizaron innovaciones o mejoras significativas y documentadas en múltiples aspectos del programa durante los últimos dos años, con evidencia de impacto medible."},
-        {"valor": 75, "descripcion": "Se realizaron mejoras documentadas en al menos un aspecto relevante del programa con evidencia de impacto."},
-        {"valor": 50, "descripcion": "Se realizaron mejoras menores o se iniciaron procesos de mejora, con evidencia parcial."},
-        {"valor": 25, "descripcion": "Existe intención de mejorar o mejoras muy incipientes sin evidencia de impacto real."},
-        {"valor": 0, "descripcion": "No se realizaron innovaciones o mejoras en el periodo evaluado."}
-      ]
-    },
-    {
-      "id": 5,
-      "clave": "vinculacion",
-      "nombre": "Vinculación con la Dirección Estratégica",
-      "descripcion": "Evalúa si el requisito está alineado con la estrategia y objetivos de la organización (Propósito, Misión, Visión, Valores, líneas estratégicas). El vínculo es más evidente cuando la gerencia o dirección participa directamente en el Comité Interno.",
-      "escala": [
-        {"valor": 100, "descripcion": "El programa está explícitamente vinculado a los elementos estratégicos de la empresa y la dirección participa activamente. Existen evidencias documentadas de esta vinculación."},
-        {"valor": 75, "descripcion": "El programa está vinculado a la estrategia de la empresa con evidencia documental, aunque la participación directiva es ocasional."},
-        {"valor": 50, "descripcion": "Existe una vinculación implícita o verbal con la estrategia, sin evidencia documental suficiente."},
-        {"valor": 25, "descripcion": "La vinculación estratégica es mínima o está siendo construida."},
-        {"valor": 0, "descripcion": "No existe vinculación documentada entre el programa y la dirección estratégica de la empresa."}
-      ]
-    }
-  ],
-  "matriz_participacion": {
-    "filas": ["Propuesta", "Diseño", "Ejecución", "Revisión"],
-    "columnas": ["Dirección General", "Responsable del Programa", "Comité Interno", "Personal", "Otros Grupos de Interés"]
-  },
-  "categorias_certificacion": [
-    {"min": 60, "max": 69.9, "categoria": "Empresa Comprometida"},
-    {"min": 70, "max": 79.9, "categoria": "Empresa Destacada"},
-    {"min": 80, "max": 89.9, "categoria": "Empresa Sobresaliente"},
-    {"min": 90, "max": 100, "categoria": "Empresa Ejemplar"}
-  ]
+﻿{
+    "version":  "2025",
+    "nombre":  "Norma CRESE 2025 - Sistema de Gestión de Calidad Humana, Responsabilidad Social y Sostenibilidad",
+    "temas":  [
+                  {
+                      "id":  1,
+                      "nombre":  "Dirección y Comunicación",
+                      "descripcion":  "Implanta un Sistema de Gestión de Calidad Humana, Responsabilidad Social y Sostenibilidad con el trabajo en equipo de un Comité Interno.",
+                      "requisitos":  [
+                                         1,
+                                         2,
+                                         3,
+                                         4,
+                                         5
+                                     ]
+                  },
+                  {
+                      "id":  2,
+                      "nombre":  "Justicia Salarial y Cultura de la Legalidad",
+                      "descripcion":  "Promueve la justicia salarial y el cumplimiento de la legalidad como bases del bien común.",
+                      "requisitos":  [
+                                         6,
+                                         7
+                                     ]
+                  },
+                  {
+                      "id":  3,
+                      "nombre":  "Calidad de Vida y Desarrollo del Personal",
+                      "descripcion":  "Atiende aspectos que promueven el respeto a la dignidad humana y su desarrollo integral sostenible.",
+                      "requisitos":  [
+                                         8,
+                                         9,
+                                         10,
+                                         11,
+                                         12,
+                                         13
+                                     ]
+                  },
+                  {
+                      "id":  4,
+                      "nombre":  "Protección y Desarrollo de las Familias",
+                      "descripcion":  "Las familias del personal son un grupo de influencia que merece una categoría especial.",
+                      "requisitos":  [
+                                         14,
+                                         15,
+                                         16
+                                     ]
+                  },
+                  {
+                      "id":  5,
+                      "nombre":  "Solidaridad y Ayuda a la Comunidad",
+                      "descripcion":  "Promueve la solidaridad como beneficio para todas las personas y como un deber.",
+                      "requisitos":  [
+                                         17,
+                                         18,
+                                         19,
+                                         20
+                                     ]
+                  },
+                  {
+                      "id":  6,
+                      "nombre":  "Protección del Medio Ambiente",
+                      "descripcion":  "Aumenta la consideración por el cuidado del medio ambiente desde un enfoque humano integral.",
+                      "requisitos":  [
+                                         21,
+                                         22,
+                                         23
+                                     ]
+                  },
+                  {
+                      "id":  7,
+                      "nombre":  "Humanización y Trascendencia del Trabajo",
+                      "descripcion":  "Fortalece la dimensión subjetiva del trabajo promoviendo principios y valores éticos.",
+                      "requisitos":  [
+                                         24,
+                                         25
+                                     ]
+                  }
+              ],
+    "requisitos":  [
+                       {
+                           "id":  1,
+                           "numero":  1,
+                           "tema_id":  1,
+                           "nombre":  "Comité Interno",
+                           "titulo":  "Que exista un Comité Interno para implantar la Norma y proponer mejoras en la Calidad Humana, Responsabilidad Social y Sostenibilidad.",
+                           "descripcion":  "El Comité Interno, además de implantar la Norma y conseguir el Certificado CRESE, debe ser una ayuda eficaz para que las prácticas requeridas en esta norma promuevan el respeto a la dignidad de la persona y su desarrollo integral, sostenible y solidario.",
+                           "es_programa":  false,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que los miembros del Comité Interno conozcan la Norma CRESE vigente.",
+                                                      "Que los miembros del Comité Interno reciban capacitación en ecología integral.",
+                                                      "Que el Comité Interno esté formado por al menos tres personas.",
+                                                      "Que el Comité Interno sea multidisciplinario y representativo del personal de la empresa u organización.",
+                                                      "Que el Comité Interno se haga responsable de atender, programar, implementar y dar seguimiento a las recomendaciones de las auditorías internas y externas de esta norma.",
+                                                      "Que la dirección general (o equivalente) de la empresa u organización participe al menos dos veces por año en las reuniones del Comité Interno y/o que se integre al comité una persona de nivel directivo, responsable de la calidad humana, responsabilidad social y sostenibilidad de la empresa.",
+                                                      "Que el Comité Interno elabore un plan anual con reuniones periódicas, que tenga como base un análisis de los temas relevantes para la empresa y sus grupos de influencia (Análisis de materialidad).",
+                                                      "Que el Comité Interno se reúna al menos una vez cada dos años, para analizar en equipo la documentación y el funcionamiento de cada uno de los requisitos de esta Norma, principalmente para proponer mejoras."
+                                                  ],
+                           "indicadores_obligatorios":  true,
+                           "ayuda_contextual":  "El Comité Interno es el motor del sistema CRESE en la empresa. Sus principales objetivos son: implantar el sistema, conseguir y renovar el Certificado CRESE, promover la difusión, la participación directa y la innovación o mejora de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
+                           "preguntas_existencia":  [
+                                                        "¿El Comité Interno funciona como una ayuda eficaz para que las prácticas de la Norma promuevan el respeto a la dignidad de la persona y su desarrollo integral, sostenible y solidario?",
+                                                        "¿El Comité Interno promueve la difusión y conocimiento de los programas de Calidad Humana, Responsabilidad Social y Sostenibilidad, interna y externamente?",
+                                                        "¿El Comité Interno promueve la participación directa del personal y otros grupos de influencia en las cuatro dimensiones: propuesta, diseño, ejecución y revisión?",
+                                                        "¿El Comité Interno impulsa la innovación o mejora de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad?",
+                                                        "¿Los miembros del Comité se capacitan en los asuntos relativos a cada requisito y promueven el diálogo con el personal y otros grupos de influencia?",
+                                                        "¿Las funciones del Comité Interno aprovechan la pluralidad de sus integrantes para hacer recomendaciones o tomar decisiones en equipo?"
+                                                    ]
+                       },
+                       {
+                           "id":  2,
+                           "numero":  2,
+                           "tema_id":  1,
+                           "nombre":  "Política de Calidad Humana",
+                           "titulo":  "Que se cuente con una Política de Calidad Humana, Responsabilidad Social y Sostenibilidad y que se dé a conocer al personal de la empresa.",
+                           "descripcion":  "Esta Política es un documento donde queda plasmada la filosofía de la empresa u organización en lo referente a la Calidad Humana, Responsabilidad Social y Sostenibilidad. Es una especie de carta de presentación donde se exponen los puntos que se desean dar a conocer y cumplir en toda la cadena de valor.",
+                           "es_programa":  false,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que la Política incluya el respeto a la dignidad de la persona como un elemento principal.",
+                                                      "Que exista algún mecanismo para denunciar y dar seguimiento a conflictos de trabajo, actos de violencia laboral, corrupción, extorsión, robo o abuso de confianza y todo lo que atente contra la dignidad de la persona dentro de la empresa u organización, por parte del personal u otros grupos de influencia."
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "La Política de Calidad Humana es el documento fundacional que expresa el compromiso de la empresa con la dignidad de las personas. Puede incorporar un código de ética o de conducta. La Norma ISO 9001:2015 numeral 5.2 puede servir de referencia.",
+                           "preguntas_existencia":  [
+                                                        "¿La Política refleja la filosofía de la empresa u organización en materia de Calidad Humana, Responsabilidad Social y Sostenibilidad?",
+                                                        "¿La Política es una carta de presentación que expone los puntos que se desean dar a conocer y cumplir en toda la cadena de valor?",
+                                                        "¿La Política incluye el compromiso de integrar los aspectos sociales, ambientales y de buen gobierno en las operaciones y estrategias de la empresa?",
+                                                        "¿La Política incluye o se complementa con un código de ética o de conducta?"
+                                                    ]
+                       },
+                       {
+                           "id":  3,
+                           "numero":  3,
+                           "tema_id":  1,
+                           "nombre":  "Manual o Carpeta de Documentación",
+                           "titulo":  "Que se cuente con la información documentada, ordenada y agrupada de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
+                           "descripcion":  "La empresa u organización debe mantener su información documentada, ordenada y agrupada para apoyar la continuidad y el buen funcionamiento de sus prácticas, verificar que se realizan según lo planeado y preservar el conocimiento y la historia con algún registro. Esta información debe estar actualizada y con las evidencias necesarias.",
+                           "es_programa":  false,
+                           "solo_existencia":  true,
+                           "criterios_evaluables":  [
+                                                        1
+                                                    ],
+                           "minimos_auditables":  [
+
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "Este requisito evalúa únicamente Existencia y Funcionamiento, ya que es el sistema de gestión documental de la empresa. No requiere evaluación de Difusión, Participación, Innovación ni Vinculación estratégica.",
+                           "preguntas_existencia":  [
+                                                        "¿La información documentada de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad está ordenada y agrupada?",
+                                                        "¿La documentación está actualizada y cuenta con las evidencias necesarias que revelen la realidad de lo que se ha hecho?",
+                                                        "¿La documentación permite apoyar la continuidad y el buen funcionamiento de las prácticas, y preservar el conocimiento y la historia de la empresa u organización?"
+                                                    ]
+                       },
+                       {
+                           "id":  4,
+                           "numero":  4,
+                           "tema_id":  1,
+                           "nombre":  "Informe Anual",
+                           "titulo":  "Que se elabore un Informe Anual de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
+                           "descripcion":  "Las empresas u organizaciones deben elaborar un Informe Anual de Calidad Humana, Responsabilidad Social y Sostenibilidad, el cual debe ser entregado a su personal y demás grupos de influencia. Este informe permite llevar un registro estructurado de las actividades realizadas y sirve como base para la mejora continua e innovación.",
+                           "es_programa":  false,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "El Informe Anual debe presentar las prácticas más relevantes del último año, incluir indicadores de desempeño de los dos años anteriores para mostrar evolución, y usar lenguaje claro. Su objetivo es inspirar, crear diálogo y solicitar retroalimentación.",
+                           "preguntas_existencia":  [
+                                                        "¿El Informe Anual se entrega al personal y demás grupos de influencia de la empresa u organización?",
+                                                        "¿El Informe sirve como base para la mejora continua e innovación, y fortalece vínculos con los grupos de influencia?",
+                                                        "¿El Informe presenta las prácticas más relevantes del año sin exagerar logros, reflejando de manera realista su impacto y áreas de oportunidad?",
+                                                        "¿El Informe incluye indicadores de desempeño del año en curso y de los dos años anteriores para mostrar evolución y tendencias?",
+                                                        "¿El Informe incorpora un contexto de sostenibilidad que muestre cómo las prácticas de la empresa impactan en la región donde opera?",
+                                                        "¿El Informe crea un canal de diálogo para solicitar retroalimentación e identificar oportunidades de innovación o mejora?"
+                                                    ]
+                       },
+                       {
+                           "id":  5,
+                           "numero":  5,
+                           "tema_id":  1,
+                           "nombre":  "Auditorías Internas",
+                           "titulo":  "Que se cuente con un Programa anual de auditorías internas con el fin de garantizar el cumplimiento de la Norma y el impacto de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
+                           "descripcion":  "El resultado de las auditorías internas es clave para identificar el nivel de madurez del sistema y para verificar el impacto de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad de la empresa u organización.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que el equipo auditor interno conozca la Norma CRESE vigente y reciban capacitación en ecología integral.",
+                                                      "Que se realice al menos una auditoría interna completa al año, con sus respectivas acciones correctivas debidamente cerradas para garantizar que el Sistema de Gestión está funcionando adecuadamente.",
+                                                      "Que el personal auditor interno sea personal de la misma empresa u organización y que sea independiente del Comité Interno de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
+                                                      "Que la base de la auditoría sea el manual o la carpeta que se menciona en el requisito 3 de esta Norma.",
+                                                      "Que se asegure que los reportes de auditorías sean conocidos y suscritos por la dirección general o equivalente."
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "El Programa de Auditorías Internas debe incluir: objetivo centrado en la persona, métrica relacionada, alcance definido y procedimiento de operación. El auditor interno debe ser independiente del Comité CRESE.",
+                           "preguntas_existencia":  [
+                                                        "¿Las auditorías internas identifican el nivel de madurez del sistema de gestión de Calidad Humana, Responsabilidad Social y Sostenibilidad?",
+                                                        "¿Las auditorías internas verifican el impacto de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad en la empresa u organización?",
+                                                        "¿El programa de auditorías internas garantiza el buen funcionamiento del sistema y la identificación de acciones correctivas?"
+                                                    ]
+                       },
+                       {
+                           "id":  6,
+                           "numero":  6,
+                           "tema_id":  2,
+                           "nombre":  "Justicia Salarial",
+                           "titulo":  "Que exista un programa de justicia salarial que cumpla con los principios de necesidad, contribución y orden económico.",
+                           "descripcion":  "Se espera que al momento de la contratación se pacte con cada persona un salario que alcance para su economía familiar, en una jornada completa de acuerdo con la Ley. No se trata de ser paternalistas, sino de aportar los elementos para construir una sociedad más justa donde cada persona pueda hacerse responsable de su desarrollo y del de su familia.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Tener conocimiento actualizado del salario que debería recibir, para vivir con dignidad, el personal de tiempo completo que menos ingreso recibe.",
+                                                      "Contar con un análisis comparativo anual de la distancia que existe entre el 5% del personal de tiempo completo que más ingreso total recibe, contra el 5% del personal de tiempo completo que menos ingreso total recibe, y que esta distancia no sea mayor a 20 veces (a menos que se garantice que el personal de tiempo completo que menos ingreso recibe obtiene lo suficiente para vivir con dignidad).",
+                                                      "Cuando aplique (solo para empresas mercantiles): que en el cálculo del \u0027Balance Trabajo-Capital\u0027 se cuente con un mínimo de 50% a favor del Trabajo, promediando los tres últimos años."
+                                                  ],
+                           "indicadores_obligatorios":  true,
+                           "ayuda_contextual":  "Tres principios se combinan: Necesidad (salario suficiente para vivir), Contribución (equitativo según responsabilidad y resultados) y Orden (sostenible para la empresa). El Balance Trabajo-Capital mide la proporción del valor generado que regresa al personal.",
+                           "preguntas_existencia":  [
+                                                        "¿El salario pactado con el personal de tiempo completo alcanza para cubrir sus necesidades básicas y las de su familia, sin necesidad de trabajar horas extras ni tener otro trabajo (principio de Necesidad)?",
+                                                        "¿El salario es equitativo y adecuado a cada nivel de responsabilidad, dedicación y resultados (principio de Contribución)?",
+                                                        "¿Los salarios son sostenibles por la empresa u organización (principio de Orden)?",
+                                                        "¿La empresa u organización puede capacitar al personal para mejorar su nivel de responsabilidad, dedicación y resultados, y así mejorar su economía?"
+                                                    ]
+                       },
+                       {
+                           "id":  7,
+                           "numero":  7,
+                           "tema_id":  2,
+                           "nombre":  "Cultura de la Legalidad",
+                           "titulo":  "Que exista un Programa para promover la cultura de la legalidad en todos los ámbitos, con su personal y otros grupos de influencia.",
+                           "descripcion":  "En este requisito se busca hacer conciencia de lo importante que es cumplir con la legalidad en la empresa u organización y también como ciudadanos, con el fin de promover el respeto a la dignidad humana y la sostenibilidad, en el ambiente donde nos encontremos.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "El programa debe ir más allá del cumplimiento de la ley: debe construir conciencia ciudadana. Puede abarcar temas como cultura tributaria, derechos laborales, normas de tránsito, cuidado del medio ambiente, entre otros.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa hace conciencia de lo importante que es cumplir con la legalidad al interior de la empresa u organización?",
+                                                        "¿El programa promueve el cumplimiento de la legalidad también como ciudadanos, más allá del ámbito de la empresa?",
+                                                        "¿El programa vincula la cultura de la legalidad con el respeto a la dignidad humana y la sostenibilidad en el ambiente donde se desarrolla la empresa?"
+                                                    ]
+                       },
+                       {
+                           "id":  8,
+                           "numero":  8,
+                           "tema_id":  3,
+                           "nombre":  "Salud Integral",
+                           "titulo":  "Que se cuente con un Programa para promover la salud integral (física, mental y social) de su personal y otros grupos de influencia.",
+                           "descripcion":  "Uno de los principales bienes de las personas que se deben promover es la salud. Sin salud el desarrollo humano integral, sostenible y solidario se obstaculiza. Se espera que las empresas manifiesten con claridad su compromiso de obtener, mantener y mejorar la salud del personal y sus grupos de influencia.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que se cuente con un diagnóstico integral o por área de trabajo de las condiciones de seguridad y salud del centro de trabajo.",
+                                                      "Que se cuente con un plan de acción para la atención de emergencias y contingencias sanitarias que recomienden las autoridades competentes."
+                                                  ],
+                           "indicadores_obligatorios":  true,
+                           "ayuda_contextual":  "El programa debe abordar la salud en sus tres dimensiones: física (condiciones físicas del trabajo, ergonomía), mental (NOM-035-STPS, salud emocional) y social (relaciones laborales, sentido de pertenencia). Incluir a familias es una buena práctica.",
+                           "preguntas_existencia":  [
+                                                        "¿La empresa u organización manifiesta con claridad su compromiso de obtener, mantener y mejorar la salud integral (física, mental y social) del personal y sus grupos de influencia?",
+                                                        "¿El programa atiende los aspectos más importantes y urgentes de la salud, cumpliendo con la legalidad?",
+                                                        "¿El programa reconoce la salud como un bien fundamental cuya ausencia obstaculiza el desarrollo humano integral, sostenible y solidario?"
+                                                    ]
+                       },
+                       {
+                           "id":  9,
+                           "numero":  9,
+                           "tema_id":  3,
+                           "nombre":  "Seguridad",
+                           "titulo":  "Que se cuente con un Programa para promover la seguridad del personal y otros grupos de influencia.",
+                           "descripcion":  "La seguridad y la salud son condiciones que se necesitan para poder conseguir el desarrollo humano integral, sostenible y solidario.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que se cuente con un diagnóstico integral o por área de trabajo de las condiciones de seguridad y salud del centro de trabajo.",
+                                                      "Que se cuente con un plan de acción para la atención de emergencias y contingencias sanitarias que recomienden las autoridades competentes.",
+                                                      "Establecer mecanismos de respuesta inmediata cuando se detecte un riesgo de seguridad inminente."
+                                                  ],
+                           "indicadores_obligatorios":  true,
+                           "ayuda_contextual":  "El programa de seguridad debe ir más allá de cumplir la NOM-030: debe promover activamente una cultura de seguridad. Involucrar al personal en la identificación de riesgos es clave para la participación directa.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa reconoce la seguridad como una condición necesaria para el desarrollo humano integral, sostenible y solidario, al igual que la salud?",
+                                                        "¿El programa manifiesta el compromiso de la empresa u organización de obtener, mantener y mejorar la seguridad del personal y otros grupos de influencia?",
+                                                        "¿El programa atiende los aspectos más importantes y urgentes de la seguridad, cumpliendo con la legalidad?"
+                                                    ]
+                       },
+                       {
+                           "id":  10,
+                           "numero":  10,
+                           "tema_id":  3,
+                           "nombre":  "Orden y Limpieza",
+                           "titulo":  "Que se cuente con un Programa para promover el orden y limpieza de las instalaciones de la empresa u organización.",
+                           "descripcion":  "El objetivo de este requisito es desarrollar un ambiente de trabajo agradable y eficiente, en un clima de seguridad, orden y limpieza que permita el correcto desempeño de las operaciones diarias.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "Un entorno de trabajo desorganizado y sin limpieza genera más errores, pérdida de eficiencia y reduce la paz, alegría y motivación. El programa debe incluir sanitarios, comedores y otras instalaciones de uso intensivo.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa contribuye a desarrollar un ambiente de trabajo agradable y eficiente, en un clima de seguridad, orden y limpieza que permita el correcto desempeño de las operaciones diarias?",
+                                                        "¿El programa comprende el orden y la limpieza de los sanitarios, comedores y otras instalaciones de uso intensivo del personal?",
+                                                        "¿El Comité y/o el personal de la empresa participan en las evaluaciones del orden y la limpieza?"
+                                                    ]
+                       },
+                       {
+                           "id":  11,
+                           "numero":  11,
+                           "tema_id":  3,
+                           "nombre":  "Capacitación Laboral",
+                           "titulo":  "Que se cuente con un Programa de capacitación para el personal en áreas propias de su actividad en el trabajo.",
+                           "descripcion":  "Las empresas u organizaciones deben asegurarse de que su personal sea competente basándose en su educación, formación y experiencia y cuando sea necesario, se deben tomar acciones para que las personas adquieran las competencias que les hacen falta para mejorar su ingreso y desempeñar su puesto adecuadamente.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que se capacite en la Norma CRESE al personal de la empresa u organización que tenga colaboradores a su cargo.",
+                                                      "Que se tenga un programa para detectar las necesidades de capacitación de todo el personal cada dos años."
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "La capacitación laboral debe ir más allá del cumplimiento legal: debe promover el desarrollo de competencias que mejoren el ingreso y la dignidad de las personas. El DNC (Detección de Necesidades de Capacitación) bienal es un mínimo.",
+                           "preguntas_existencia":  [
+                                                        "¿La empresa u organización se asegura de que su personal sea competente basándose en su educación, formación y experiencia?",
+                                                        "¿Se toman acciones para que las personas adquieran las competencias que les hacen falta para mejorar su ingreso y desempeñar su puesto adecuadamente?",
+                                                        "¿El programa detecta y atiende las necesidades de capacitación de todo el personal de manera periódica?"
+                                                    ]
+                       },
+                       {
+                           "id":  12,
+                           "numero":  12,
+                           "tema_id":  3,
+                           "nombre":  "Preparación Académica",
+                           "titulo":  "Que se cuente con un Programa de preparación académica para el personal de la empresa u organización.",
+                           "descripcion":  "La preparación académica se refiere a la capacitación recibida que no tiene relación directa con el trabajo de la persona. La preparación académica amplía el conocimiento teórico-práctico y la visión panorámica que favorece el desarrollo humano integral, sostenible y solidario de las personas.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+
+                                                  ],
+                           "indicadores_obligatorios":  true,
+                           "ayuda_contextual":  "A diferencia del requisito 11 (capacitación laboral), este requisito se enfoca en la formación que no está directamente vinculada al puesto de trabajo: cultura general, valores, idiomas, finanzas personales, salud, arte, etc. Capacitar en Ecología Humana es especialmente recomendado.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa de preparación académica amplía el conocimiento teórico-práctico y la visión panorámica del personal, más allá de las actividades propias de su trabajo?",
+                                                        "¿El programa contribuye al desarrollo humano integral, sostenible y solidario de las personas que trabajan en la empresa u organización?",
+                                                        "¿Se capacita al personal en Ecología Humana u otros temas que promuevan el respeto a la dignidad de la persona y su desarrollo integral, sostenible y solidario?"
+                                                    ]
+                       },
+                       {
+                           "id":  13,
+                           "numero":  13,
+                           "tema_id":  3,
+                           "nombre":  "Programa de Propuestas",
+                           "titulo":  "Que se cuente con un Programa para promover y dar seguimiento a las ideas, propuestas o compromisos concretos de todo el personal y otros grupos de influencia para fortalecer la ética y mejorar la productividad.",
+                           "descripcion":  "Promover la participación equivale a reconocer que la persona es capaz de tener buenas ideas y de ayudar a la empresa a mejorar. Sin embargo, no siempre es posible lograr, en primera instancia, la participación del personal.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que se cuente con un mecanismo (buzón de sugerencias, correo electrónico, etc.) para canalizar las ideas, propuestas o compromisos concretos de todo el personal."
+                                                  ],
+                           "indicadores_obligatorios":  true,
+                           "ayuda_contextual":  "El programa debe contar con formatos para obtener iniciativas bien estructuradas que de manera recurrente logren mejoras en ética, calidad y productividad. Pueden generarse por equipos de trabajo o de manera individual.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa reconoce la capacidad del personal para aportar buenas ideas y ayudar a la empresa u organización a mejorar su ética y productividad?",
+                                                        "¿La autoridad en la empresa trabaja activamente para superar los obstáculos culturales y sociales que se interponen a la participación del personal?",
+                                                        "¿Se cuenta con formatos u herramientas para obtener iniciativas bien estructuradas que de manera recurrente logren mejoras en ética, calidad y productividad, ya sea de manera individual o por equipos de trabajo?"
+                                                    ]
+                       },
+                       {
+                           "id":  14,
+                           "numero":  14,
+                           "tema_id":  4,
+                           "nombre":  "Integración y Desarrollo Familiar",
+                           "titulo":  "Que exista un Programa para promover la integración y el desarrollo integral de las familias del personal de la empresa u organización.",
+                           "descripcion":  "Debemos reconocer la gran variedad de situaciones familiares que se viven y que brindan estabilidad a las personas y a la sociedad, incluyendo al mundo del trabajo. Las empresas y organizaciones, como protagonistas de la sociedad, pueden colaborar en el fortalecimiento de las familias de su personal.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "Los programas para cumplir con este requisito deben ir más allá del pago de un salario y la provisión de bienes materiales. Pueden extenderse los programas de la empresa a las familias del personal: salud, capacitación, cultura, deporte.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa reconoce la gran variedad de situaciones familiares del personal y colabora en el fortalecimiento de sus familias?",
+                                                        "¿El programa va más allá del pago de un salario y la provisión de bienes materiales, acompañando a las familias en sus diferentes roles y en el cuidado de sus miembros?",
+                                                        "¿El programa ayuda al personal a superar los riesgos que amenazan a sus familias y estimula la estabilidad de la unión conyugal?",
+                                                        "¿Los programas de la empresa u organización se extienden directamente a las familias del personal?"
+                                                    ]
+                       },
+                       {
+                           "id":  15,
+                           "numero":  15,
+                           "tema_id":  4,
+                           "nombre":  "Armonización Trabajo-Familia",
+                           "titulo":  "Que exista un Programa para armonizar el tiempo dedicado al trabajo y familia, especialmente cuando se encuentran en situación de vulnerabilidad.",
+                           "descripcion":  "Se debe organizar y adaptar la actividad laboral, en la medida que sea posible, de manera que sean respetadas las necesidades familiares de las personas. Es en beneficio de todas las partes que las personas que trabajan puedan desarrollar plenamente sus funciones en el trabajo y en la familia.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "Las situaciones de vulnerabilidad familiar incluyen: enfermedades graves, cuidado de adultos mayores, hijos con discapacidad, pérdidas familiares, entre otras. El programa debe contemplar flexibilidad, permisos especiales y apoyos concretos.",
+                           "preguntas_existencia":  [
+                                                        "¿La empresa u organización organiza y adapta la actividad laboral, en la medida que sea posible, para que sean respetadas las necesidades familiares de las personas?",
+                                                        "¿El programa garantiza que las personas puedan desarrollar plenamente sus funciones en el trabajo y en la familia, sin discriminaciones ni exclusiones?",
+                                                        "¿El programa atiende de manera especial a las personas y familias que se encuentran en situación de vulnerabilidad, considerando a niños, adultos mayores, personas con discapacidad o con enfermedades crónicas?"
+                                                    ]
+                       },
+                       {
+                           "id":  16,
+                           "numero":  16,
+                           "tema_id":  4,
+                           "nombre":  "Apoyo a la Desvinculación Laboral",
+                           "titulo":  "Que exista un Programa para dar orientación y apoyo a las personas que sean separadas de su trabajo para que puedan encontrar otra fuente de ingresos.",
+                           "descripcion":  "Se espera que las empresas traten a las personas con el respeto que merece su dignidad, especialmente cuando son separadas de su trabajo y se ven privadas del sustento necesario para mantener a sus familias. Este requisito no aplica en casos de jubilaciones o renuncias voluntarias.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Una lista del personal separado de la empresa u organización en el último año o en el último periodo de certificación y explicación detallada del motivo y trato a su salida."
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "Este requisito aplica incluso para personas que fueron separadas por dolo, negligencia o mala fe. Las empresas deben explorar alternativas: canalizarlas a programas de formación en valores, capacitaciones o empleos dignos.",
+                           "preguntas_existencia":  [
+                                                        "¿La empresa u organización trata a las personas separadas de su trabajo con el respeto que merece su dignidad, especialmente al verse privadas del sustento necesario para mantener a sus familias?",
+                                                        "¿La empresa explora alternativas para apoyar a las personas afectadas, incluso si han actuado con dolo, negligencia o mala fe, canalizándolas a programas de formación en valores o capacitaciones?",
+                                                        "¿El programa promueve el acceso a un empleo digno para las personas separadas y vela por el bienestar de sus familias?"
+                                                    ]
+                       },
+                       {
+                           "id":  17,
+                           "numero":  17,
+                           "tema_id":  5,
+                           "nombre":  "Inclusión Efectiva",
+                           "titulo":  "Que exista en la empresa u organización un programa de inclusión efectiva para todas las personas especialmente aquellas que se encuentran en situación vulnerable.",
+                           "descripcion":  "La participación de las personas y grupos en situación de vulnerabilidad es esencial para construir una cultura de cuidado y promover el bien común. Es fundamental adaptar y diseñar puestos de trabajo, instalaciones, horarios y otros aspectos laborales para que se ajusten a las necesidades de cada persona.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que se cuente con lineamientos para prevenir la discriminación, fomentar la equidad y el respeto (NOM 035 STPS, 8.2-a-2, protocolo para prevenir, erradicar y atender la violencia, o equivalente).",
+                                                      "Que se cumpla con un 5% de personal de los siguientes grupos de interés: personas mayores de 60 años, personas ex convictas y/o con alguna discapacidad y, en el momento de la contratación, a las personas mayores a 50 años y a las mujeres embarazadas."
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "La Inclusión Laboral Efectiva (ILE) tiene dos vertientes: el análisis de puestos que puedan ocuparse por personas en situación de vulnerabilidad y su desarrollo. Evita que las personas vulnerables sean usadas solo para cumplir un requisito.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa adapta y diseña puestos de trabajo, instalaciones, horarios y otros aspectos laborales para que se ajusten a las necesidades de cada persona?",
+                                                        "¿El programa atiende de manera especial a quienes enfrentan dificultades para defender sus derechos, por haber sido ignorados, marginados, maltratados o discriminados?",
+                                                        "¿La participación de las personas y grupos en situación de vulnerabilidad contribuye a construir una cultura de cuidado y a promover el bien común en la empresa u organización?"
+                                                    ]
+                       },
+                       {
+                           "id":  18,
+                           "numero":  18,
+                           "tema_id":  5,
+                           "nombre":  "Programa de Becarios",
+                           "titulo":  "Que exista un programa de contratación y desarrollo para becarios y becarias con el objetivo de brindarles la oportunidad de enriquecer su currículum con experiencia laboral.",
+                           "descripcion":  "Personas jóvenes sin experiencia, o las personas que no tienen experiencia laboral, son actualmente las más desempleadas. Este programa debe estar dirigido a personas jóvenes estudiantes, con un tiempo de contratación como becario o becaria limitado y un plan de desarrollo bien definido.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "Es esencial que los becarios o becarias no se dediquen a tareas básicas que solo ocupen su tiempo, sino que se les asignen actividades que les permitan adquirir habilidades útiles y relevantes para su crecimiento profesional.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa está dirigido a personas jóvenes estudiantes, con un tiempo de contratación como becario o becaria limitado y un plan de desarrollo bien definido?",
+                                                        "¿A los becarios o becarias se les asignan actividades que les permitan adquirir habilidades útiles y relevantes para su crecimiento profesional, más allá de tareas básicas que solo ocupen su tiempo?",
+                                                        "¿El programa responde al principio de Solidaridad de la Norma, apoyando a jóvenes que actualmente son los más desempleados en relación con la población económicamente activa?"
+                                                    ]
+                       },
+                       {
+                           "id":  19,
+                           "numero":  19,
+                           "tema_id":  5,
+                           "nombre":  "Desarrollo de Proveedores",
+                           "titulo":  "Que exista un programa para desarrollar proveedores locales y proveedores con Calidad Humana y Responsabilidad Social.",
+                           "descripcion":  "A medida que aumentan las relaciones globales, lo local es cada vez más importante para la vida cotidiana de las personas. Si abandonamos el ámbito de lo local por la inserción global, estaríamos en riesgo de perder nuestro sentido de identidad y pertenencia.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que se promueva el respeto a los Derechos Humanos y Laborales del personal de sus proveedores de bienes y servicios."
+                                                  ],
+                           "indicadores_obligatorios":  true,
+                           "ayuda_contextual":  "El programa debe incluir criterios de Calidad Humana y Responsabilidad Social en la selección y evaluación de proveedores, y debe fomentar el desarrollo de proveedores locales que compartan los valores de la Norma CRESE.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa promueve el desarrollo de proveedores locales, reconociendo la importancia de lo local para el sentido de identidad y pertenencia de las personas?",
+                                                        "¿El programa impulsa que los proveedores de bienes y servicios cuenten con prácticas de Calidad Humana y Responsabilidad Social?"
+                                                    ]
+                       },
+                       {
+                           "id":  20,
+                           "numero":  20,
+                           "tema_id":  5,
+                           "nombre":  "Ayuda a la Comunidad",
+                           "titulo":  "Que exista un Programa para que la empresa u organización y su personal ayude a mejorar la calidad de vida de las personas de los grupos o sectores más pobres, pequeños y/o débiles de las comunidades más cercanas.",
+                           "descripcion":  "La Norma CRESE 2025 promueve el principio de Solidaridad como un beneficio para todas las personas, pero también como un deber. Es necesario que el personal y, si es posible, otros grupos de influencia, participen activamente en tareas de ayuda a la comunidad.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que la empresa u organización identifique y evalúe sus impactos sociales negativos, actuales y potenciales."
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "El personal debe participar activamente en sus tiempos libres o tomando un poco del tiempo de la empresa, sin afectar su trabajo. Un diagnóstico de impacto social negativo es el punto de partida para definir las acciones de ayuda comunitaria.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa promueve que el personal, y si es posible otros grupos de influencia, participen activamente en tareas de ayuda a la comunidad, en sus tiempos libres o tomando un poco del tiempo de la empresa, sin afectar su trabajo?",
+                                                        "¿El programa atiende a los grupos o sectores más pobres, pequeños y/o débiles de las comunidades más cercanas a la empresa u organización?",
+                                                        "¿El programa parte de la identificación y evaluación de los impactos sociales negativos, actuales y potenciales, de la empresa u organización?"
+                                                    ]
+                       },
+                       {
+                           "id":  21,
+                           "numero":  21,
+                           "tema_id":  6,
+                           "nombre":  "Cuidado del Suelo",
+                           "titulo":  "Que exista un Programa de concientización y práctica para cuidado del suelo por parte de la empresa u organización y su personal.",
+                           "descripcion":  "Es urgente aumentar la consideración por el cuidado del medio ambiente desde un enfoque más humano, que requiere una mirada integral e integradora que incluya el análisis de los contextos humanos, familiares, laborales, urbanos y de la relación de cada persona consigo misma.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que la empresa u organización identifique y evalúe sus impactos ambientales negativos, actuales y potenciales en el suelo."
+                                                  ],
+                           "indicadores_obligatorios":  true,
+                           "ayuda_contextual":  "El programa puede sustituirse por un programa de concientización y práctica de la protección de la biodiversidad. El diagnóstico de impacto ambiental en el suelo es el punto de partida.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa promueve la concientización del personal sobre la importancia del cuidado del suelo, reconociendo que los deberes con el ambiente están relacionados con los que tenemos con las personas?",
+                                                        "¿El programa incluye prácticas concretas para el cuidado y protección del suelo por parte de la empresa u organización y su personal?",
+                                                        "¿El programa parte de la identificación y evaluación de los impactos ambientales negativos, actuales y potenciales, de la empresa en el suelo?"
+                                                    ]
+                       },
+                       {
+                           "id":  22,
+                           "numero":  22,
+                           "tema_id":  6,
+                           "nombre":  "Cuidado del Aire",
+                           "titulo":  "Que exista un Programa de concientización y práctica para cuidado del aire y atmósfera por parte de la empresa u organización y su personal.",
+                           "descripcion":  "Los deberes que tenemos con el ambiente están relacionados con los que tenemos con las personas. No se pueden exigir unos y quebrantar otros. La experiencia demuestra que toda actitud irrespetuosa con el medio ambiente conlleva daños a la convivencia humana, y viceversa.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que la empresa u organización identifique y evalúe sus impactos ambientales negativos, actuales y potenciales en el aire."
+                                                  ],
+                           "indicadores_obligatorios":  true,
+                           "ayuda_contextual":  "El programa puede incluir acciones de reducción de emisiones, uso de energías limpias, gestión de gases refrigerantes, reducción de huella de carbono, entre otros. Puede sustituirse por un programa de biodiversidad.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa promueve la concientización del personal sobre la importancia del cuidado del aire y la atmósfera, reconociendo que toda actitud irrespetuosa con el medio ambiente conlleva daños a la convivencia humana?",
+                                                        "¿El programa incluye prácticas concretas para reducir los impactos negativos de la empresa u organización en el aire?",
+                                                        "¿El programa parte de la identificación y evaluación de los impactos ambientales negativos, actuales y potenciales, de la empresa en el aire?"
+                                                    ]
+                       },
+                       {
+                           "id":  23,
+                           "numero":  23,
+                           "tema_id":  6,
+                           "nombre":  "Cuidado del Agua",
+                           "titulo":  "Que exista un Programa de concientización y práctica para cuidado del agua por parte de la empresa u organización y su personal.",
+                           "descripcion":  "Toda la realidad está interconectada; debemos escuchar al mismo tiempo el clamor de los necesitados y el de la naturaleza. De esta escucha atenta y constante puede surgir un cuidado eficaz de la tierra, nuestra casa común y de los pobres.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que la empresa u organización identifique y evalúe sus impactos ambientales negativos, actuales y potenciales en el agua."
+                                                  ],
+                           "indicadores_obligatorios":  true,
+                           "ayuda_contextual":  "El programa puede incluir acciones de reducción del consumo, tratamiento de aguas residuales, reutilización, captación pluvial, entre otros. Puede sustituirse por un programa de biodiversidad.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa promueve la concientización del personal sobre la importancia del cuidado del agua, como parte de la responsabilidad integral de la empresa con el medio ambiente?",
+                                                        "¿El programa incluye prácticas concretas para reducir los impactos negativos de la empresa u organización en el agua?",
+                                                        "¿El programa parte de la identificación y evaluación de los impactos ambientales negativos, actuales y potenciales, de la empresa en el agua?"
+                                                    ]
+                       },
+                       {
+                           "id":  24,
+                           "numero":  24,
+                           "tema_id":  7,
+                           "nombre":  "Valores y Principios",
+                           "titulo":  "Que exista un programa que sirva para promover el conocimiento, asimilación y práctica de los principios y valores que se hayan establecido por la empresa u organización.",
+                           "descripcion":  "La práctica de estos principios y valores debe impregnar todas las políticas y acciones de la empresa y puede constituir un pilar para tener un sentido de identidad, que mejore la unidad interna y la autoestima del personal.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que se cuente con una lista de valores con su definición.",
+                                                      "Que se cuente con un mecanismo o procedimiento que permita detectar y corregir las fallas en la práctica de los principios y valores de la empresa u organización."
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "El programa de valores debe ir más allá de tenerlos publicados en las paredes: debe promover su conocimiento, comprensión, asimilación y práctica cotidiana. Un mecanismo para detectar y corregir fallas en la práctica es el mínimo auditable clave.",
+                           "preguntas_existencia":  [
+                                                        "¿La práctica de los principios y valores impregna todas las políticas y acciones de la empresa u organización?",
+                                                        "¿El programa contribuye a fortalecer el sentido de identidad, la unidad interna y la autoestima del personal?",
+                                                        "¿El programa promueve el conocimiento, la asimilación y la práctica de los principios y valores establecidos por la empresa u organización?"
+                                                    ]
+                       },
+                       {
+                           "id":  25,
+                           "numero":  25,
+                           "tema_id":  7,
+                           "nombre":  "Sentido Humano y Trascendente del Trabajo",
+                           "titulo":  "Que existan otros programas para fortalecer aún más el sentido humano y trascendente del trabajo.",
+                           "descripcion":  "Para asegurar que no se deja a un lado la cuestión antropológica, compleja y siempre incompleta debido al desarrollo que todas las personas buscan, se plantean programas que fortalecerán aún más la dimensión subjetiva del trabajo.",
+                           "es_programa":  true,
+                           "solo_existencia":  false,
+                           "criterios_evaluables":  [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5
+                                                    ],
+                           "minimos_auditables":  [
+                                                      "Que se capacite al personal con gente a su cargo, para desarrollar un estilo de liderazgo con sentido humano, de preferencia que contemple los valores de la humildad, congruencia, participación y desarrollo.",
+                                                      "Que se sensibilice a todo el personal en el tema del valor trascendente del trabajo."
+                                                  ],
+                           "indicadores_obligatorios":  false,
+                           "ayuda_contextual":  "Ejemplos de programas: fomentar cultura de libertad responsable, promover lenguaje edificante, impulsar amor por la patria, fortalecer valores morales universales, ofrecer espacios para el desarrollo espiritual y religioso. El liderazgo con sentido humano es el mínimo clave.",
+                           "preguntas_existencia":  [
+                                                        "¿El programa fomenta una cultura de libertad responsable y promueve el uso de un lenguaje edificante, respetuoso y accesible?",
+                                                        "¿El programa fortalece el compromiso con la vivencia de valores morales universales, como base de la convivencia y del desarrollo integral?",
+                                                        "¿El programa ofrece espacios para el desarrollo de la dimensión espiritual y religiosa del personal, como celebraciones o momentos de oración u otras prácticas que favorezcan una relación personal con Dios?",
+                                                        "¿El programa impulsa el reconocimiento, agradecimiento y amor por la patria, como expresión de identidad, pertenencia y compromiso cívico?"
+                                                    ]
+                       }
+                   ],
+    "criterios":  [
+                      {
+                          "id":  1,
+                          "clave":  "existencia",
+                          "nombre":  "Existencia y Funcionamiento",
+                          "descripcion":  "Evalúa si existe y opera adecuadamente el elemento solicitado por el requisito. La mejor evidencia es la documentación formal y escrita. El funcionamiento se refiere a que la práctica se lleva a cabo, cumple con su objetivo y tiene un impacto real.",
+                          "escala":  [
+                                         {
+                                             "valor":  100,
+                                             "descripcion":  "Existe evidencia documentada completa, el elemento funciona plenamente y tiene impacto real demostrable en los últimos dos años."
+                                         },
+                                         {
+                                             "valor":  75,
+                                             "descripcion":  "Existe evidencia documentada suficiente y el elemento funciona con algunos aspectos por mejorar."
+                                         },
+                                         {
+                                             "valor":  50,
+                                             "descripcion":  "Existe evidencia parcial o el elemento funciona de manera incompleta o irregular."
+                                         },
+                                         {
+                                             "valor":  25,
+                                             "descripcion":  "Existe evidencia mínima o el elemento está en etapa inicial de implementación."
+                                         },
+                                         {
+                                             "valor":  0,
+                                             "descripcion":  "No existe evidencia o el elemento no ha sido implementado."
+                                         }
+                                     ]
+                      },
+                      {
+                          "id":  2,
+                          "clave":  "difusion",
+                          "nombre":  "Difusión y Conocimiento",
+                          "descripcion":  "Evalúa si las personas conocen, comprenden y utilizan el programa o práctica. La difusión no equivale al conocimiento: es necesario garantizar que el proceso de comunicación culmine en un entendimiento claro y efectivo.",
+                          "escala":  [
+                                         {
+                                             "valor":  100,
+                                             "descripcion":  "Todo el personal del alcance definido conoce y comprende el programa. Existen evidencias de comprensión efectiva (evaluaciones, testimonios, uso activo)."
+                                         },
+                                         {
+                                             "valor":  75,
+                                             "descripcion":  "La mayoría del personal del alcance conoce el programa con evidencias de comunicación efectiva, con algunos gaps por atender."
+                                         },
+                                         {
+                                             "valor":  50,
+                                             "descripcion":  "El programa ha sido comunicado pero el conocimiento es parcial o superficial. La difusión llegó pero no se verificó la comprensión."
+                                         },
+                                         {
+                                             "valor":  25,
+                                             "descripcion":  "La difusión es incipiente o limitada a algunos grupos. La mayoría del personal desconoce el programa."
+                                         },
+                                         {
+                                             "valor":  0,
+                                             "descripcion":  "No existe difusión o el personal desconoce el programa o práctica."
+                                         }
+                                     ]
+                      },
+                      {
+                          "id":  3,
+                          "clave":  "participacion",
+                          "nombre":  "Participación Directa",
+                          "descripcion":  "Evalúa el grado de involucramiento de los distintos grupos de interés en las cuatro dimensiones: Propuesta, Diseño, Ejecución y Revisión; y en los cinco grupos: Dirección General, Responsable del Programa, Comité Interno, Personal y Otros Grupos de Interés.",
+                          "usa_matriz":  true
+                      },
+                      {
+                          "id":  4,
+                          "clave":  "innovacion",
+                          "nombre":  "Innovación o Mejora",
+                          "descripcion":  "Evalúa si existen mejoras, actualizaciones o innovaciones realizadas durante el periodo evaluado en el indicador/métrica, en cualquiera de los cinco criterios, o en algún elemento del programa (objetivo, alcance, procedimiento).",
+                          "escala":  [
+                                         {
+                                             "valor":  100,
+                                             "descripcion":  "Se realizaron innovaciones o mejoras significativas y documentadas en múltiples aspectos del programa durante los últimos dos años, con evidencia de impacto medible."
+                                         },
+                                         {
+                                             "valor":  75,
+                                             "descripcion":  "Se realizaron mejoras documentadas en al menos un aspecto relevante del programa con evidencia de impacto."
+                                         },
+                                         {
+                                             "valor":  50,
+                                             "descripcion":  "Se realizaron mejoras menores o se iniciaron procesos de mejora, con evidencia parcial."
+                                         },
+                                         {
+                                             "valor":  25,
+                                             "descripcion":  "Existe intención de mejorar o mejoras muy incipientes sin evidencia de impacto real."
+                                         },
+                                         {
+                                             "valor":  0,
+                                             "descripcion":  "No se realizaron innovaciones o mejoras en el periodo evaluado."
+                                         }
+                                     ]
+                      },
+                      {
+                          "id":  5,
+                          "clave":  "vinculacion",
+                          "nombre":  "Vinculación con la Dirección Estratégica",
+                          "descripcion":  "Evalúa si el requisito está alineado con la estrategia y objetivos de la organización (Propósito, Misión, Visión, Valores, líneas estratégicas). El vínculo es más evidente cuando la gerencia o dirección participa directamente en el Comité Interno.",
+                          "escala":  [
+                                         {
+                                             "valor":  100,
+                                             "descripcion":  "El programa está explícitamente vinculado a los elementos estratégicos de la empresa y la dirección participa activamente. Existen evidencias documentadas de esta vinculación."
+                                         },
+                                         {
+                                             "valor":  75,
+                                             "descripcion":  "El programa está vinculado a la estrategia de la empresa con evidencia documental, aunque la participación directiva es ocasional."
+                                         },
+                                         {
+                                             "valor":  50,
+                                             "descripcion":  "Existe una vinculación implícita o verbal con la estrategia, sin evidencia documental suficiente."
+                                         },
+                                         {
+                                             "valor":  25,
+                                             "descripcion":  "La vinculación estratégica es mínima o está siendo construida."
+                                         },
+                                         {
+                                             "valor":  0,
+                                             "descripcion":  "No existe vinculación documentada entre el programa y la dirección estratégica de la empresa."
+                                         }
+                                     ]
+                      }
+                  ],
+    "matriz_participacion":  {
+                                 "filas":  [
+                                               "Propuesta",
+                                               "Diseño",
+                                               "Ejecución",
+                                               "Revisión"
+                                           ],
+                                 "columnas":  [
+                                                  "Dirección General",
+                                                  "Responsable del Programa",
+                                                  "Comité Interno",
+                                                  "Personal",
+                                                  "Otros Grupos de Interés"
+                                              ]
+                             },
+    "categorias_certificacion":  [
+                                     {
+                                         "min":  60,
+                                         "max":  69.9,
+                                         "categoria":  "Empresa Comprometida"
+                                     },
+                                     {
+                                         "min":  70,
+                                         "max":  79.9,
+                                         "categoria":  "Empresa Destacada"
+                                     },
+                                     {
+                                         "min":  80,
+                                         "max":  89.9,
+                                         "categoria":  "Empresa Sobresaliente"
+                                     },
+                                     {
+                                         "min":  90,
+                                         "max":  100,
+                                         "categoria":  "Empresa Ejemplar"
+                                     }
+                                 ]
 }
