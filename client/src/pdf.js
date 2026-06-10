@@ -122,7 +122,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.setTextColor(...sc(proyectado));
   doc.text(`${proyectado.toFixed(1)}%`, b2x + boxW / 2, y + 52, { align: 'center' });
 
-  y += boxH + 10;
+  y += boxH + 22;
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(...sc(proyectado));
