@@ -181,6 +181,7 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
   const usaNuevaMetodologia = requisito.numero >= 5;
 
   const [minimosCumplidos, setMinimosCumplidos] = useState({});
+  const [indicadoresCumplidos, setIndicadoresCumplidos] = useState({});
   const [bloqueado, setBloqueado] = useState(false);
   const [scores, setScores] = useState({ 1: null, 2: null, 3: null, 4: null, 5: null });
   const [notas, setNotas] = useState({ 1: '', 2: '', 3: '', 4: '', 5: '' });
@@ -194,6 +195,7 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
       const ev = evs.find(e => e.requisito_id === requisito.id);
       if (ev) {
         setMinimosCumplidos(ev.minimos_detalle || {});
+        setIndicadoresCumplidos(ev.indicadores_obligatorios_detalle || {});
         setBloqueado(!!ev.bloqueado);
         setScores({
           1: ev.puntuacion_criterio_1,
@@ -222,7 +224,13 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
     ? requisito.minimos_auditables.filter((_, i) => minimosCumplidos[i] === false).length
     : 0;
   const allMinimosAnswered = requisito.minimos_auditables?.every((_, i) => minimosCumplidos[i] !== undefined) ?? true;
-  const isBlocked = requisito.minimos_auditables?.length > 0 && minimosFallados > 0;
+
+  const indicadores = Array.isArray(requisito.indicadores_obligatorios) ? requisito.indicadores_obligatorios : [];
+  const indicadoresFallados = indicadores.filter((_, i) => indicadoresCumplidos[i] === false).length;
+  const allIndicadoresAnswered = indicadores.length === 0 || indicadores.every((_, i) => indicadoresCumplidos[i] !== undefined);
+  const isBlockedByIndicadores = indicadores.length > 0 && indicadoresFallados > 0;
+
+  const isBlocked = (requisito.minimos_auditables?.length > 0 && minimosFallados > 0) || isBlockedByIndicadores;
 
   const computeParticipacionScore = () => {
     const cumple = Object.values(matriz).filter(Boolean).length;
@@ -241,6 +249,7 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
     await api.evaluaciones.save(diagId, requisito.id, {
       minimos_cumplidos: !isBlocked,
       minimos_detalle: minimosCumplidos,
+      indicadores_obligatorios_detalle: indicadoresCumplidos,
       bloqueado: isBlocked,
       existencia_subelementos: usaNuevaMetodologia ? existenciaSub : null,
       puntuacion_criterio_1: score1,
@@ -331,8 +340,8 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
             }`}
           >
             {tab.label}
-            {tab.id === 'minimos' && minimosFallados > 0 && (
-              <span className="ml-1 w-4 h-4 inline-flex items-center justify-center bg-red-500 text-white text-xs rounded-full">{minimosFallados}</span>
+            {tab.id === 'minimos' && (minimosFallados + indicadoresFallados) > 0 && (
+              <span className="ml-1 w-4 h-4 inline-flex items-center justify-center bg-red-500 text-white text-xs rounded-full">{minimosFallados + indicadoresFallados}</span>
             )}
           </button>
         ))}
@@ -379,9 +388,57 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
                 </div>
               ))}
             </div>
-            {allMinimosAnswered && !isBlocked && (
+            {allMinimosAnswered && minimosFallados === 0 && (
               <div className="mt-4 p-3 bg-green-50 border border-green-100 rounded-lg">
                 <p className="text-xs text-green-700 font-medium">✓ Todos los mínimos auditables se cumplen. Puedes continuar con los criterios de evaluación.</p>
+              </div>
+            )}
+
+            {/* Indicadores Obligatorios */}
+            {indicadores.length > 0 && (
+              <div className="mt-6">
+                <h3 className="text-sm font-semibold text-gray-800 mb-1">Indicadores Obligatorios</h3>
+                <p className="text-xs text-gray-500 mb-4">
+                  Evalúa cada indicador obligatorio. Si alguno no se cumple, el requisito quedará bloqueado al igual que los mínimos auditables.
+                </p>
+                <div className="space-y-4">
+                  {indicadores.map((ind, i) => (
+                    <div key={i} className={`p-4 rounded-lg border transition-colors ${
+                      indicadoresCumplidos[i] === true ? 'border-green-200 bg-green-50'
+                      : indicadoresCumplidos[i] === false ? 'border-red-200 bg-red-50'
+                      : 'border-gray-100 bg-gray-50'
+                    }`}>
+                      <p className="text-sm text-gray-700 leading-relaxed mb-3">{ind}</p>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => setIndicadoresCumplidos(m => ({ ...m, [i]: true }))}
+                          className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all border ${
+                            indicadoresCumplidos[i] === true
+                              ? 'bg-green-500 text-white border-green-500'
+                              : 'bg-white text-gray-500 border-gray-200 hover:border-green-400 hover:text-green-600'
+                          }`}
+                        >
+                          ✓ Cumple
+                        </button>
+                        <button
+                          onClick={() => setIndicadoresCumplidos(m => ({ ...m, [i]: false }))}
+                          className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all border ${
+                            indicadoresCumplidos[i] === false
+                              ? 'bg-red-500 text-white border-red-500'
+                              : 'bg-white text-gray-500 border-gray-200 hover:border-red-400 hover:text-red-600'
+                          }`}
+                        >
+                          ✕ No Cumple
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {allIndicadoresAnswered && !isBlockedByIndicadores && (
+                  <div className="mt-4 p-3 bg-green-50 border border-green-100 rounded-lg">
+                    <p className="text-xs text-green-700 font-medium">✓ Todos los indicadores obligatorios se cumplen.</p>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -485,16 +542,16 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
           <button
             className="btn-primary"
             onClick={() => save(true)}
-            disabled={saving || (requisito.minimos_auditables?.length > 0 && !allMinimosAnswered)}
+            disabled={saving || (requisito.minimos_auditables?.length > 0 && !allMinimosAnswered) || (indicadores.length > 0 && !allIndicadoresAnswered)}
           >
             {saving ? 'Guardando...' : isBlocked ? 'Registrar como No Cumple →' : 'Finalizar requisito →'}
           </button>
         </div>
       </div>
 
-      {requisito.minimos_auditables?.length > 0 && !allMinimosAnswered && (
+      {((requisito.minimos_auditables?.length > 0 && !allMinimosAnswered) || (indicadores.length > 0 && !allIndicadoresAnswered)) && (
         <p className="text-xs text-amber-600 text-right mt-2">
-          Responde todos los mínimos auditables para poder finalizar.
+          Responde todos los mínimos auditables e indicadores obligatorios para poder finalizar.
         </p>
       )}
     </div>

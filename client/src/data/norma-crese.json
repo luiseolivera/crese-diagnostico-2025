@@ -104,7 +104,10 @@
                                                       "Que el Comité Interno elabore un plan anual con reuniones periódicas, que tenga como base un análisis de los temas relevantes para la empresa y sus grupos de influencia (Análisis de materialidad).",
                                                       "Que el Comité Interno se reúna al menos una vez cada dos años, para analizar en equipo la documentación y el funcionamiento de cada uno de los requisitos de esta Norma, principalmente para proponer mejoras."
                                                   ],
-                           "indicadores_obligatorios":  true,
+                           "indicadores_obligatorios":  [
+                                                  "Índice de rotación del personal por antigüedad dividido por hombres y mujeres.",
+                                                  "% de personas del total de la empresa que participan en el Comité."
+                                              ],
                            "ayuda_contextual":  "El Comité Interno es el motor del sistema CRESE en la empresa. Sus principales objetivos son: implantar el sistema, conseguir y renovar el Certificado CRESE, promover la difusión, la participación directa y la innovación o mejora de las prácticas de Calidad Humana, Responsabilidad Social y Sostenibilidad.",
                            "preguntas_existencia":  [
                                                         "¿El Comité Interno funciona como una ayuda eficaz para que las prácticas de la Norma promuevan el respeto a la dignidad de la persona y su desarrollo integral, sostenible y solidario?",
@@ -249,7 +252,9 @@
                                                       "Contar con un análisis comparativo anual de la distancia que existe entre el 5% del personal de tiempo completo que más ingreso total recibe, contra el 5% del personal de tiempo completo que menos ingreso total recibe, y que esta distancia no sea mayor a 20 veces (a menos que se garantice que el personal de tiempo completo que menos ingreso recibe obtiene lo suficiente para vivir con dignidad).",
                                                       "Cuando aplique (solo para empresas mercantiles): que en el cálculo del \u0027Balance Trabajo-Capital\u0027 se cuente con un mínimo de 50% a favor del Trabajo, promediando los tres últimos años."
                                                   ],
-                           "indicadores_obligatorios":  true,
+                           "indicadores_obligatorios":  [
+                                                  "Balance Trabajo y Capital (para empresas mercantiles): ([Costos y gastos totales a favor del personal] + [PTU]) / ([Utilidad neta después de impuestos] + [Costos y gastos totales a favor del personal sin PTU])."
+                                              ],
                            "ayuda_contextual":  "Tres principios se combinan: Necesidad (salario suficiente para vivir), Contribución (equitativo según responsabilidad y resultados) y Orden (sostenible para la empresa). El Balance Trabajo-Capital mide la proporción del valor generado que regresa al personal.",
                            "preguntas_existencia":  [
                                                         "¿El salario pactado con el personal de tiempo completo alcanza para cubrir sus necesidades básicas y las de su familia, sin necesidad de trabajar horas extras ni tener otro trabajo (principio de Necesidad)?",
@@ -305,7 +310,9 @@
                                                       "Que se cuente con un diagnóstico integral o por área de trabajo de las condiciones de seguridad y salud del centro de trabajo.",
                                                       "Que se cuente con un plan de acción para la atención de emergencias y contingencias sanitarias que recomienden las autoridades competentes."
                                                   ],
-                           "indicadores_obligatorios":  true,
+                           "indicadores_obligatorios":  [
+                                                  "Promedio diario de personas con incapacidad por enfermedad = Número de días de incapacidad por enfermedad del período / Total de días del período."
+                                              ],
                            "ayuda_contextual":  "El programa debe abordar la salud en sus tres dimensiones: física (condiciones físicas del trabajo, ergonomía), mental (NOM-035-STPS, salud emocional) y social (relaciones laborales, sentido de pertenencia). Incluir a familias es una buena práctica.",
                            "preguntas_existencia":  [
                                                         "¿La empresa u organización manifiesta con claridad su compromiso de obtener, mantener y mejorar la salud integral (física, mental y social) del personal y sus grupos de influencia?",
@@ -334,7 +341,9 @@
                                                       "Que se cuente con un plan de acción para la atención de emergencias y contingencias sanitarias que recomienden las autoridades competentes.",
                                                       "Establecer mecanismos de respuesta inmediata cuando se detecte un riesgo de seguridad inminente."
                                                   ],
-                           "indicadores_obligatorios":  true,
+                           "indicadores_obligatorios":  [
+                                                  "Promedio diario de personas con incapacidad por accidentes de trabajo = Número de días de incapacidad por accidentes de trabajo del período / Total de días del período."
+                                              ],
                            "ayuda_contextual":  "El programa de seguridad debe ir más allá de cumplir la NOM-030: debe promover activamente una cultura de seguridad. Involucrar al personal en la identificación de riesgos es clave para la participación directa.",
                            "preguntas_existencia":  [
                                                         "¿El programa reconoce la seguridad como una condición necesaria para el desarrollo humano integral, sostenible y solidario, al igual que la salud?",
@@ -416,7 +425,9 @@
                            "minimos_auditables":  [
 
                                                   ],
-                           "indicadores_obligatorios":  true,
+                           "indicadores_obligatorios":  [
+                                                  "Nivel de escolaridad promedio segregado por sexo."
+                                              ],
                            "ayuda_contextual":  "A diferencia del requisito 11 (capacitación laboral), este requisito se enfoca en la formación que no está directamente vinculada al puesto de trabajo: cultura general, valores, idiomas, finanzas personales, salud, arte, etc. Capacitar en Ecología Humana es especialmente recomendado.",
                            "preguntas_existencia":  [
                                                         "¿El programa de preparación académica amplía el conocimiento teórico-práctico y la visión panorámica del personal, más allá de las actividades propias de su trabajo?",
@@ -443,7 +454,9 @@
                            "minimos_auditables":  [
                                                       "Que se cuente con un mecanismo (buzón de sugerencias, correo electrónico, etc.) para canalizar las ideas, propuestas o compromisos concretos de todo el personal."
                                                   ],
-                           "indicadores_obligatorios":  true,
+                           "indicadores_obligatorios":  [
+                                                  "Cantidad de propuestas del personal / Cantidad de personas en la empresa u organización."
+                                              ],
                            "ayuda_contextual":  "El programa debe contar con formatos para obtener iniciativas bien estructuradas que de manera recurrente logren mejoras en ética, calidad y productividad. Pueden generarse por equipos de trabajo o de manera individual.",
                            "preguntas_existencia":  [
                                                         "¿El programa reconoce la capacidad del personal para aportar buenas ideas y ayudar a la empresa u organización a mejorar su ética y productividad?",
@@ -607,7 +620,9 @@
                            "minimos_auditables":  [
                                                       "Que se promueva el respeto a los Derechos Humanos y Laborales del personal de sus proveedores de bienes y servicios."
                                                   ],
-                           "indicadores_obligatorios":  true,
+                           "indicadores_obligatorios":  [
+                                                  "Índice de localidad por monto y por número de proveedores."
+                                              ],
                            "ayuda_contextual":  "El programa debe incluir criterios de Calidad Humana y Responsabilidad Social en la selección y evaluación de proveedores, y debe fomentar el desarrollo de proveedores locales que compartan los valores de la Norma CRESE.",
                            "preguntas_existencia":  [
                                                         "¿El programa promueve el desarrollo de proveedores locales, reconociendo la importancia de lo local para el sentido de identidad y pertenencia de las personas?",
@@ -660,7 +675,12 @@
                            "minimos_auditables":  [
                                                       "Que la empresa u organización identifique y evalúe sus impactos ambientales negativos, actuales y potenciales en el suelo."
                                                   ],
-                           "indicadores_obligatorios":  true,
+                           "indicadores_obligatorios":  [
+                                                  "Residuos generados (ton).",
+                                                  "Residuos reaprovechados (ton).",
+                                                  "Residuos peligrosos (ton).",
+                                                  "Uso de suelo dentro de, o cercano a, zonas de riesgo para la biodiversidad (m2)."
+                                              ],
                            "ayuda_contextual":  "El programa puede sustituirse por un programa de concientización y práctica de la protección de la biodiversidad. El diagnóstico de impacto ambiental en el suelo es el punto de partida.",
                            "preguntas_existencia":  [
                                                         "¿El programa promueve la concientización del personal sobre la importancia del cuidado del suelo, reconociendo que los deberes con el ambiente están relacionados con los que tenemos con las personas?",
@@ -687,7 +707,12 @@
                            "minimos_auditables":  [
                                                       "Que la empresa u organización identifique y evalúe sus impactos ambientales negativos, actuales y potenciales en el aire."
                                                   ],
-                           "indicadores_obligatorios":  true,
+                           "indicadores_obligatorios":  [
+                                                  "Cálculo de emisiones de CO2 alcance 1 (t CO2e).",
+                                                  "Cálculo de emisiones de CO2 alcance 2 (t CO2e).",
+                                                  "Consumo de energía (KWh).",
+                                                  "Consumo de energía renovable (KWh)."
+                                              ],
                            "ayuda_contextual":  "El programa puede incluir acciones de reducción de emisiones, uso de energías limpias, gestión de gases refrigerantes, reducción de huella de carbono, entre otros. Puede sustituirse por un programa de biodiversidad.",
                            "preguntas_existencia":  [
                                                         "¿El programa promueve la concientización del personal sobre la importancia del cuidado del aire y la atmósfera, reconociendo que toda actitud irrespetuosa con el medio ambiente conlleva daños a la convivencia humana?",
@@ -714,7 +739,13 @@
                            "minimos_auditables":  [
                                                       "Que la empresa u organización identifique y evalúe sus impactos ambientales negativos, actuales y potenciales en el agua."
                                                   ],
-                           "indicadores_obligatorios":  true,
+                           "indicadores_obligatorios":  [
+                                                  "Agua ingresada (m3).",
+                                                  "Reaprovechamiento del agua (m3).",
+                                                  "Descarga de aguas residuales (m3).",
+                                                  "Descarga de aguas residuales tratadas (m3).",
+                                                  "Agua ingresada proveniente de zonas con estrés hídrico (m3)."
+                                              ],
                            "ayuda_contextual":  "El programa puede incluir acciones de reducción del consumo, tratamiento de aguas residuales, reutilización, captación pluvial, entre otros. Puede sustituirse por un programa de biodiversidad.",
                            "preguntas_existencia":  [
                                                         "¿El programa promueve la concientización del personal sobre la importancia del cuidado del agua, como parte de la responsabilidad integral de la empresa con el medio ambiente?",

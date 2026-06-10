@@ -179,6 +179,7 @@ export const api = {
         requisito_id: reqIdNum,
         minimos_cumplidos: body.minimos_cumplidos,
         minimos_detalle: body.minimos_detalle || {},
+        indicadores_obligatorios_detalle: body.indicadores_obligatorios_detalle || {},
         bloqueado: !!body.bloqueado,
         existencia_subelementos: body.existencia_subelementos || null,
         puntuacion_criterio_1: body.puntuacion_criterio_1 ?? null,
