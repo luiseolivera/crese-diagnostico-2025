@@ -162,10 +162,10 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(6.5);
     doc.setTextColor(30, 64, 175);
-    doc.text(leyenda[i][0], lx, y + 7);
+    doc.text(leyenda[i][0] + ':', lx, y + 7);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(75, 85, 99);
-    doc.text(leyenda[i][1], lx + 10, y + 7);
+    doc.text(leyenda[i][1], lx + 13, y + 7);
   }
   y += 26;
 
