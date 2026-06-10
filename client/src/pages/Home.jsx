@@ -31,7 +31,8 @@ function Instructivo({ onClose }) {
                 ['4', 'Criterios de evaluación', 'Si pasa los mínimos, evalúe cada criterio aplicable: EX (Existencia y funcionamiento), DC (Difusión y Conocimiento), PD (Participación directa), IM (Innovación o Mejora), VD (Vinculación con la dirección estratégica).'],
                 ['5', 'Guardar', 'Presione "Guardar evaluación" al terminar cada requisito. El avance se guarda automáticamente en el navegador.'],
                 ['6', 'Dashboard y reporte', 'Desde la lista de diagnósticos acceda al Dashboard para ver resultados por tema y criterio. Use "Descargar PDF" para generar el reporte completo.'],
-                ['7', 'Exportar respaldo', 'Use el botón "Exportar" para guardar el diagnóstico como archivo .json en su equipo. Guárdelo en una carpeta segura como respaldo.'],
+                ['7', 'Exportar respaldo', 'Use el botón "Exportar" en cada diagnóstico para guardarlo como archivo .json en su equipo. Guárdelo en una carpeta segura como respaldo.'],
+                ['8', 'Importar diagnóstico', 'Si tiene un archivo .json exportado previamente (desde este u otro equipo), use el botón "Importar diagnóstico" en la pantalla principal para cargarlo. Esto le permite continuar un diagnóstico en otro equipo o restaurar un respaldo.'],
               ].map(([num, titulo, desc]) => (
                 <li key={num} className="flex gap-3">
                   <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">{num}</span>
@@ -147,8 +148,11 @@ export default function Home({ norma, navigate }) {
             ℹ Ver instructivo de uso
           </button>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
           <input ref={importRef} type="file" accept=".json" className="hidden" onChange={handleImport} />
+          <button className="btn-secondary whitespace-nowrap" onClick={() => importRef.current.click()}>
+            ↑ Importar diagnóstico
+          </button>
           <button className="btn-primary px-6 whitespace-nowrap" onClick={() => setShowNew(true)}>
             <span>+</span> Nuevo diagnóstico / auditoría interna
           </button>
