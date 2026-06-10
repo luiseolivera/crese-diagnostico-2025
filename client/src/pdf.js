@@ -316,6 +316,94 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     y += lines.length * 13;
   });
 
+  // Detalle Existencia reqs 5-25
+  const evalConExistencia = conPuntuacion.filter(e => {
+    const req = norma.requisitos.find(r => r.id === e.requisito_id);
+    return req && req.numero >= 5 && e.existencia_subelementos;
+  });
+
+  if (evalConExistencia.length > 0) {
+    if (y > 600) { doc.addPage(); y = 60; }
+    sectionDivider();
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(30, 64, 175);
+    doc.text('Detalle de Existencia y Funcionamiento (Req. 5-25)', M, y);
+    y += 16;
+
+    const subElems = [
+      { key: 'funcionamiento', label: 'Funcionamiento efectivo', peso: 0.50 },
+      { key: 'objetivo',       label: 'Objetivo',                peso: 0.125 },
+      { key: 'metrica',        label: 'Metrica',                 peso: 0.125 },
+      { key: 'alcance',        label: 'Alcance',                 peso: 0.125 },
+      { key: 'procedimiento',  label: 'Procedimiento',           peso: 0.125 },
+    ];
+
+    // Table header
+    const colN = 22, colNom = 130, colSub = (CW - colN - colNom - 44) / 5, colTot = 44;
+    const drawExRow = (label, sub, total, isHeader) => {
+      if (y > 720) { doc.addPage(); y = 60; }
+      if (isHeader) {
+        doc.setFillColor(239, 246, 255);
+        doc.rect(M, y - 9, CW, 13, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(7);
+        doc.setTextColor(30, 64, 175);
+        doc.text(label, M + colN + 3, y);
+        subElems.forEach((e, i) => {
+          doc.text(e.label.substring(0, 12), M + colN + colNom + i * colSub + 2, y);
+        });
+        doc.text('Total', M + colN + colNom + 5 * colSub + 2, y);
+        y += 14;
+      } else {
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8);
+        doc.setTextColor(31, 41, 55);
+        doc.text(label, M + colN + 3, y);
+        subElems.forEach((e, i) => {
+          const val = sub?.[e.key];
+          if (val !== null && val !== undefined) {
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(...sc(val));
+            doc.text(`${val}%`, M + colN + colNom + i * colSub + 2, y);
+          } else {
+            doc.setTextColor(209, 213, 219);
+            doc.setFont('helvetica', 'normal');
+            doc.text('-', M + colN + colNom + i * colSub + 2, y);
+          }
+        });
+        if (total !== null && total !== undefined) {
+          doc.setFont('helvetica', 'bold');
+          doc.setTextColor(...sc(total));
+          doc.text(`${total.toFixed(0)}%`, M + colN + colNom + 5 * colSub + 2, y);
+        }
+        doc.setTextColor(229, 231, 235);
+        doc.setLineWidth(0.2);
+        doc.line(M, y + 4, W - M, y + 4);
+        y += 14;
+      }
+    };
+
+    // Group by tema
+    let lastTemaId = null;
+    for (const e of evalConExistencia.sort((a, b) => {
+      const ra = norma.requisitos.find(r => r.id === a.requisito_id);
+      const rb = norma.requisitos.find(r => r.id === b.requisito_id);
+      return ra.numero - rb.numero;
+    })) {
+      const req = norma.requisitos.find(r => r.id === e.requisito_id);
+      const temaId = norma.temas.find(t => t.requisitos.includes(req.id))?.id;
+      if (temaId !== lastTemaId) {
+        const tema = norma.temas.find(t => t.id === temaId);
+        drawExRow(`Tema ${tema.id}: ${tema.nombre}`, null, null, true);
+        lastTemaId = temaId;
+      }
+      const nombre = req.nombre.length > 22 ? req.nombre.substring(0, 20) + '..' : req.nombre;
+      drawExRow(`${req.numero}. ${nombre}`, e.existencia_subelementos, e.puntuacion_criterio_1, false);
+    }
+    y += 6;
+  }
+
   // Criteria averages
   if (conPuntuacion.length > 0) {
     if (y > 650) { doc.addPage(); y = 60; }
