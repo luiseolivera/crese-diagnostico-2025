@@ -1,6 +1,76 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { api } from '../api';
 
+function Instructivo({ onClose }) {
+  return (
+    <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+          <h2 className="text-base font-semibold text-gray-900">Instructivo de uso</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl font-light leading-none">×</button>
+        </div>
+        <div className="px-6 py-5 space-y-5 text-sm text-gray-700">
+
+          <section>
+            <h3 className="font-semibold text-blue-700 mb-1">¿Qué es esta herramienta?</h3>
+            <p>Es una herramienta de autodiagnóstico y auditoría interna basada en la Norma CRESE 2025. Permite a la empresa evaluar su nivel de cumplimiento en los 25 requisitos agrupados en 7 temas, antes de someterse a la auditoría externa de certificación.</p>
+          </section>
+
+          <section>
+            <h3 className="font-semibold text-blue-700 mb-1">¿Dónde se guardan los datos?</h3>
+            <p>Los datos se guardan <strong>únicamente en el navegador web de este equipo</strong> (localStorage). No se envían a ningún servidor. Si borra el historial o caché del navegador, los datos se eliminarán. Por eso se recomienda exportar respaldos periódicamente.</p>
+          </section>
+
+          <section>
+            <h3 className="font-semibold text-blue-700 mb-2">Pasos para realizar un diagnóstico</h3>
+            <ol className="space-y-2 list-none">
+              {[
+                ['1', 'Crear un diagnóstico', 'Haga clic en "Nuevo diagnóstico / auditoría interna". Ingrese el nombre de la empresa, el responsable y el periodo de evaluación.'],
+                ['2', 'Evaluar cada requisito', 'Dentro del diagnóstico verá los 25 requisitos organizados por tema. Haga clic en cada uno para abrirlo y completar su evaluación.'],
+                ['3', 'Mínimos auditables', 'Cada requisito tiene mínimos auditables que deben cumplirse. Si alguno no se cumple, el requisito queda bloqueado con calificación 0.'],
+                ['4', 'Criterios de evaluación', 'Si pasa los mínimos, evalúe cada criterio aplicable: EX (Existencia y funcionamiento), DC (Difusión y Conocimiento), PD (Participación directa), IM (Innovación o Mejora), VD (Vinculación con la dirección estratégica).'],
+                ['5', 'Guardar', 'Presione "Guardar evaluación" al terminar cada requisito. El avance se guarda automáticamente en el navegador.'],
+                ['6', 'Dashboard y reporte', 'Desde la lista de diagnósticos acceda al Dashboard para ver resultados por tema y criterio. Use "Descargar PDF" para generar el reporte completo.'],
+                ['7', 'Exportar respaldo', 'Use el botón "Exportar" para guardar el diagnóstico como archivo .json en su equipo. Guárdelo en una carpeta segura como respaldo.'],
+              ].map(([num, titulo, desc]) => (
+                <li key={num} className="flex gap-3">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">{num}</span>
+                  <div><span className="font-medium text-gray-900">{titulo}: </span>{desc}</div>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section>
+            <h3 className="font-semibold text-blue-700 mb-1">Interpretación de resultados</h3>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              {[
+                ['bg-green-100 text-green-800', '90% – 100%', 'Empresa Ejemplar'],
+                ['bg-green-100 text-green-800', '80% – 89%', 'Empresa Sobresaliente'],
+                ['bg-orange-100 text-orange-800', '70% – 79%', 'Empresa Destacada'],
+                ['bg-orange-100 text-orange-800', '60% – 69%', 'Empresa Comprometida'],
+                ['bg-red-100 text-red-800', 'Menos de 60%', 'Por debajo del mínimo de certificación'],
+              ].map(([cls, rango, cat]) => (
+                <div key={cat} className={`rounded-lg px-3 py-2 ${cls}`}>
+                  <p className="font-semibold">{rango}</p>
+                  <p>{cat}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="bg-amber-50 border border-amber-100 rounded-lg p-3 text-xs text-amber-700">
+            <strong>Importante:</strong> Esta herramienta no sustituye la auditoría externa de certificación CRESE. Su propósito es servir como evaluación previa de preparación.
+          </section>
+        </div>
+        <div className="px-6 py-4 border-t border-gray-100 flex justify-end">
+          <button onClick={onClose} className="btn-primary">Entendido</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ScoreBar({ score }) {
   const color = score >= 80 ? 'bg-green-500' : score >= 60 ? 'bg-orange-500' : 'bg-red-500';
   return (
@@ -16,6 +86,7 @@ function ScoreBar({ score }) {
 export default function Home({ norma, navigate }) {
   const [diagnosticos, setDiagnosticos] = useState([]);
   const [showNew, setShowNew] = useState(false);
+  const [showInstructivo, setShowInstructivo] = useState(false);
   const [form, setForm] = useState({ nombre_empresa: '', responsable: '', periodo_inicio: '', periodo_fin: '' });
   const [saving, setSaving] = useState(false);
   const importRef = useRef();
@@ -67,10 +138,14 @@ export default function Home({ norma, navigate }) {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
+      {showInstructivo && <Instructivo onClose={() => setShowInstructivo(false)} />}
       <div className="flex items-start justify-between mb-8">
         <div>
           <h1 className="text-2xl font-semibold text-gray-900">Diagnósticos / Auditorías Internas CRESE</h1>
           <p className="text-sm text-gray-500 mt-1">Diagnóstico / Auditoría Interna — Norma CRESE 2025</p>
+          <button onClick={() => setShowInstructivo(true)} className="mt-2 text-xs text-blue-600 hover:text-blue-800 hover:underline">
+            ℹ Ver instructivo de uso
+          </button>
         </div>
         <div className="flex gap-2">
           <input ref={importRef} type="file" accept=".json" className="hidden" onChange={handleImport} />
@@ -178,11 +253,23 @@ export default function Home({ norma, navigate }) {
       </div>
 
       {diagnosticos.length > 0 && (
-        <div className="mt-8 p-4 bg-amber-50 border border-amber-100 rounded-lg">
-          <p className="text-xs text-amber-700">
-            <strong>Aviso:</strong> Esta herramienta no sustituye la auditoría externa de certificación CRESE.
-            Su propósito es servir como una evaluación previa de preparación.
-          </p>
+        <div className="mt-8 space-y-3">
+          <div className="p-4 bg-blue-50 border border-blue-100 rounded-lg flex items-start gap-3">
+            <span className="text-blue-500 text-lg mt-0.5">💾</span>
+            <div>
+              <p className="text-xs font-semibold text-blue-800 mb-0.5">Recordatorio: respalde sus datos periódicamente</p>
+              <p className="text-xs text-blue-700">
+                Los diagnósticos se guardan en este navegador. Si borra el caché o usa otro equipo, perderá la información.
+                Use el botón <strong>Exportar</strong> en cada diagnóstico para guardar un archivo .json de respaldo en su equipo.
+              </p>
+            </div>
+          </div>
+          <div className="p-4 bg-amber-50 border border-amber-100 rounded-lg">
+            <p className="text-xs text-amber-700">
+              <strong>Aviso:</strong> Esta herramienta no sustituye la auditoría externa de certificación CRESE.
+              Su propósito es servir como una evaluación previa de preparación.
+            </p>
+          </div>
         </div>
       )}
     </div>
