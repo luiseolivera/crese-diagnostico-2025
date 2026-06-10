@@ -344,17 +344,19 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     const drawExRow = (label, sub, total, isHeader) => {
       if (y > 720) { doc.addPage(); y = 60; }
       if (isHeader) {
+        if (y > 710) { doc.addPage(); y = 60; }
         doc.setFillColor(239, 246, 255);
-        doc.rect(M, y - 9, CW, 13, 'F');
+        doc.rect(M, y - 9, CW, 22, 'F');
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(7);
         doc.setTextColor(30, 64, 175);
         doc.text(label, M + colN + 3, y);
+        doc.setTextColor(100, 116, 139);
         subElems.forEach((e, i) => {
-          doc.text(e.label.substring(0, 12), M + colN + colNom + i * colSub + 2, y);
+          doc.text(e.label.substring(0, 12), M + colN + colNom + i * colSub + 2, y + 10);
         });
-        doc.text('Total', M + colN + colNom + 5 * colSub + 2, y);
-        y += 14;
+        doc.text('Total', M + colN + colNom + 5 * colSub + 2, y + 10);
+        y += 23;
       } else {
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(8);
