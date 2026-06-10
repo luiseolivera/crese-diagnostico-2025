@@ -144,9 +144,25 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.line(M, y, W - M, y);
   y += 8;
 
-  const tableRows = [];
+  // col widths: # | Nombre | C1 | C2 | C3 | C4 | C5 | Total
+  const cW = [22, 196, 36, 36, 36, 36, 36, 54]; // sum = 452... adjust below
+  // CW = 512; sum cW = 22+196+36*5+54 = 22+196+180+54 = 452; give extra to nombre
+  cW[1] = CW - cW[0] - cW[2] - cW[3] - cW[4] - cW[5] - cW[6] - cW[7]; // 512-22-36*5-54=256
+
+  const crHeaders = ['C1', 'C2', 'C3', 'C4', 'C5'];
+  const crKeys = ['puntuacion_criterio_1','puntuacion_criterio_2','puntuacion_criterio_3','puntuacion_criterio_4','puntuacion_criterio_5'];
+
+  // Header row
+  const headerRow = [
+    { content: '#', styles: { halign: 'center', fontStyle: 'bold', fontSize: 7, textColor: [107,114,128] } },
+    { content: 'Requisito', styles: { fontStyle: 'bold', fontSize: 7, textColor: [107,114,128] } },
+    ...crHeaders.map(h => ({ content: h, styles: { halign: 'center', fontStyle: 'bold', fontSize: 7, textColor: [107,114,128] } })),
+    { content: 'Total', styles: { halign: 'center', fontStyle: 'bold', fontSize: 7, textColor: [107,114,128] } },
+  ];
+
+  const tableRows = [headerRow];
   for (const tema of norma.temas) {
-    tableRows.push([{ content: `Tema ${tema.id}: ${tema.nombre}`, colSpan: 3, styles: { fillColor: [239, 246, 255], textColor: [30, 64, 175], fontStyle: 'bold', fontSize: 9 } }]);
+    tableRows.push([{ content: `Tema ${tema.id}: ${tema.nombre}`, colSpan: 8, styles: { fillColor: [239, 246, 255], textColor: [30, 64, 175], fontStyle: 'bold', fontSize: 8 } }]);
     for (const rId of tema.requisitos) {
       const req = norma.requisitos.find(r => r.id === rId);
       const ev = evalMap[rId];
@@ -156,10 +172,24 @@ export function generarPDF(diag, evaluaciones, norma, config) {
       else if (!ev.completado) { statusText = 'En progreso'; statusColor = [59, 130, 246]; }
       else { statusText = `${ev.puntuacion_total.toFixed(0)}%`; statusColor = sc(ev.puntuacion_total); }
 
+      const crCells = crKeys.map((key, i) => {
+        const crNum = i + 1;
+        if (!req.criterios_evaluables.includes(crNum)) {
+          return { content: '-', styles: { halign: 'center', fontSize: 7, textColor: [209, 213, 219] } };
+        }
+        if (!ev || !ev.completado || ev.bloqueado) {
+          return { content: '-', styles: { halign: 'center', fontSize: 7, textColor: [209, 213, 219] } };
+        }
+        const val = ev[key];
+        if (val == null) return { content: '-', styles: { halign: 'center', fontSize: 7, textColor: [209, 213, 219] } };
+        return { content: `${Math.round(val)}%`, styles: { halign: 'center', fontSize: 7, fontStyle: 'bold', textColor: sc(val) } };
+      });
+
       tableRows.push([
-        { content: req.numero, styles: { halign: 'center', textColor: [107, 114, 128], fontSize: 8 } },
-        { content: req.nombre, styles: { fontSize: 9 } },
-        { content: statusText, styles: { halign: 'center', fontStyle: 'bold', textColor: statusColor, fontSize: 9 } },
+        { content: req.numero, styles: { halign: 'center', textColor: [107, 114, 128], fontSize: 7 } },
+        { content: req.nombre, styles: { fontSize: 8 } },
+        ...crCells,
+        { content: statusText, styles: { halign: 'center', fontStyle: 'bold', textColor: statusColor, fontSize: 8 } },
       ]);
     }
   }
@@ -167,10 +197,19 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   autoTable(doc, {
     startY: y,
     margin: { left: M, right: M },
-    columnStyles: { 0: { cellWidth: 30 }, 1: { cellWidth: CW - 30 - 70 }, 2: { cellWidth: 70 } },
+    columnStyles: {
+      0: { cellWidth: cW[0] },
+      1: { cellWidth: cW[1] },
+      2: { cellWidth: cW[2] },
+      3: { cellWidth: cW[3] },
+      4: { cellWidth: cW[4] },
+      5: { cellWidth: cW[5] },
+      6: { cellWidth: cW[6] },
+      7: { cellWidth: cW[7] },
+    },
     body: tableRows,
     theme: 'plain',
-    styles: { cellPadding: { top: 4, bottom: 4, left: 4, right: 4 }, lineColor: [243, 244, 246], lineWidth: 0.3 },
+    styles: { cellPadding: { top: 3, bottom: 3, left: 3, right: 3 }, lineColor: [243, 244, 246], lineWidth: 0.3 },
   });
 
   // ── Análisis page ────────────────────────────────────────────────────
