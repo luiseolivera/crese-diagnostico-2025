@@ -127,7 +127,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.setFontSize(10);
   doc.setTextColor(...sc(proyectado));
   doc.text(`Categoría estimada: ${categoria(proyectado)}`, W / 2, y, { align: 'center' });
-  y += 22;
+  y += 13;
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(156, 163, 175);
