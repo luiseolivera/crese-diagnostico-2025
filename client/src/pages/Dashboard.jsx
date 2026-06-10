@@ -12,7 +12,7 @@ function scoreTextColor(s) {
   return s >= 80 ? 'text-green-600' : s >= 60 ? 'text-orange-500' : 'text-red-500';
 }
 
-function ScoreGauge({ score }) {
+function ScoreGauge({ score, evaluadas }) {
   const capped = Math.max(0, Math.min(100, score || 0));
   const color = scoreColor(capped);
   let cat = 'Sin categoría';
@@ -36,7 +36,8 @@ function ScoreGauge({ score }) {
         </text>
       </svg>
       <p className="text-sm font-semibold mt-1" style={{ color }}>{cat}</p>
-      <p className="text-xs text-gray-400 mt-0.5">Puntuación global</p>
+      <p className="text-xs font-semibold text-gray-500 mt-1 tracking-wide">PUNTAJE PARCIAL</p>
+      <p className="text-xs text-gray-400">({evaluadas} de 25 evaluados)</p>
     </div>
   );
 }
@@ -140,13 +141,13 @@ export default function Dashboard({ id, norma, navigate, config }) {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
         <div className="card p-4 col-span-2 md:col-span-1 flex flex-col items-center justify-center">
-          <ScoreGauge score={diag.puntuacion_global || 0} />
+          <ScoreGauge score={diag.puntuacion_global || 0} evaluadas={completadas.length} />
         </div>
         <div className="card p-4 flex flex-col items-center justify-center">
           <p className={`text-3xl font-bold mb-1 ${scoreTextColor(diag.puntuacion_proyectada)}`}>
             {diag.puntuacion_proyectada != null ? `${diag.puntuacion_proyectada.toFixed(1)}%` : '—'}
           </p>
-          <p className="text-xs text-gray-500 text-center">Puntaje proyectado</p>
+          <p className="text-xs font-semibold text-gray-500 text-center tracking-wide">PUNTAJE PROYECTADO</p>
           <p className="text-xs text-gray-400 text-center">(sobre 25 requisitos)</p>
         </div>
         <div className="card p-4 text-center">
