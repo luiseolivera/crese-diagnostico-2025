@@ -109,7 +109,7 @@ const DOC_CAMPOS = [
   { key: 'objetivo',      label: 'Objetivo centrado en la persona' },
   { key: 'alcance',       label: 'Alcance' },
   { key: 'procedimiento', label: 'Procedimiento' },
-  { key: 'metrica',       label: 'Métrica' },
+  { key: 'metrica',       label: 'Métrica directamente relacionada con el objetivo' },
 ];
 
 function DocumentacionReq3({ value, onChange, norma }) {
