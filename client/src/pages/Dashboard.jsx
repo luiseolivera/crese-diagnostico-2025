@@ -142,6 +142,13 @@ export default function Dashboard({ id, norma, navigate, config }) {
         <div className="card p-5 col-span-1 flex flex-col items-center justify-center">
           <ScoreGauge score={diag.puntuacion_global || 0} />
         </div>
+        <div className="card p-5 flex flex-col items-center justify-center">
+          <p className={`text-3xl font-bold mb-1 ${scoreTextColor(diag.puntuacion_proyectada)}`}>
+            {diag.puntuacion_proyectada != null ? `${diag.puntuacion_proyectada.toFixed(1)}%` : '—'}
+          </p>
+          <p className="text-xs text-gray-500 text-center">Puntaje proyectado</p>
+          <p className="text-xs text-gray-400 text-center">(sobre 25 requisitos)</p>
+        </div>
         <div className="card p-5 text-center">
           <p className="text-3xl font-bold text-blue-600 mb-1">{completadas.length}<span className="text-base text-gray-400 font-normal">/25</span></p>
           <p className="text-xs text-gray-500">Requisitos evaluados</p>
@@ -149,10 +156,6 @@ export default function Dashboard({ id, norma, navigate, config }) {
         <div className="card p-5 text-center">
           <p className="text-3xl font-bold text-red-500 mb-1">{bloqueados.length}</p>
           <p className="text-xs text-gray-500">Requisitos bloqueados</p>
-        </div>
-        <div className="card p-5 text-center">
-          <p className="text-3xl font-bold text-green-600 mb-1">{conPuntuacion.filter(e => e.puntuacion_total >= 75).length}</p>
-          <p className="text-xs text-gray-500">Requisitos ≥75%</p>
         </div>
       </div>
 
