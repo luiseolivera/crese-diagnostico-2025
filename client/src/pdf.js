@@ -142,14 +142,39 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   y += 4;
   doc.setLineWidth(0.5);
   doc.line(M, y, W - M, y);
-  y += 8;
+  y += 10;
 
-  // col widths: # | Nombre | C1 | C2 | C3 | C4 | C5 | Total
+  // Leyenda de criterios
+  doc.setFillColor(248, 250, 252);
+  doc.setDrawColor(226, 232, 240);
+  doc.setLineWidth(0.4);
+  doc.roundedRect(M, y, CW, 18, 2, 2, 'FD');
+  const leyenda = [
+    ['EX', 'Existencia y funcionamiento'],
+    ['DC', 'Difusion y Conocimiento'],
+    ['PD', 'Participacion directa'],
+    ['IM', 'Innovacion o Mejora'],
+    ['VD', 'Vinculacion con la direccion estrategica'],
+  ];
+  const colStep = CW / 5;
+  for (let i = 0; i < leyenda.length; i++) {
+    const lx = M + i * colStep + 5;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(30, 64, 175);
+    doc.text(leyenda[i][0], lx, y + 7);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(75, 85, 99);
+    doc.text(leyenda[i][1], lx + 10, y + 7);
+  }
+  y += 26;
+
+  // col widths: # | Nombre | EX | DC | PD | IM | VD | Total
   const cW = [22, 196, 36, 36, 36, 36, 36, 54]; // sum = 452... adjust below
   // CW = 512; sum cW = 22+196+36*5+54 = 22+196+180+54 = 452; give extra to nombre
   cW[1] = CW - cW[0] - cW[2] - cW[3] - cW[4] - cW[5] - cW[6] - cW[7]; // 512-22-36*5-54=256
 
-  const crHeaders = ['C1', 'C2', 'C3', 'C4', 'C5'];
+  const crHeaders = ['EX', 'DC', 'PD', 'IM', 'VD'];
   const crKeys = ['puntuacion_criterio_1','puntuacion_criterio_2','puntuacion_criterio_3','puntuacion_criterio_4','puntuacion_criterio_5'];
 
   // Header row
