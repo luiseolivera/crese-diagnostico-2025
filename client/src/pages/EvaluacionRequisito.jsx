@@ -228,7 +228,8 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
         if (ev.documentacion_detalle) setDocDetalle(ev.documentacion_detalle);
       }
       setLoading(false);
-      if (requisito.minimos_auditables?.length > 0) setActiveTab('minimos');
+      const hasMin = (requisito.minimos_auditables?.length > 0) || (Array.isArray(requisito.indicadores_obligatorios) && requisito.indicadores_obligatorios.length > 0);
+      if (hasMin) setActiveTab('minimos');
       else setActiveTab('criterio_1');
     });
   }, [diagId, requisito.id]);
@@ -291,8 +292,10 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
     5: 'Vinculación con Dirección Estratégica',
   };
 
+  const hasMinimosTab = (requisito.minimos_auditables?.length > 0) || (indicadores.length > 0);
+
   const tabs = [
-    requisito.minimos_auditables?.length > 0 && { id: 'minimos', label: 'Mínimos Auditables' },
+    hasMinimosTab && { id: 'minimos', label: 'Mínimos Auditables' },
     ...requisito.criterios_evaluables.map(c => ({
       id: `criterio_${c}`,
       label: c === 3 ? 'Participación'
@@ -366,7 +369,7 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
 
       <div className="card p-6">
         {/* Mínimos auditables tab */}
-        {activeTab === 'minimos' && requisito.minimos_auditables?.length > 0 && (
+        {activeTab === 'minimos' && hasMinimosTab && (
           <div>
             <h3 className="text-sm font-semibold text-gray-800 mb-1">Mínimos Auditables</h3>
             <p className="text-xs text-gray-500 mb-4">
