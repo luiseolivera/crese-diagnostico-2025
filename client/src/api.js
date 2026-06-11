@@ -40,6 +40,16 @@ function getDB() {
     if (raw) {
       const db = JSON.parse(raw);
       if (!db.configuracion) db.configuracion = defaultConfig();
+      // Migrate: req 3 evaluations saved before documentacion_detalle format must be reset
+      const req3Def = normaData.requisitos.find(r => r.numero === 3);
+      if (req3Def) {
+        db.evaluaciones = db.evaluaciones.map(e => {
+          if (e.requisito_id === req3Def.id && !e.documentacion_detalle) {
+            return { ...e, completado: false, puntuacion_total: null, puntuacion_criterio_1: null };
+          }
+          return e;
+        });
+      }
       return db;
     }
   } catch {}
