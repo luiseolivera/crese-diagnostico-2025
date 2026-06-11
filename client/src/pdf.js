@@ -412,11 +412,14 @@ export function generarPDF(diag, evaluaciones, norma, config) {
         doc.text('Total', M + colN + colNom + 4 * colDoc + 2, yd + 10);
         yd += 23;
       } else {
-        if (yd > 720) { doc.addPage(); yd = 60; }
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(10);
+        const labelLines = doc.splitTextToSize(label, colNom - 4);
+        const rowH = labelLines.length > 1 ? 24 : 14;
+        if (yd + rowH > 725) { doc.addPage(); yd = 60; }
         doc.setTextColor(31, 41, 55);
-        doc.text(label, M + colN + 3, yd);
+        doc.text(labelLines, M + colN + 3, yd);
+        const dataY = labelLines.length > 1 ? yd + 6 : yd; // center vertically when 2 lines
         const vals = [];
         docCols.forEach((c, i) => {
           const val = detalle?.[c.key];
@@ -424,23 +427,23 @@ export function generarPDF(diag, evaluaciones, norma, config) {
             vals.push(val);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(...sc(val));
-            doc.text(`${val}%`, M + colN + colNom + i * colDoc + 2, yd);
+            doc.text(`${val}%`, M + colN + colNom + i * colDoc + 2, dataY);
           } else {
             doc.setTextColor(209, 213, 219);
             doc.setFont('helvetica', 'normal');
-            doc.text('-', M + colN + colNom + i * colDoc + 2, yd);
+            doc.text('-', M + colN + colNom + i * colDoc + 2, dataY);
           }
         });
         if (vals.length > 0) {
           const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
           doc.setFont('helvetica', 'bold');
           doc.setTextColor(...sc(avg));
-          doc.text(`${avg.toFixed(0)}%`, M + colN + colNom + 4 * colDoc + 2, yd);
+          doc.text(`${avg.toFixed(0)}%`, M + colN + colNom + 4 * colDoc + 2, dataY);
         }
         doc.setTextColor(229, 231, 235);
         doc.setLineWidth(0.2);
-        doc.line(M, yd + 4, W - M, yd + 4);
-        yd += 14;
+        doc.line(M, yd + rowH, W - M, yd + rowH);
+        yd += rowH + 2;
       }
     };
 
@@ -454,7 +457,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
         drawDocRow(`Tema ${tema.id}: ${tema.nombre}`, null, true);
         lastTemaId = temaId;
       }
-      const nombre = req.nombre.length > 22 ? req.nombre.substring(0, 20) + '..' : req.nombre;
+      const nombre = req.nombre;
       const detalle = evalReq3.documentacion_detalle[req.id] || null;
       drawDocRow(`${req.numero}. ${nombre}`, detalle, false);
     }
