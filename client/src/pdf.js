@@ -333,97 +333,6 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     y += lines.length * 13;
   });
 
-  // Detalle Documentacion Req. 3
-  const req3Def = norma.requisitos.find(r => r.numero === 3);
-  const evalReq3 = req3Def ? evaluaciones.find(e => e.requisito_id === req3Def.id && e.documentacion_detalle) : null;
-
-  if (evalReq3) {
-    if (y > 600) { doc.addPage(); y = 60; }
-    sectionDivider();
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
-    doc.setTextColor(30, 64, 175);
-    doc.text('Req. 3 - Evaluacion de Documentacion por Requisito (5 al 25)', M, y);
-    y += 6;
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    doc.setTextColor(100, 116, 139);
-    doc.text('Objetivo, Alcance, Procedimiento y Metrica evaluados para cada requisito.', M, y);
-    y += 14;
-
-    const docCols = [
-      { key: 'objetivo',      label: 'Objetivo' },
-      { key: 'alcance',       label: 'Alcance' },
-      { key: 'procedimiento', label: 'Procedim.' },
-      { key: 'metrica',       label: 'Metrica' },
-    ];
-    const colN = 22, colNom = 130, colDoc = (CW - colN - colNom - 40) / 4, colTot = 40;
-
-    const drawDocRow = (label, detalle, isHeader) => {
-      if (y > 720) { doc.addPage(); y = 60; }
-      if (isHeader) {
-        if (y > 710) { doc.addPage(); y = 60; }
-        doc.setFillColor(239, 246, 255);
-        doc.rect(M, y - 9, CW, 22, 'F');
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(7);
-        doc.setTextColor(30, 64, 175);
-        doc.text(label, M + colN + 3, y);
-        doc.setTextColor(100, 116, 139);
-        docCols.forEach((c, i) => {
-          doc.text(c.label, M + colN + colNom + i * colDoc + 2, y + 10);
-        });
-        doc.text('Total', M + colN + colNom + 4 * colDoc + 2, y + 10);
-        y += 23;
-      } else {
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(8);
-        doc.setTextColor(31, 41, 55);
-        doc.text(label, M + colN + 3, y);
-        const vals = [];
-        docCols.forEach((c, i) => {
-          const val = detalle?.[c.key];
-          if (val !== null && val !== undefined) {
-            vals.push(val);
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(...sc(val));
-            doc.text(`${val}%`, M + colN + colNom + i * colDoc + 2, y);
-          } else {
-            doc.setTextColor(209, 213, 219);
-            doc.setFont('helvetica', 'normal');
-            doc.text('-', M + colN + colNom + i * colDoc + 2, y);
-          }
-        });
-        if (vals.length > 0) {
-          const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
-          doc.setFont('helvetica', 'bold');
-          doc.setTextColor(...sc(avg));
-          doc.text(`${avg.toFixed(0)}%`, M + colN + colNom + 4 * colDoc + 2, y);
-        }
-        doc.setTextColor(229, 231, 235);
-        doc.setLineWidth(0.2);
-        doc.line(M, y + 4, W - M, y + 4);
-        y += 14;
-      }
-    };
-
-    const reqs5a25 = norma.requisitos.filter(r => r.numero >= 5 && r.numero <= 25)
-      .sort((a, b) => a.numero - b.numero);
-    let lastTemaId = null;
-    for (const req of reqs5a25) {
-      const temaId = norma.temas.find(t => t.requisitos.includes(req.id))?.id;
-      if (temaId !== lastTemaId) {
-        const tema = norma.temas.find(t => t.id === temaId);
-        drawDocRow(`Tema ${tema.id}: ${tema.nombre}`, null, true);
-        lastTemaId = temaId;
-      }
-      const nombre = req.nombre.length > 22 ? req.nombre.substring(0, 20) + '..' : req.nombre;
-      const detalle = evalReq3.documentacion_detalle[req.id] || null;
-      drawDocRow(`${req.numero}. ${nombre}`, detalle, false);
-    }
-    y += 6;
-  }
-
   // Criteria averages
   if (conPuntuacion.length > 0) {
     if (y > 650) { doc.addPage(); y = 60; }
@@ -453,6 +362,100 @@ export function generarPDF(diag, evaluaciones, norma, config) {
       doc.setTextColor(...sc(avg));
       doc.text(`${avg.toFixed(0)}%`, M + 318, y, { align: 'left' });
       y += 18;
+    }
+  }
+
+  // ── Página Req 3 Documentación ───────────────────────────────────────
+  const req3Def = norma.requisitos.find(r => r.numero === 3);
+  const evalReq3 = req3Def ? evaluaciones.find(e => e.requisito_id === req3Def.id && e.documentacion_detalle) : null;
+
+  if (evalReq3) {
+    doc.addPage();
+    let yd = 60;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(30, 64, 175);
+    doc.text('Req. 3 - Evaluacion de Documentacion por Requisito (5 al 25)', M, yd);
+    yd += 4;
+    doc.setLineWidth(0.5);
+    doc.line(M, yd, W - M, yd);
+    yd += 10;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(100, 116, 139);
+    doc.text('Objetivo, Alcance, Procedimiento y Metrica evaluados para cada requisito.', M, yd);
+    yd += 14;
+
+    const docCols = [
+      { key: 'objetivo',      label: 'Objetivo' },
+      { key: 'alcance',       label: 'Alcance' },
+      { key: 'procedimiento', label: 'Procedim.' },
+      { key: 'metrica',       label: 'Metrica' },
+    ];
+    const colN = 22, colNom = 130, colDoc = (CW - colN - colNom - 40) / 4;
+
+    const drawDocRow = (label, detalle, isHeader) => {
+      if (isHeader) {
+        if (yd > 710) { doc.addPage(); yd = 60; }
+        doc.setFillColor(239, 246, 255);
+        doc.rect(M, yd - 9, CW, 22, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(7);
+        doc.setTextColor(30, 64, 175);
+        doc.text(label, M + colN + 3, yd);
+        doc.setTextColor(100, 116, 139);
+        docCols.forEach((c, i) => {
+          doc.text(c.label, M + colN + colNom + i * colDoc + 2, yd + 10);
+        });
+        doc.text('Total', M + colN + colNom + 4 * colDoc + 2, yd + 10);
+        yd += 23;
+      } else {
+        if (yd > 720) { doc.addPage(); yd = 60; }
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8);
+        doc.setTextColor(31, 41, 55);
+        doc.text(label, M + colN + 3, yd);
+        const vals = [];
+        docCols.forEach((c, i) => {
+          const val = detalle?.[c.key];
+          if (val !== null && val !== undefined) {
+            vals.push(val);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(...sc(val));
+            doc.text(`${val}%`, M + colN + colNom + i * colDoc + 2, yd);
+          } else {
+            doc.setTextColor(209, 213, 219);
+            doc.setFont('helvetica', 'normal');
+            doc.text('-', M + colN + colNom + i * colDoc + 2, yd);
+          }
+        });
+        if (vals.length > 0) {
+          const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+          doc.setFont('helvetica', 'bold');
+          doc.setTextColor(...sc(avg));
+          doc.text(`${avg.toFixed(0)}%`, M + colN + colNom + 4 * colDoc + 2, yd);
+        }
+        doc.setTextColor(229, 231, 235);
+        doc.setLineWidth(0.2);
+        doc.line(M, yd + 4, W - M, yd + 4);
+        yd += 14;
+      }
+    };
+
+    const reqs5a25 = norma.requisitos.filter(r => r.numero >= 5 && r.numero <= 25)
+      .sort((a, b) => a.numero - b.numero);
+    let lastTemaId = null;
+    for (const req of reqs5a25) {
+      const temaId = norma.temas.find(t => t.requisitos.includes(req.id))?.id;
+      if (temaId !== lastTemaId) {
+        const tema = norma.temas.find(t => t.id === temaId);
+        drawDocRow(`Tema ${tema.id}: ${tema.nombre}`, null, true);
+        lastTemaId = temaId;
+      }
+      const nombre = req.nombre.length > 22 ? req.nombre.substring(0, 20) + '..' : req.nombre;
+      const detalle = evalReq3.documentacion_detalle[req.id] || null;
+      drawDocRow(`${req.numero}. ${nombre}`, detalle, false);
     }
   }
 
