@@ -40,16 +40,51 @@ function getDB() {
     if (raw) {
       const db = JSON.parse(raw);
       if (!db.configuracion) db.configuracion = defaultConfig();
-      // Migrate: req 3 evaluations saved before documentacion_detalle format must be reset
+      let needsSave = false;
+
+      // Migrate v1: reset req 3 evaluations saved before documentacion_detalle format
       const req3Def = normaData.requisitos.find(r => r.numero === 3);
       if (req3Def) {
         db.evaluaciones = db.evaluaciones.map(e => {
           if (e.requisito_id === req3Def.id && !e.documentacion_detalle) {
+            needsSave = true;
             return { ...e, completado: false, puntuacion_total: null, puntuacion_criterio_1: null };
           }
           return e;
         });
       }
+
+      // Migrate v2: recompute puntuacion_total for all evaluations using norm weights
+      if (!db.scores_migrated_v2) {
+        for (const e of db.evaluaciones) {
+          if (!e.completado || e.bloqueado) continue;
+          const reqDef = normaData.requisitos.find(r => r.id === e.requisito_id);
+          if (!reqDef) continue;
+          const pesos = getPesosCriterios(reqDef.numero);
+          const criterios = reqDef.criterios_evaluables;
+          const sc3 = criterios.includes(3)
+            ? Math.round((Object.values(e.matriz_participacion || {}).filter(Boolean).length / 20) * 100)
+            : null;
+          const sc = {
+            1: criterios.includes(1) ? (e.puntuacion_criterio_1 ?? null) : null,
+            2: criterios.includes(2) ? (e.puntuacion_criterio_2 ?? null) : null,
+            3: sc3,
+            4: criterios.includes(4) ? (e.puntuacion_criterio_4 ?? null) : null,
+            5: criterios.includes(5) ? (e.puntuacion_criterio_5 ?? null) : null,
+          };
+          let ws = 0, tw = 0;
+          for (const c of [1, 2, 3, 4, 5]) {
+            if (sc[c] != null && pesos[c] > 0) { ws += sc[c] * pesos[c]; tw += pesos[c]; }
+          }
+          if (tw > 0) e.puntuacion_total = ws / tw;
+          e.puntuacion_criterio_3 = sc3;
+        }
+        for (const diag of db.diagnosticos) recalcScores(db, diag.id);
+        db.scores_migrated_v2 = true;
+        needsSave = true;
+      }
+
+      if (needsSave) localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
       return db;
     }
   } catch {}
