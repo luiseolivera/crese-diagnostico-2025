@@ -166,7 +166,8 @@ export default function Dashboard({ id, norma, navigate, config }) {
           <BarChart data={byTheme} />
         </div>
         <div className="card p-5">
-          <h3 className="text-sm font-semibold text-gray-800 mb-4">Promedio por Criterio</h3>
+          <h3 className="text-sm font-semibold text-gray-800 mb-1">Promedio por Criterio</h3>
+          <p className="text-xs text-gray-400 mb-4">Promedio de los requisitos evaluados</p>
           <BarChart data={promediosPorCriterio} />
         </div>
       </div>
