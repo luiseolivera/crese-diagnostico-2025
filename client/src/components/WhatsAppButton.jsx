@@ -3,7 +3,7 @@ import React from 'react';
 export default function WhatsAppButton({ config }) {
   const numero = config?.whatsapp_numero || '527222412988';
   const mensaje = encodeURIComponent(
-    config?.whatsapp_mensaje || 'Hola. Estoy realizando el autodiagnóstico de la Norma CRESE y necesito apoyo con algunas dudas.'
+    config?.whatsapp_mensaje || 'Hola. Estoy realizando la auditoría interna/autodiagnóstico de la Norma CRESE y necesito apoyo con algunas dudas.'
   );
   const url = `https://wa.me/${numero}?text=${mensaje}`;
 

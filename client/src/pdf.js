@@ -32,7 +32,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(20);
   doc.setTextColor(255, 255, 255);
-  doc.text('Reporte de Diagnóstico / Auditoría Interna CRESE', W / 2, 38, { align: 'center' });
+  doc.text('Reporte de Auditoria Interna / Autodiagnostico CRESE', W / 2, 38, { align: 'center' });
 
   doc.setFontSize(12);
   doc.setFont('helvetica', 'normal');
@@ -197,10 +197,27 @@ export function generarPDF(diag, evaluaciones, norma, config) {
       else if (!ev.completado) { statusText = 'En progreso'; statusColor = [59, 130, 246]; }
       else { statusText = `${ev.puntuacion_total.toFixed(0)}%`; statusColor = sc(ev.puntuacion_total); }
 
+      // Para Req 3 en progreso: calcular avance desde documentacion_detalle
+      let req3Progress = null;
+      if (req.numero === 3 && ev && !ev.completado && !ev.bloqueado && ev.documentacion_detalle) {
+        const reqs5a25 = norma.requisitos.filter(r => r.numero >= 5 && r.numero <= 25);
+        const totalCeldas = reqs5a25.length * 4; // 21 × 4 campos = 84
+        const celdasLlenas = reqs5a25.reduce((acc, r) => {
+          const d = ev.documentacion_detalle[r.id];
+          if (!d) return acc;
+          return acc + Object.values(d).filter(v => v != null).length;
+        }, 0);
+        req3Progress = totalCeldas > 0 ? Math.round((celdasLlenas / totalCeldas) * 100) : 0;
+      }
+
       const crCells = crKeys.map((key, i) => {
         const crNum = i + 1;
         if (!req.criterios_evaluables.includes(crNum)) {
           return { content: '-', styles: { halign: 'center', fontSize: 8, textColor: [209, 213, 219] } };
+        }
+        // Req 3 en progreso: mostrar avance en celda EX (criterio 1)
+        if (req.numero === 3 && crNum === 1 && req3Progress !== null) {
+          return { content: `${req3Progress}%`, styles: { halign: 'center', fontSize: 8, fontStyle: 'bold', textColor: [59, 130, 246] } };
         }
         if (!ev || !ev.completado || ev.bloqueado) {
           return { content: '-', styles: { halign: 'center', fontSize: 8, textColor: [209, 213, 219] } };
@@ -438,6 +455,157 @@ export function generarPDF(diag, evaluaciones, norma, config) {
       y += 18;
     }
   }
+
+  // ── Página de ponderaciones ──────────────────────────────────────────
+  doc.addPage();
+  let yp = 60;
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(10);
+  doc.setTextColor(30, 64, 175);
+  doc.text('TABLA DE PONDERACIONES — NORMA CRESE 2025', M, yp);
+  yp += 4;
+  doc.setLineWidth(0.5);
+  doc.line(M, yp, W - M, yp);
+  yp += 14;
+
+  // ── Escala de valoración ─────────────────────────────────────────────
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(30, 64, 175);
+  doc.text('Escala de valoración por criterio', M, yp);
+  yp += 4;
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(100, 116, 139);
+  doc.text('Cada criterio evaluable se califica con uno de los cinco niveles siguientes:', M, yp);
+  yp += 12;
+
+  autoTable(doc, {
+    startY: yp,
+    margin: { left: M, right: M },
+    head: [['Puntaje', 'Nivel', 'Descripción']],
+    body: [
+      ['0%',   'Ausente',       'No existe evidencia del criterio en la organización.'],
+      ['25%',  'Incipiente',    'Existe algún indicio o intento pero sin estructura formal.'],
+      ['50%',  'En desarrollo', 'Hay avances concretos pero aún incompletos o no sistemáticos.'],
+      ['75%',  'Implementado',  'Se cumple de manera consistente con evidencia documentada o demostrable.'],
+      ['100%', 'Consolidado',   'Está plenamente integrado, es sistemático y se puede evidenciar en toda la organización.'],
+    ],
+    theme: 'grid',
+    headStyles: { fillColor: [30, 64, 175], textColor: [255, 255, 255], fontSize: 9, fontStyle: 'bold' },
+    columnStyles: {
+      0: { cellWidth: 52, halign: 'center', fontStyle: 'bold' },
+      1: { cellWidth: 90, halign: 'center' },
+      2: { cellWidth: CW - 52 - 90 },
+    },
+    styles: { fontSize: 8.5, cellPadding: { top: 4, bottom: 4, left: 6, right: 6 } },
+    didParseCell: (data) => {
+      if (data.column.index === 0 && data.section === 'body') {
+        const v = parseInt(data.cell.raw);
+        data.cell.styles.textColor = v >= 75 ? [22, 163, 74] : v >= 50 ? [234, 88, 12] : [220, 38, 38];
+      }
+    },
+  });
+
+  yp = doc.lastAutoTable.finalY + 22;
+
+  // Subtítulo ponderación por criterio
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(30, 64, 175);
+  doc.text('Ponderación por criterio de evaluación (pág. 46)', M, yp);
+  yp += 4;
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(100, 116, 139);
+  doc.text('El puntaje de cada requisito se calcula como la suma ponderada de sus criterios evaluados.', M, yp);
+  yp += 12;
+
+  const critRows = [
+    ['Criterio', 'Req. 3', 'Req. 1, 2, 4, 5', 'Req. 6 al 25'],
+    ['EX — Existencia y Funcionamiento',  '100%', '45%', '50%'],
+    ['DC — Difusión y Conocimiento',       '—',   '10%', '10%'],
+    ['PD — Participación Directa',         '—',   '15%', '15%'],
+    ['IM — Innovación o Mejora',           '—',   '15%', '15%'],
+    ['VD — Vinculación Estratégica',       '—',   '15%', '10%'],
+  ];
+
+  autoTable(doc, {
+    startY: yp,
+    margin: { left: M, right: M },
+    head: [critRows[0]],
+    body: critRows.slice(1),
+    theme: 'grid',
+    headStyles: { fillColor: [30, 64, 175], textColor: [255, 255, 255], fontSize: 9, fontStyle: 'bold', halign: 'center' },
+    columnStyles: {
+      0: { cellWidth: 260, halign: 'left' },
+      1: { cellWidth: 70, halign: 'center' },
+      2: { cellWidth: 100, halign: 'center' },
+      3: { cellWidth: 82, halign: 'center' },
+    },
+    styles: { fontSize: 9, cellPadding: { top: 4, bottom: 4, left: 6, right: 6 } },
+    alternateRowStyles: { fillColor: [240, 249, 255] },
+  });
+
+  yp = doc.lastAutoTable.finalY + 22;
+
+  // Subtítulo ponderación por requisito
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(30, 64, 175);
+  doc.text('Ponderación por requisito para el puntaje global (pág. 45)', M, yp);
+  yp += 4;
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(100, 116, 139);
+  doc.text('La suma de todas las ponderaciones es 100 puntos. Los requisitos no evaluados se computan como 0 en el puntaje proyectado.', M, yp);
+  yp += 12;
+
+  const PONDERACION_REQ = {
+    1: 6.23, 2: 2.08, 3: 19.00, 4: 2.08, 5: 6.23,
+    6: 6.23, 7: 4.15, 8: 4.15,  9: 4.15, 10: 4.15,
+    11: 4.15, 12: 2.08, 13: 4.15, 14: 2.08, 15: 2.08,
+    16: 2.08, 17: 2.08, 18: 2.08, 19: 2.08, 20: 2.08,
+    21: 2.08, 22: 2.08, 23: 2.08, 24: 4.15, 25: 6.23,
+  };
+
+  const ponderRows = norma.requisitos
+    .slice()
+    .sort((a, b) => a.numero - b.numero)
+    .map(req => [
+      { content: `${req.numero}`, styles: { halign: 'center' } },
+      { content: req.nombre },
+      { content: `${PONDERACION_REQ[req.numero]} pts`, styles: { halign: 'center', fontStyle: 'bold' } },
+    ]);
+
+  autoTable(doc, {
+    startY: yp,
+    margin: { left: M, right: M },
+    head: [[
+      { content: '#', styles: { halign: 'center' } },
+      { content: 'Requisito' },
+      { content: 'Ponderación', styles: { halign: 'center' } },
+    ]],
+    body: ponderRows,
+    theme: 'grid',
+    headStyles: { fillColor: [30, 64, 175], textColor: [255, 255, 255], fontSize: 9, fontStyle: 'bold' },
+    columnStyles: {
+      0: { cellWidth: 30 },
+      1: { cellWidth: CW - 30 - 80 },
+      2: { cellWidth: 80 },
+    },
+    styles: { fontSize: 8.5, cellPadding: { top: 3, bottom: 3, left: 6, right: 6 } },
+    alternateRowStyles: { fillColor: [240, 249, 255] },
+    didParseCell: (data) => {
+      if (data.column.index === 2 && data.section === 'body') {
+        const pond = parseFloat(data.cell.raw?.content || data.cell.raw || 0);
+        if (pond >= 10) data.cell.styles.textColor = [30, 64, 175];
+        else if (pond >= 4) data.cell.styles.textColor = [22, 163, 74];
+        else data.cell.styles.textColor = [107, 114, 128];
+      }
+    },
+  });
 
   // Footer / aviso legal
   const lastPage = doc.internal.getNumberOfPages();

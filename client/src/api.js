@@ -29,7 +29,7 @@ function defaultConfig() {
     correo_contacto: 'info@crese.org',
     version_norma: '2025',
     whatsapp_numero: '527222412988',
-    whatsapp_mensaje: 'Hola. Estoy realizando el autodiagnóstico CRESE 2025 y necesito apoyo.',
+    whatsapp_mensaje: 'Hola. Estoy realizando la auditoría interna/autodiagnóstico CRESE 2025 y necesito apoyo.',
     aviso_legal: 'Esta herramienta de autodiagnóstico no sustituye la auditoría externa de certificación CRESE. Su propósito es servir como evaluación previa de preparación.',
   };
 }
@@ -81,6 +81,33 @@ function getDB() {
         }
         for (const diag of db.diagnosticos) recalcScores(db, diag.id);
         db.scores_migrated_v2 = true;
+        needsSave = true;
+      }
+
+      // Migrate v3: recompute req 3 score dividing over all 84 cells (not just filled ones)
+      if (!db.scores_migrated_v3) {
+        const req3DefM = normaData.requisitos.find(r => r.numero === 3);
+        if (req3DefM) {
+          const reqs5a25 = normaData.requisitos.filter(r => r.numero >= 5 && r.numero <= 25);
+          const totalCeldas = reqs5a25.length * 4;
+          for (const e of db.evaluaciones) {
+            if (e.requisito_id !== req3DefM.id || !e.completado || e.bloqueado) continue;
+            if (!e.documentacion_detalle) continue;
+            const suma = reqs5a25.reduce((acc, r) => {
+              const d = e.documentacion_detalle[r.id];
+              if (!d) return acc;
+              return acc + Object.values(d).reduce((s, v) => s + (v ?? 0), 0);
+            }, 0);
+            const newScore = totalCeldas > 0 ? suma / totalCeldas : 0;
+            e.puntuacion_criterio_1 = newScore;
+            e.puntuacion_total = newScore;
+            needsSave = true;
+          }
+          if (needsSave) {
+            for (const diag of db.diagnosticos) recalcScores(db, diag.id);
+          }
+        }
+        db.scores_migrated_v3 = true;
         needsSave = true;
       }
 
@@ -230,13 +257,17 @@ export const api = {
       const reqDef = normaData.requisitos.find(r => r.id === reqIdNum);
       const criterios = reqDef.criterios_evaluables;
 
-      // Para req 3: computar puntuacion_criterio_1 desde la matriz de documentación
+      // Para req 3: promedio sobre los 84 campos totales (21 req × 4 campos), vacíos = 0
       let scoreC1 = body.puntuacion_criterio_1 ?? null;
       if (reqDef.numero === 3 && body.documentacion_detalle) {
-        const docVals = Object.values(body.documentacion_detalle)
-          .flatMap(rd => Object.values(rd))
-          .filter(v => v != null);
-        scoreC1 = docVals.length > 0 ? docVals.reduce((a, b) => a + b, 0) / docVals.length : null;
+        const reqs5a25 = normaData.requisitos.filter(r => r.numero >= 5 && r.numero <= 25);
+        const totalCeldas = reqs5a25.length * 4;
+        const suma = reqs5a25.reduce((acc, r) => {
+          const d = body.documentacion_detalle[r.id];
+          if (!d) return acc;
+          return acc + Object.values(d).reduce((s, v) => s + (v ?? 0), 0);
+        }, 0);
+        scoreC1 = totalCeldas > 0 ? suma / totalCeldas : null;
       }
 
       let puntuacion_total = null;
