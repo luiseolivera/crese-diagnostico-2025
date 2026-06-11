@@ -401,10 +401,11 @@ export function generarPDF(diag, evaluaciones, norma, config) {
         doc.setFillColor(239, 246, 255);
         doc.rect(M, yd - 9, CW, 22, 'F');
         doc.setFont('helvetica', 'bold');
-        doc.setFontSize(7);
+        doc.setFontSize(9);
         doc.setTextColor(30, 64, 175);
         doc.text(label, M + colN + 3, yd);
         doc.setTextColor(100, 116, 139);
+        doc.setFontSize(9);
         docCols.forEach((c, i) => {
           doc.text(c.label, M + colN + colNom + i * colDoc + 2, yd + 10);
         });
@@ -413,7 +414,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
       } else {
         if (yd > 720) { doc.addPage(); yd = 60; }
         doc.setFont('helvetica', 'normal');
-        doc.setFontSize(8);
+        doc.setFontSize(10);
         doc.setTextColor(31, 41, 55);
         doc.text(label, M + colN + 3, yd);
         const vals = [];
