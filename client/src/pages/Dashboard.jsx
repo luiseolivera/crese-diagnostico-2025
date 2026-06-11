@@ -162,7 +162,8 @@ export default function Dashboard({ id, norma, navigate, config }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6">
         <div className="card p-5">
-          <h3 className="text-sm font-semibold text-gray-800 mb-4">Resultados por Tema</h3>
+          <h3 className="text-sm font-semibold text-gray-800 mb-1">Resultados por Tema</h3>
+          <p className="text-xs text-gray-400 mb-4">Promedio de los requisitos evaluados por tema</p>
           <BarChart data={byTheme} />
         </div>
         <div className="card p-5">
