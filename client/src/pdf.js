@@ -519,7 +519,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.setFontSize(9);
   doc.setTextColor(30, 64, 175);
   doc.text('Ponderación por criterio de evaluación (pág. 46)', M, yp);
-  yp += 4;
+  yp += 14;
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(100, 116, 139);
@@ -559,7 +559,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.setFontSize(9);
   doc.setTextColor(30, 64, 175);
   doc.text('Ponderación por requisito para el puntaje global (pág. 45)', M, yp);
-  yp += 4;
+  yp += 14;
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(100, 116, 139);
