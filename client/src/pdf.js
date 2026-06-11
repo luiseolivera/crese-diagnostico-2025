@@ -326,8 +326,13 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
     doc.setTextColor(30, 64, 175);
-    doc.text('Detalle de Documentacion - Requisito 3 (Req. 5-25)', M, y);
-    y += 16;
+    doc.text('Req. 3 - Evaluacion de Documentacion por Requisito (5 al 25)', M, y);
+    y += 6;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(100, 116, 139);
+    doc.text('Objetivo, Alcance, Procedimiento y Metrica evaluados para cada requisito.', M, y);
+    y += 14;
 
     const docCols = [
       { key: 'objetivo',      label: 'Objetivo' },
