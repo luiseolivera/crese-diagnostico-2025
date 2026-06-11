@@ -470,14 +470,14 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   yp += 4;
   doc.setLineWidth(0.5);
   doc.line(M, yp, W - M, yp);
-  yp += 14;
+  yp += 22;
 
   // ── Escala de valoración ─────────────────────────────────────────────
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(9);
   doc.setTextColor(30, 64, 175);
   doc.text('Escala de valoración por criterio', M, yp);
-  yp += 4;
+  yp += 12;
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(100, 116, 139);
