@@ -48,7 +48,7 @@ function BarChart({ data }) {
     <div className="space-y-2">
       {data.map(item => (
         <div key={item.label} className="flex items-center gap-3">
-          <p className="text-xs text-gray-500 w-56 shrink-0">{item.label}</p>
+          <p className="text-xs text-gray-500 w-24 sm:w-40 md:w-56 shrink-0 leading-tight">{item.label}</p>
           <div className="flex-1 h-5 bg-gray-50 rounded-full overflow-hidden border border-gray-100">
             {item.score !== null && item.score !== undefined ? (
               <div
@@ -129,7 +129,7 @@ export default function Dashboard({ id, norma, navigate, config }) {
         ← Volver
       </button>
 
-      <div className="flex items-start justify-between mb-6">
+      <div className="flex flex-wrap items-start justify-between gap-3 mb-6">
         <div>
           <h1 className="text-xl font-semibold text-gray-900">Dashboard</h1>
           <p className="text-sm text-gray-400">{diag.nombre_empresa}</p>
@@ -241,7 +241,7 @@ export default function Dashboard({ id, norma, navigate, config }) {
       {/* All requisitos */}
       <div className="mt-6 card p-5">
         <h3 className="text-sm font-semibold text-gray-800 mb-4">Todos los Requisitos</h3>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {norma.requisitos.map(req => {
             const ev = evalMap[req.id];
             const s = ev?.completado ? (ev.bloqueado ? null : ev.puntuacion_total) : null;

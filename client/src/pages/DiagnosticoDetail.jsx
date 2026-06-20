@@ -55,7 +55,7 @@ export default function DiagnosticoDetail({ id, norma, navigate }) {
             {diag.periodo_inicio && `Periodo: ${diag.periodo_inicio} – ${diag.periodo_fin}`}
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           <button className="btn-secondary text-sm" onClick={() => navigate('dashboard', { id })}>
             📊 Dashboard
           </button>
@@ -71,9 +71,9 @@ export default function DiagnosticoDetail({ id, norma, navigate }) {
 
       {/* Progress bar */}
       <div className="card p-4 mb-6">
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex flex-wrap items-center justify-between gap-1 mb-2">
           <p className="text-xs font-medium text-gray-500">Avance del diagnóstico</p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <span className="text-xs text-gray-400">{Object.values(evalMap).filter(e => e.completado).length} / 25 requisitos</span>
             {diag.puntuacion_global !== null && diag.puntuacion_global !== undefined && (
               <span className={`text-sm font-semibold ${scoreColor(diag.puntuacion_global)}`}>

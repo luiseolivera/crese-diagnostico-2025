@@ -14,12 +14,12 @@ function ScaleSelector({ value, onChange, criterio, norma }) {
   const [showHelp, setShowHelp] = useState(false);
   return (
     <div>
-      <div className="flex gap-2 mb-2">
+      <div className="grid grid-cols-5 gap-1 mb-2">
         {ESCALA.map(opt => (
           <button
             key={opt.valor}
             onClick={() => onChange(opt.valor)}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium border transition-all ${
+            className={`py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium border transition-all ${
               value === opt.valor
                 ? opt.valor >= 80 ? 'bg-green-500 text-white border-green-500'
                 : opt.valor >= 50 ? 'bg-blue-500 text-white border-blue-500'
@@ -149,12 +149,12 @@ function DocumentacionReq3({ value, onChange, norma }) {
                 {DOC_CAMPOS.map(c => (
                   <div key={c.key}>
                     <p className="text-xs text-gray-500 mb-1.5">{c.label}</p>
-                    <div className="flex gap-1.5">
+                    <div className="grid grid-cols-5 gap-1">
                       {ESCALA.map(opt => (
                         <button
                           key={opt.valor}
                           onClick={() => setField(c.key, opt.valor)}
-                          className={`flex-1 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                          className={`py-1.5 rounded-lg text-xs font-medium border transition-all ${
                             rd[c.key] === opt.valor
                               ? opt.valor >= 75 ? 'bg-green-500 text-white border-green-500'
                               : opt.valor >= 50 ? 'bg-blue-500 text-white border-blue-500'
@@ -551,16 +551,14 @@ export default function EvaluacionRequisito({ diagId, requisito, norma, navigate
       </div>
 
       {/* Save buttons */}
-      <div className="flex items-center justify-between mt-6">
-        <div className="text-xs text-gray-400">
-          {saved && <span className="text-green-600">✓ Guardado</span>}
-        </div>
-        <div className="flex gap-2">
-          <button className="btn-secondary" onClick={() => save(false)} disabled={saving}>
+      <div className="mt-6 space-y-2">
+        {saved && <p className="text-xs text-green-600 text-right">✓ Guardado</p>}
+        <div className="flex flex-col sm:flex-row sm:justify-end gap-2">
+          <button className="btn-secondary w-full sm:w-auto" onClick={() => save(false)} disabled={saving}>
             {saving ? 'Guardando...' : 'Guardar borrador'}
           </button>
           <button
-            className="btn-primary"
+            className="btn-primary w-full sm:w-auto"
             onClick={() => save(true)}
             disabled={saving || (requisito.minimos_auditables?.length > 0 && !allMinimosAnswered) || (indicadores.length > 0 && !allIndicadoresAnswered)}
           >
