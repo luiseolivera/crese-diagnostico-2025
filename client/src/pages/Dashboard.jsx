@@ -91,25 +91,10 @@ function EvaluadasRing({ completadas, total }) {
 }
 
 function BloqueadosIndicator({ count }) {
-  const color = count === 0 ? '#16a34a' : '#dc2626';
-  const r = 38;
+  const color = count === 0 ? 'text-green-600' : 'text-red-500';
   return (
     <div className="flex flex-col items-center">
-      <svg width={100} height={100} viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r={r} fill={count === 0 ? '#f0fdf4' : '#fef2f2'} stroke={color} strokeWidth="2" />
-        {count === 0 ? (
-          <>
-            <text x="50" y="56" textAnchor="middle" fill={color} fontSize="32" fontWeight="700" fontFamily="Inter, sans-serif">✓</text>
-          </>
-        ) : (
-          <>
-            <text x="50" y="44" textAnchor="middle" fill={color} fontSize="26" fontWeight="700" fontFamily="Inter, sans-serif">
-              {count}
-            </text>
-            <text x="50" y="62" textAnchor="middle" fill={color} fontSize="10" fontFamily="Inter, sans-serif">bloqueados</text>
-          </>
-        )}
-      </svg>
+      <p className={`text-5xl font-bold mb-1 ${color}`}>{count}</p>
       <p className="text-xs font-semibold text-gray-500 mt-1 tracking-wide">REQUISITOS BLOQUEADOS</p>
     </div>
   );
