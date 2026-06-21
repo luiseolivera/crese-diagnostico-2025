@@ -42,7 +42,7 @@ export default function DiagnosticoDetail({ id, norma, navigate }) {
   );
 
   return (
-    <div className="max-w-5xl mx-auto px-4 md:px-6 py-6 md:py-8 mt-14 md:mt-0">
+    <div className="max-w-2xl mx-auto px-4 md:px-6 py-6 md:py-8 mt-14 md:mt-0">
       <button className="text-sm text-gray-400 hover:text-gray-600 mb-4 flex items-center gap-1" onClick={() => navigate('home')}>
         ← Volver
       </button>
@@ -108,25 +108,25 @@ export default function DiagnosticoDetail({ id, norma, navigate }) {
                   <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${s.bg || 'bg-gray-50'} ${s.color}`}>
                     {s.icon}
                   </div>
-                  <div className="flex-1 min-w-0 flex items-center gap-3">
-                    <div className="min-w-0">
-                      <p className="text-xs text-gray-400 mb-0.5">Requisito {req.numero}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs text-gray-400 mb-0.5">Requisito {req.numero}</p>
+                    <div className="flex items-center gap-2 flex-wrap">
                       <p className="text-sm font-medium text-gray-800 leading-snug">{req.nombre}</p>
+                      {ev?.completado && !ev?.bloqueado && ev?.puntuacion_total !== null && (
+                        <span className={`text-sm font-semibold shrink-0 ${scoreColor(ev.puntuacion_total)}`}>
+                          {ev.puntuacion_total.toFixed(0)}%
+                        </span>
+                      )}
+                      {ev?.bloqueado && (
+                        <span className="text-xs text-red-500 shrink-0 font-medium">No Cumple</span>
+                      )}
+                      {!ev && (
+                        <span className="text-xs text-gray-300 shrink-0">Sin evaluar</span>
+                      )}
+                      {ev && !ev.completado && !ev.bloqueado && (
+                        <span className="text-xs text-blue-400 shrink-0">En progreso</span>
+                      )}
                     </div>
-                    {ev?.completado && !ev?.bloqueado && ev?.puntuacion_total !== null && (
-                      <span className={`text-sm font-semibold shrink-0 ${scoreColor(ev.puntuacion_total)}`}>
-                        {ev.puntuacion_total.toFixed(0)}%
-                      </span>
-                    )}
-                    {ev?.bloqueado && (
-                      <span className="text-xs text-red-500 shrink-0 font-medium">No Cumple</span>
-                    )}
-                    {!ev && (
-                      <span className="text-xs text-gray-300 shrink-0">Sin evaluar</span>
-                    )}
-                    {ev && !ev.completado && !ev.bloqueado && (
-                      <span className="text-xs text-blue-400 shrink-0">En progreso</span>
-                    )}
                   </div>
                   <span className="text-gray-300 shrink-0">›</span>
                 </button>
