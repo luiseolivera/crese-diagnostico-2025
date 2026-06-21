@@ -670,10 +670,11 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.setTextColor(...C700);
   const pcLabel = 'Ponderación por criterio de evaluación';
   doc.text(pcLabel, ML, yp);
+  const pcLabelW = doc.getTextWidth(pcLabel);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
   doc.setTextColor(...C500);
-  doc.text(' (pág. 46)', ML + doc.getTextWidth(pcLabel), yp);
+  doc.text(' (pág. 46)', ML + pcLabelW, yp);
   yp += 8;
   doc.text('El puntaje de cada requisito se calcula como la suma ponderada de sus criterios evaluados.', ML, yp);
   yp += 10;
@@ -713,10 +714,11 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.setFontSize(8.5);
   doc.setTextColor(...C700);
   doc.text(prLabel, ML, yp);
+  const prLabelW = doc.getTextWidth(prLabel);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
   doc.setTextColor(...C500);
-  doc.text(' (pág. 45)', ML + doc.getTextWidth(prLabel), yp);
+  doc.text(' (pág. 45)', ML + prLabelW, yp);
   yp += 8;
   doc.text('La suma de todas las ponderaciones es 100 puntos. Los requisitos no evaluados se computan como 0 en el puntaje proyectado.', ML, yp);
   yp += 10;
