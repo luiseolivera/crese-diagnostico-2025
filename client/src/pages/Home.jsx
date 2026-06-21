@@ -140,15 +140,9 @@ export default function Home({ norma, navigate }) {
   return (
     <div className="max-w-2xl mx-auto px-4 md:px-6 py-6 md:py-10 mt-14 md:mt-0">
       {showInstructivo && <Instructivo onClose={() => setShowInstructivo(false)} />}
-      <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between mb-8">
-        <div>
-          <h1 className="text-xl md:text-2xl font-semibold text-gray-900">Diagnósticos / Auditorías Internas CRESE</h1>
-          <p className="text-sm text-gray-500 mt-1">Diagnóstico / Auditoría Interna — Norma CRESE 2025</p>
-          <button onClick={() => setShowInstructivo(true)} className="mt-2 text-xs text-blue-600 hover:text-blue-800 hover:underline">
-            ℹ Ver instructivo de uso
-          </button>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-2">
+      <div className="mb-8">
+        <h1 className="text-xl font-semibold text-gray-900">Diagnósticos / Auditorías Internas CRESE</h1>
+        <div className="flex flex-wrap gap-2 mt-3">
           <input ref={importRef} type="file" accept=".json" className="hidden" onChange={handleImport} />
           <button className="btn-secondary whitespace-nowrap" onClick={() => importRef.current.click()}>
             ↑ Importar diagnóstico
@@ -157,6 +151,9 @@ export default function Home({ norma, navigate }) {
             <span>+</span> Nuevo diagnóstico / auditoría interna
           </button>
         </div>
+        <button onClick={() => setShowInstructivo(true)} className="mt-2 text-xs text-blue-600 hover:text-blue-800 hover:underline">
+          ℹ Ver instructivo de uso
+        </button>
       </div>
 
       {showNew && (
