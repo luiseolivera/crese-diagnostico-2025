@@ -557,7 +557,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
             content: v != null ? `${v}%` : '–',
             styles: { halign: 'center', fontSize: 8,
                       textColor: v != null ? sc(v) : C400,
-                      fontStyle: v != null ? 'bold' : 'normal' },
+                      fontStyle: 'normal' },
           };
         }),
         {
