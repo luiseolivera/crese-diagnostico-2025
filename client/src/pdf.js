@@ -167,11 +167,10 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(8.5);
   doc.setTextColor(...C700);
-  const catLabel = 'Categoría estimada: ';
-  const catValue = `${categoria(proyectado)}.`;
-  doc.text(catLabel, ML + 12, y + 14);
+  doc.text('Categoría estimada:', ML + 12, y + 14);
   doc.setFont('helvetica', 'normal');
-  doc.text(catValue, ML + 12 + doc.getTextWidth(catLabel), y + 14);
+  doc.setTextColor(...C700);
+  doc.text(`${categoria(proyectado)}.`, ML + 12 + 106, y + 14);
   doc.setFontSize(7.5);
   doc.setTextColor(...C500);
   doc.text(noteLines, ML + 12, y + 26);
