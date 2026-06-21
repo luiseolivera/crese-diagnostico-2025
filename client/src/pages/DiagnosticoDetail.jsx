@@ -82,8 +82,16 @@ export default function DiagnosticoDetail({ id, norma, navigate }) {
             )}
           </div>
         </div>
-        <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+        <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-3">
           <div className="h-full bg-blue-500 rounded-full transition-all" style={{ width: `${progress}%` }} />
+        </div>
+        <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-500">
+          <span className="flex items-center gap-1"><span className="text-gray-400 font-bold">○</span> Sin evaluar</span>
+          <span className="flex items-center gap-1"><span className="text-blue-500 font-bold">◐</span> En progreso</span>
+          <span className="flex items-center gap-1"><span className="text-green-600 font-bold">✓</span> ≥80%</span>
+          <span className="flex items-center gap-1"><span className="text-orange-500 font-bold">✓</span> 60–79%</span>
+          <span className="flex items-center gap-1"><span className="text-red-500 font-bold">!</span> &lt;60%</span>
+          <span className="flex items-center gap-1"><span className="text-red-500 font-bold">✕</span> Bloqueado</span>
         </div>
       </div>
 
@@ -136,15 +144,6 @@ export default function DiagnosticoDetail({ id, norma, navigate }) {
         </div>
       ))}
 
-      {/* Legend */}
-      <div className="mt-4 flex flex-wrap gap-4 text-xs text-gray-400">
-        <span className="flex items-center gap-1"><span className="text-gray-300">○</span> Sin evaluar</span>
-        <span className="flex items-center gap-1"><span className="text-blue-400">◐</span> En progreso</span>
-        <span className="flex items-center gap-1"><span className="text-green-600">✓</span> ≥80%</span>
-        <span className="flex items-center gap-1"><span className="text-orange-500">✓</span> 60–79%</span>
-        <span className="flex items-center gap-1"><span className="text-red-500">!</span> &lt;60%</span>
-        <span className="flex items-center gap-1"><span className="text-red-500">✕</span> Bloqueado</span>
-      </div>
     </div>
   );
 }
