@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logoCrese from '../assets/logo-crese.png';
 
 const navItems = [
-  { id: 'home', icon: '🏠', label: 'Diagnósticos / Auditorías Internas' },
+  { id: 'home', icon: '🏠', label: 'Inicio / Home' },
 ];
 
 export default function Sidebar({ view, navigate }) {
