@@ -259,7 +259,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
       content: `Tema ${tema.id}  ·  ${tema.nombre}`,
       colSpan: 8,
       styles: { fillColor: G_BG, textColor: G, fontStyle: 'bold', fontSize: 8.5,
-                cellPadding: { top: 5, bottom: 5, left: 8, right: 6 } },
+                cellPadding: { top: 3, bottom: 3, left: 8, right: 6 } },
     }]);
 
     for (const rId of tema.requisitos) {
@@ -317,7 +317,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
       2: { cellWidth: 40 }, 3: { cellWidth: 40 }, 4: { cellWidth: 40 },
       5: { cellWidth: 40 }, 6: { cellWidth: 40 }, 7: { cellWidth: 58 },
     },
-    styles: { cellPadding: { top: 5, bottom: 5, left: 4, right: 4 },
+    styles: { cellPadding: { top: 3, bottom: 3, left: 4, right: 4 },
               lineColor: C200, lineWidth: { bottom: 0.3 }, overflow: 'linebreak' },
     alternateRowStyles: { fillColor: [250, 251, 252] },
     didParseCell: (data) => {
