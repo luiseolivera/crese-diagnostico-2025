@@ -43,7 +43,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   const conPunt     = completadas.filter(e => !e.bloqueado && e.puntuacion_total !== null);
   const bloqueados  = completadas.filter(e => e.bloqueado);
   const fortalezas  = [...conPunt].sort((a, b) => b.puntuacion_total - a.puntuacion_total).slice(0, 5);
-  const oportunidadeses = [...conPunt].filter(e => e.puntuacion_total < 60)
+  const oportunidades = [...conPunt].filter(e => e.puntuacion_total < 60)
                         .sort((a, b) => a.puntuacion_total - b.puntuacion_total).slice(0, 5);
 
   const fechaGen  = new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -343,7 +343,7 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   y = sectionHeading('ANÁLISIS DETALLADO', y);
   y += 4;
 
-  // Two-column: fortalezas | oportunidadeses
+  // Two-column: fortalezas | oportunidades
   if (fortalezas.length || oportunidades.length || bloqueados.length) {
     const colW = (CW - 18) / 2;
 
