@@ -138,7 +138,7 @@ export default function Home({ norma, navigate }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 md:px-6 py-6 md:py-10 mt-14 md:mt-0">
+    <div className="max-w-2xl mx-auto px-4 md:px-6 py-6 md:py-10 mt-14 md:mt-0">
       {showInstructivo && <Instructivo onClose={() => setShowInstructivo(false)} />}
       <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between mb-8">
         <div>
