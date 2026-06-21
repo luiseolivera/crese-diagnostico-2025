@@ -150,11 +150,11 @@ export default function Dashboard({ id, norma, navigate, config }) {
           <p className="text-xs font-semibold text-gray-500 text-center tracking-wide">PUNTAJE PROYECTADO</p>
           <p className="text-xs text-gray-400 text-center">(sobre 25 requisitos)</p>
         </div>
-        <div className="card p-4 text-center">
+        <div className="card p-4 flex flex-col items-center justify-center text-center">
           <p className="text-3xl font-bold text-blue-600 mb-1">{completadas.length}<span className="text-base text-gray-400 font-normal">/25</span></p>
           <p className="text-xs text-gray-500">Requisitos evaluados</p>
         </div>
-        <div className="card p-4 text-center">
+        <div className="card p-4 flex flex-col items-center justify-center text-center">
           <p className="text-3xl font-bold text-red-500 mb-1">{bloqueados.length}</p>
           <p className="text-xs text-gray-500">Requisitos bloqueados</p>
         </div>
