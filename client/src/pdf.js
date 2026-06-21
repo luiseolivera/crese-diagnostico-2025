@@ -297,6 +297,23 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     }
   }
 
+  // Fila de totales — promedios por criterio + puntaje global parcial
+  const crKeysTot = ['puntuacion_criterio_1','puntuacion_criterio_2','puntuacion_criterio_3','puntuacion_criterio_4','puntuacion_criterio_5'];
+  const crAvgs = crKeysTot.map(key => {
+    const vals = conPunt.map(e => e[key]).filter(v => v != null);
+    return vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null;
+  });
+  const totStyle = { fillColor: G_BG, fontStyle: 'bold', fontSize: 8.5 };
+  reqTableBody.push([
+    { content: '', styles: { ...totStyle, fillColor: G_BG } },
+    { content: 'PROMEDIO GLOBAL', styles: { ...totStyle, textColor: G } },
+    ...crAvgs.map(v => ({
+      content: v != null ? `${v.toFixed(0)}%` : '–',
+      styles: { ...totStyle, halign: 'center', textColor: v != null ? sc(v) : C400 },
+    })),
+    { content: `${parcial.toFixed(1)}%`, styles: { ...totStyle, halign: 'right', textColor: sc(parcial) } },
+  ]);
+
   const nomW = CW - 20 - 5 * 40 - 58;
   autoTable(doc, {
     startY: y,
@@ -550,6 +567,26 @@ export function generarPDF(diag, evaluaciones, norma, config) {
         },
       ]);
     }
+
+    // Fila de totales documentación
+    const docTotAvgs = docCols.map(c => {
+      const vs = reqs5a25.map(r => evalReq3.documentacion_detalle?.[r.id]?.[c.key]).filter(v => v != null);
+      return vs.length ? vs.reduce((a, b) => a + b, 0) / vs.length : null;
+    });
+    const docGrand = docTotAvgs.filter(v => v != null);
+    const docGrandAvg = docGrand.length ? docGrand.reduce((a, b) => a + b, 0) / docGrand.length : null;
+    const dTotSty = { fillColor: G_BG, fontStyle: 'bold', fontSize: 8.5 };
+    docBody.push([
+      { content: 'PROMEDIO GLOBAL', styles: { ...dTotSty, textColor: G } },
+      ...docTotAvgs.map(v => ({
+        content: v != null ? `${v.toFixed(0)}%` : '–',
+        styles: { ...dTotSty, halign: 'center', textColor: v != null ? sc(v) : C400 },
+      })),
+      {
+        content: docGrandAvg != null ? `${docGrandAvg.toFixed(0)}%` : '–',
+        styles: { ...dTotSty, halign: 'center', textColor: docGrandAvg != null ? sc(docGrandAvg) : C400 },
+      },
+    ]);
 
     autoTable(doc, {
       startY: yd,
