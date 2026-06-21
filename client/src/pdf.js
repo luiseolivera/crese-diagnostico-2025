@@ -93,13 +93,6 @@ export function generarPDF(diag, evaluaciones, norma, config) {
   pageHeader();
   let y = 68;
 
-  // "NORMA CRESE 2025" label (spaced)
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(7.5);
-  doc.setTextColor(...G);
-  doc.text('N O R M A   C R E S E   2 0 2 5', ML, y);
-  y += 16;
-
   // Main title — large
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(30);
