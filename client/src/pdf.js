@@ -440,10 +440,9 @@ export function generarPDF(diag, evaluaciones, norma, config) {
     y += boxH + 14;
   }
 
-  // ── PAGE — COMENTARIOS Y RECOMENDACIONES ──────────────────────────────────
-  doc.addPage();
-  pageHeader();
-  y = 52;
+  // ── COMENTARIOS Y RECOMENDACIONES (misma página que análisis) ────────────
+  y += 14;
+  if (y > H - 430) { doc.addPage(); pageHeader(); y = 52; }
   y = sectionHeading('COMENTARIOS Y RECOMENDACIONES DEL CONSULTOR / AUDITOR', y);
 
   doc.setFont('helvetica', 'normal');
