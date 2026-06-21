@@ -58,7 +58,7 @@ export default function Sidebar({ view, navigate }) {
       <aside className="hidden md:flex w-52 min-h-screen bg-white border-r border-gray-100 flex-col shrink-0">
         <div className="px-4 py-4 border-b border-gray-100">
           <img src={logoCrese} alt="Logo CRESE" className="w-full max-h-16 object-contain" />
-          <p className="text-xs text-gray-500 font-medium leading-tight mt-2 text-center">Herramienta de autodiagnóstico y auditoría interna</p>
+          <p className="text-xs text-gray-500 font-medium leading-tight mt-2 text-center">Diagnósticos y auditorías internas CRESE</p>
         </div>
         <nav className="flex-1 px-2 py-4 space-y-1">
           {navItems.map(item => (
